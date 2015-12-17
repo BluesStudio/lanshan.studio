@@ -191,18 +191,15 @@ a{
 }
 .box-item{
     color: #fff;
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 100%;
     width: 100%;
     overflow: hidden;
     .box-center{
-        position: relative;
+        position: absolute;
+        width: 100%;
         .box-btns{
-            position: absolute;
             width: 100%;
-            top: 125%;
+            margin-top: 40px;
         }
         .box-btn{
             display: inline-block;

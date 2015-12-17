@@ -318,24 +318,21 @@ a {
 /* line 192, style.scss */
 .box-item {
   color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 200, style.scss */
+/* line 197, style.scss */
 .box-item .box-center {
-  position: relative;
-}
-/* line 202, style.scss */
-.box-item .box-center .box-btns {
   position: absolute;
   width: 100%;
-  top: 125%;
 }
-/* line 207, style.scss */
+/* line 200, style.scss */
+.box-item .box-center .box-btns {
+  width: 100%;
+  margin-top: 40px;
+}
+/* line 204, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -347,28 +344,28 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 215, style.scss */
+/* line 212, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 222, style.scss */
+/* line 219, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 224, style.scss */
+/* line 221, style.scss */
 .box-1 .box-center {
   top: 23%;
 }
-/* line 226, style.scss */
+/* line 223, style.scss */
 .box-1 .box-center h1 {
   font-size: 9vmin;
   font-weight: 100;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 235, style.scss */
+/* line 232, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
@@ -376,17 +373,17 @@ a {
   -webkit-background-size: cover;
   background-size: cover;
 }
-/* line 238, style.scss */
+/* line 235, style.scss */
 .box-2 .box-center {
   top: 25%;
 }
-/* line 240, style.scss */
+/* line 237, style.scss */
 .box-2 .box-center h1 {
   font-size: 8.5vmin;
   font-weight: 100;
   -moz-osx-font-smoothing: grayscale;
 }
-/* line 247, style.scss */
+/* line 244, style.scss */
 .box-2 .box-center h2 {
   font-size: 2.5vmin;
   font-weight: 100;
