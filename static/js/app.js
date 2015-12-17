@@ -1,4 +1,3 @@
-
 $(function() {
     var menu_change = (function(){
         var config = {
@@ -33,10 +32,6 @@ $(function() {
         };
         return config.toggle;
     })();
-    $(".menu-btn").click(function(){
-        $(".header").toggleClass("header-slide");
-        menu_change(this);
-    });
     var Page = (function() {
         var config = {
                 $bookBlock: $('#bb-bookblock'),
@@ -47,7 +42,8 @@ $(function() {
                 config.$bookBlock.bookblock({
                     speed: 800,
                     shadowSides: 0.8,
-                    shadowFlip: 0.7
+                    shadowFlip: 0.7,
+                    easing: 'ease-out'
                 });
                 initEvents();
             },
@@ -81,4 +77,9 @@ $(function() {
         };
     })();
     Page.init();
+    $(".menu-btn").click(function(){
+        $(".header").toggleClass("header-slide");
+        $(".black-shadow").fadeToggle(300);
+        menu_change(this);
+    });
 });

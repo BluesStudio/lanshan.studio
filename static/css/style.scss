@@ -45,6 +45,7 @@ html{
     -webkit-text-size-adjust: none;
 }
 body{
+    position: relative;
     font:{
         family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
         size: 16px;
@@ -65,7 +66,7 @@ a{
     height: 100%;
     width: 100%;
     text-align: center;
-    @include transition(all 0.3s ease-in-out);
+    @include transition(all 0.4s ease-out);
     .logo{
         cursor: pointer;
         position: absolute;
@@ -184,6 +185,15 @@ a{
 .header-slide{
     right: 300px;
 }
+.black-shadow{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background: black;
+    @include opacity(0.4);
+}
 .main-box{
     position: relative;
     width: 100%;
@@ -196,7 +206,14 @@ a{
     overflow: hidden;
     .box-center{
         position: absolute;
+        top: 23%;
         width: 100%;
+        h1{
+            font:{
+                size: 9vmin;
+                weight: 100;
+            }
+        }
         .box-btns{
             width: 100%;
             margin-top: 40px;
@@ -218,35 +235,8 @@ a{
 }
 .box-1{
     background-color: $color_blues;
-    .box-center{
-        top: 23%;
-        h1{
-            font:{
-                size: 9vmin;
-                weight: 100;
-            }
-            -moz-osx-font-smoothing: grayscale;
-        }
-    }
 }
 .box-2{
     background-image: url("../img/box-2-bg.png");
     @include background-size(cover);
-    .box-center{
-        top: 25%;
-        h1{
-            font:{
-                size: 8.5vmin;
-                weight: 100;
-            }
-            -moz-osx-font-smoothing: grayscale;
-        }
-        h2{
-            font:{
-                size: 2.5vmin;
-                weight: 100;
-            }
-
-        }
-    }
 }

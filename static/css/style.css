@@ -123,6 +123,7 @@ html {
 
 /* line 47, style.scss */
 body {
+  position: relative;
   font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -131,7 +132,7 @@ body {
   overflow-x: hidden;
 }
 
-/* line 57, style.scss */
+/* line 58, style.scss */
 a {
   color: #333;
   text-decoration: none;
@@ -141,19 +142,19 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 62, style.scss */
+/* line 63, style.scss */
 .header {
   position: relative;
   z-index: 0;
   height: 100%;
   width: 100%;
   text-align: center;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
-/* line 69, style.scss */
+/* line 70, style.scss */
 .header .logo {
   cursor: pointer;
   position: absolute;
@@ -169,17 +170,17 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 79, style.scss */
+/* line 80, style.scss */
 .header .logo:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 82, style.scss */
+/* line 83, style.scss */
 .header .logo img {
   width: 100%;
   height: 100%;
 }
-/* line 87, style.scss */
+/* line 88, style.scss */
 .header .menu {
   position: absolute;
   z-index: 1;
@@ -189,21 +190,21 @@ a {
   height: 100%;
   background-color: #fff;
 }
-/* line 95, style.scss */
+/* line 96, style.scss */
 .header .menu ul {
   position: relative;
   top: 25%;
 }
-/* line 98, style.scss */
+/* line 99, style.scss */
 .header .menu ul li {
   font-size: 1.3em;
   padding: 5px 20px;
 }
-/* line 102, style.scss */
+/* line 103, style.scss */
 .header .menu ul li a:hover, .header .menu ul li a.active {
   color: #3b95d3;
 }
-/* line 108, style.scss */
+/* line 109, style.scss */
 .header .menu .menu-footer {
   font-size: 0.8em;
   position: absolute;
@@ -211,7 +212,7 @@ a {
   width: 100%;
   color: #888;
 }
-/* line 116, style.scss */
+/* line 117, style.scss */
 .header .main-btns {
   cursor: pointer;
   position: absolute;
@@ -219,12 +220,12 @@ a {
   width: 30px;
   height: 30px;
 }
-/* line 122, style.scss */
+/* line 123, style.scss */
 .header .main-btns img {
   width: 100%;
   height: 100%;
 }
-/* line 127, style.scss */
+/* line 128, style.scss */
 .header .menu-btn {
   cursor: pointer;
   position: absolute;
@@ -241,7 +242,7 @@ a {
   background-repeat: no-repeat;
   background-position: 0 0;
 }
-/* line 140, style.scss */
+/* line 141, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
   margin-top: -15px;
@@ -252,20 +253,20 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 146, style.scss */
+/* line 147, style.scss */
 .header .prev-btn:hover, .header .next-btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 149, style.scss */
+/* line 150, style.scss */
 .header .prev-btn {
   left: 25px;
 }
-/* line 152, style.scss */
+/* line 153, style.scss */
 .header .next-btn {
   right: 25px;
 }
-/* line 155, style.scss */
+/* line 156, style.scss */
 .header ul.header-list {
   position: absolute;
   z-index: 1;
@@ -274,7 +275,7 @@ a {
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 162, style.scss */
+/* line 163, style.scss */
 .header ul.header-list li {
   cursor: pointer;
   display: inline-block;
@@ -286,11 +287,11 @@ a {
   border-radius: 4px;
   background: #fff;
 }
-/* line 170, style.scss */
+/* line 171, style.scss */
 .header ul.header-list li:hover {
   background: #ccc;
 }
-/* line 173, style.scss */
+/* line 174, style.scss */
 .header ul.header-list li.active {
   position: relative;
   top: 2px;
@@ -303,36 +304,54 @@ a {
   background-size: cover;
 }
 
-/* line 184, style.scss */
+/* line 185, style.scss */
 .header-slide {
   right: 300px;
 }
 
-/* line 187, style.scss */
+/* line 188, style.scss */
+.black-shadow {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+
+/* line 197, style.scss */
 .main-box {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 192, style.scss */
+/* line 202, style.scss */
 .box-item {
   color: #fff;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 197, style.scss */
+/* line 207, style.scss */
 .box-item .box-center {
   position: absolute;
+  top: 23%;
   width: 100%;
 }
-/* line 200, style.scss */
+/* line 211, style.scss */
+.box-item .box-center h1 {
+  font-size: 9vmin;
+  font-weight: 100;
+}
+/* line 217, style.scss */
 .box-item .box-center .box-btns {
   width: 100%;
   margin-top: 40px;
 }
-/* line 204, style.scss */
+/* line 221, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -344,47 +363,22 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 212, style.scss */
+/* line 229, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 219, style.scss */
+/* line 236, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 221, style.scss */
-.box-1 .box-center {
-  top: 23%;
-}
-/* line 223, style.scss */
-.box-1 .box-center h1 {
-  font-size: 9vmin;
-  font-weight: 100;
-  -moz-osx-font-smoothing: grayscale;
-}
 
-/* line 232, style.scss */
+/* line 239, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
   background-size: cover;
-}
-/* line 235, style.scss */
-.box-2 .box-center {
-  top: 25%;
-}
-/* line 237, style.scss */
-.box-2 .box-center h1 {
-  font-size: 8.5vmin;
-  font-weight: 100;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* line 244, style.scss */
-.box-2 .box-center h2 {
-  font-size: 2.5vmin;
-  font-weight: 100;
 }
