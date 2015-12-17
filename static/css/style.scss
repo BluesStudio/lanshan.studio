@@ -68,6 +68,16 @@ a{
     text-decoration: none;
     @include transition(all 0.3s ease-in-out);
 }
+.willUp{
+    position: relative;
+    opacity: 0;
+    @include transform(translate3d(0, 80px, 0));
+    @include transition(all 2s cubic-bezier(.19, 1, .22, 1));
+}
+.willUp.up{
+    opacity: 1;
+    @include transform(translate3d(0, 0, 0));
+}
 .header{
     position: relative;
     z-index: 0;
@@ -255,4 +265,7 @@ a{
 .box-2{
     background-image: url("../img/box-2-bg.png");
     @include background-size(cover);
+}
+.box-3, .box-4, .box-5{
+    background-color: $color_blues;
 }

@@ -1,24 +1,77 @@
+var flow = (function() {
+    var t = 0,
+        clean = function(){
+            t = 0;
+        },
+        up = function(e) {
+            setTimeout(function() {
+                $(e).addClass("up")
+            }, t);
+            t += 200;
+        },
+        down = function(e){
+            $(e).removeClass("up");
+        },
+        toggle = function(e){
+            setTimeout(function() {
+                $(e).toggleClass("up")
+            }, t);
+            t += 200;
+        };
+    return {
+        clean: clean,
+        up: up,
+        down: down,
+        toggle: toggle
+    }
+})();
 var Page = (function() {
     var config = {
             $bookBlock: $('#bb-bookblock'),
             $navNext: $('.next-btn'),
             $navPrev: $('.prev-btn'),
-            $nav: $('.header-list li')
+            $nav: $('.header-list li'),
+            flowing: {
+                up: function(i){
+                    config.$bookBlock.find(".bb-item").eq(i).find(".willUp").each(function(i, e){
+                        flow.up(e);
+                    });
+                    flow.clean();
+                },
+                down: function(i){
+                    config.$bookBlock.find(".bb-item").eq(i).find(".willUp").each(function(i, e){
+                        flow.down(e);
+                    });
+                    flow.clean();
+                }
+            }
         },
         init = function() {
             config.$bookBlock.bookblock({
                 speed: 800,
                 shadowSides: 0.8,
                 shadowFlip: 0.7,
+                /*autoplay: true,*/
                 easing: 'ease-out',
-                onBeforeFlip: function(page){
+                onBeforeFlip: function(page, isLimit){
+                    console.log(page+","+isLimit);
+                    var index = (!isLimit && (page > 0 && page < 4))?(page+1):page;
                     setTimeout(function(){
                         config.$nav.removeClass('active');
-                        $(config.$nav[1-page]).addClass('active');
+                        $(config.$nav[index]).addClass('active');
                     }, 250);
+                    return false;
+                },
+                onEndFlip: function(before, after){
+                    config.flowing.down(before);
+                    config.flowing.up(after);
+                    return false;
                 }
             });
             initEvents();
+            setTimeout(function(){
+                config.flowing.up(0);
+            }, 250);
         },
         initEvents = function() {
             var $slides = config.$bookBlock.children();
@@ -71,7 +124,7 @@ $(function() {
                     return 0;
                 }else{
                     $(e).css({
-                        "background-position": -29*(config.index-1)+1 + "px 0"
+                        "background-position": -29*(config.index-1) + "px 0"
                     });
                     $(e).css({
                         "right": 70-8*(config.index-1) + "px"
