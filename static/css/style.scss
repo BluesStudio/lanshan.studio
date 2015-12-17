@@ -1,0 +1,255 @@
+/* powered by sass&compass */
+@import "compass/reset";
+@import "compass/css3";
+
+$color_text: #333;
+$color_blues: #3b95d3;
+
+/* 滚动条 */
+::-webkit-scrollbar{
+    background-color: #F1F1F1;
+    overflow: visible;
+    width: 3px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgba(0, 0, 0, .2);
+    background-clip: padding-box;
+    min-height: 15px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+::-webkit-scrollbar-thumb:vertical:hover{
+    background-color: rgba(0, 0, 0, .3);
+}
+::-webkit-scrollbar-thumb:vertical:active{
+    background-color: rgba(0, 0, 0, .5);
+}
+::-webkit-scrollbar-button{
+    height: 0;
+    width: 0;
+}
+::-webkit-scrollbar-track{
+    background-clip: padding-box;
+    border: solid transparent;
+    border-width: 0 0 0 4px;
+}
+::-webkit-scrollbar-corner{
+    background: transparent;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+html{
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+}
+body{
+    font:{
+        family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
+        size: 16px;
+        weight: 300;
+    }
+    color: $color_text;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+a{
+    color: $color_text;
+    text-decoration: none;
+    @include transition(all 0.3s ease-in-out);
+}
+.header{
+    position: relative;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    @include transition(all 0.3s ease-in-out);
+    .logo{
+        cursor: pointer;
+        position: absolute;
+        z-index: 1;
+        top: 40px;
+        left: 70px;
+        width: 60px;
+        height: 60px;
+        @include opacity(0.85);
+        @include transition(all 0.3s ease-in-out);
+        &:hover{
+            @include opacity(1);
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .menu{
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        ul{
+            position: relative;
+            top: 25%;
+            li{
+                font-size: 1.3em;
+                padding: 5px 20px;
+                a{
+                    &:hover, &.active{
+                        color: $color_blues;
+                    }
+                }
+            }
+        }
+        .menu-footer{
+            font-size: 0.8em;
+            position: absolute;
+            bottom: 2%;
+            width: 100%;
+            color: #888;
+        }
+    }
+    .main-btns{
+        cursor: pointer;
+        position: absolute;
+        z-index: 1;
+        width: 30px;
+        height: 30px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .menu-btn{
+        cursor: pointer;
+        position: absolute;
+        z-index: 1;
+        width: 28px;
+        height: 28px;
+        top: 30px;
+        right: 70px;
+        background: url("../img/menu2close.png");
+        @include background-size(auto 28px);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+    }
+    .prev-btn, .next-btn{
+        top: 50%;
+        margin-top: -15px;
+        @include opacity(0.6);
+        @include transition(all 0.3s ease-in-out);
+    }
+    .prev-btn:hover, .next-btn:hover{
+        @include opacity(1);
+    }
+    .prev-btn{
+        left: 25px;
+    }
+    .next-btn{
+        right: 25px;
+    }
+    ul.header-list{
+        position: absolute;
+        z-index: 1;
+        bottom: 2%;
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        li{
+            cursor: pointer;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 6px;
+            @include border-radius(4px);
+            background: #fff;
+            &:hover{
+                background: #ccc;
+            }
+            &.active{
+                position: relative;
+                top: 2px;
+                width: 14px;
+                height: 14px;
+                background: url("../img/logo.png");
+                @include background-size(cover);
+            }
+        }
+    }
+}
+.header-slide{
+    right: 300px;
+}
+.main-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.box-item{
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    .box-center{
+        position: relative;
+        .box-btns{
+            position: absolute;
+            width: 100%;
+            top: 125%;
+        }
+        .box-btn{
+            display: inline-block;
+            font-size: 1.2em;
+            padding: 0.4em 1em;
+            margin: 0 20px;
+            @include border-radius(3px);
+            border: 1px solid #fff;
+            color: #fff;
+            &:hover{
+                color: $color_blues;
+                background-color: #fff;
+            }
+        }
+    }
+}
+.box-1{
+    background-color: $color_blues;
+    .box-center{
+        top: 23%;
+        h1{
+            font:{
+                size: 9vmin;
+                weight: 100;
+            }
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+}
+.box-2{
+    background-image: url("../img/box-2-bg.png");
+    @include background-size(cover);
+    .box-center{
+        top: 25%;
+        h1{
+            font:{
+                size: 8.5vmin;
+                weight: 100;
+            }
+            -moz-osx-font-smoothing: grayscale;
+        }
+        h2{
+            font:{
+                size: 2.5vmin;
+                weight: 100;
+            }
+
+        }
+    }
+}
