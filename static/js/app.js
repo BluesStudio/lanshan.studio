@@ -8,24 +8,24 @@ $(function() {
                 }else{
                     config.index--;
                 }
-                if(config.index > 17 || config.index < 1){
+                if(config.index > 16 || config.index < 1){
                     return 0;
                 }else{
                     $(e).css({
-                        "background-position": -29*(config.index-1)-1 + "px 0"
+                        "background-position": -29*(config.index-1)+1 + "px 0"
                     });
                     $(e).css({
                         "right": 70-8*(config.index-1) + "px"
                     });
                     setTimeout(function(){
                         config.change(e, i);
-                    }, 25);
+                    }, 100);
                 }
             },
             toggle: function(e){
                 if(config.index <= 1){
                     config.change(e, 1);
-                }else if(config.index >= 15){
+                }else if(config.index >= 14){
                     config.change(e, 0);
                 }
             }
@@ -36,30 +36,44 @@ $(function() {
         var config = {
                 $bookBlock: $('#bb-bookblock'),
                 $navNext: $('.next-btn'),
-                $navPrev: $('.prev-btn')
+                $navPrev: $('.prev-btn'),
+                $nav: $('.header-list li')
             },
             init = function() {
                 config.$bookBlock.bookblock({
                     speed: 800,
                     shadowSides: 0.8,
                     shadowFlip: 0.7,
-                    easing: 'ease-out'
+                    easing: 'ease-out',
+                    onBeforeFlip: function(page){
+                        setTimeout(function(){
+                            config.$nav.removeClass('active');
+                            $(config.$nav[1-page]).addClass('active');
+                        }, 250);
+                    }
                 });
                 initEvents();
             },
             initEvents = function() {
                 var $slides = config.$bookBlock.children();
                 // add navigation events
-                config.$navNext.on('click touchstart',
-                    function() {
-                        config.$bookBlock.bookblock('next');
+                config.$navNext.on('click touchstart', function() {
+                    config.$bookBlock.bookblock('next');
+                    return false;
+                });
+                config.$navPrev.on('click touchstart', function() {
+                    config.$bookBlock.bookblock('prev');
+                    return false;
+                });
+                config.$nav.each(function(i) {
+                    $(this).on('click touchstart', function() {
+                        var $dot = $(this);
+                        config.$nav.removeClass('active');
+                        $dot.addClass('active');
+                        config.$bookBlock.bookblock('jump', i + 1);
                         return false;
                     });
-                config.$navPrev.on('click touchstart',
-                    function() {
-                        config.$bookBlock.bookblock('prev');
-                        return false;
-                    });
+                });
                 // add swipe events
                 $slides.on({
                     'swipeleft': function(event) {

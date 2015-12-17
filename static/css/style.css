@@ -148,13 +148,15 @@ a {
   z-index: 0;
   height: 100%;
   width: 100%;
+  top: 0;
+  right: 0;
   text-align: center;
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
-/* line 70, style.scss */
+/* line 72, style.scss */
 .header .logo {
   cursor: pointer;
   position: absolute;
@@ -170,49 +172,17 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 80, style.scss */
+/* line 82, style.scss */
 .header .logo:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 83, style.scss */
+/* line 85, style.scss */
 .header .logo img {
   width: 100%;
   height: 100%;
 }
-/* line 88, style.scss */
-.header .menu {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  right: -300px;
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-}
-/* line 96, style.scss */
-.header .menu ul {
-  position: relative;
-  top: 25%;
-}
-/* line 99, style.scss */
-.header .menu ul li {
-  font-size: 1.3em;
-  padding: 5px 20px;
-}
-/* line 103, style.scss */
-.header .menu ul li a:hover, .header .menu ul li a.active {
-  color: #3b95d3;
-}
-/* line 109, style.scss */
-.header .menu .menu-footer {
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 2%;
-  width: 100%;
-  color: #888;
-}
-/* line 117, style.scss */
+/* line 90, style.scss */
 .header .main-btns {
   cursor: pointer;
   position: absolute;
@@ -220,12 +190,12 @@ a {
   width: 30px;
   height: 30px;
 }
-/* line 123, style.scss */
+/* line 96, style.scss */
 .header .main-btns img {
   width: 100%;
   height: 100%;
 }
-/* line 128, style.scss */
+/* line 101, style.scss */
 .header .menu-btn {
   cursor: pointer;
   position: absolute;
@@ -242,7 +212,7 @@ a {
   background-repeat: no-repeat;
   background-position: 0 0;
 }
-/* line 141, style.scss */
+/* line 114, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
   margin-top: -15px;
@@ -253,20 +223,20 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 147, style.scss */
+/* line 120, style.scss */
 .header .prev-btn:hover, .header .next-btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 150, style.scss */
+/* line 123, style.scss */
 .header .prev-btn {
   left: 25px;
 }
-/* line 153, style.scss */
+/* line 126, style.scss */
 .header .next-btn {
   right: 25px;
 }
-/* line 156, style.scss */
+/* line 129, style.scss */
 .header ul.header-list {
   position: absolute;
   z-index: 1;
@@ -275,7 +245,7 @@ a {
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 163, style.scss */
+/* line 136, style.scss */
 .header ul.header-list li {
   cursor: pointer;
   display: inline-block;
@@ -287,11 +257,11 @@ a {
   border-radius: 4px;
   background: #fff;
 }
-/* line 171, style.scss */
+/* line 144, style.scss */
 .header ul.header-list li:hover {
   background: #ccc;
 }
-/* line 174, style.scss */
+/* line 147, style.scss */
 .header ul.header-list li.active {
   position: relative;
   top: 2px;
@@ -304,12 +274,45 @@ a {
   background-size: cover;
 }
 
-/* line 185, style.scss */
+/* line 158, style.scss */
+.menu {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+}
+/* line 166, style.scss */
+.menu ul {
+  position: relative;
+  top: 25%;
+}
+/* line 169, style.scss */
+.menu ul li {
+  font-size: 1.3em;
+  padding: 5px 20px;
+}
+/* line 173, style.scss */
+.menu ul li a:hover, .menu ul li a.active {
+  color: #3b95d3;
+}
+/* line 179, style.scss */
+.menu .menu-footer {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  color: #888;
+}
+
+/* line 187, style.scss */
 .header-slide {
   right: 300px;
 }
 
-/* line 188, style.scss */
+/* line 190, style.scss */
 .black-shadow {
   display: none;
   position: absolute;
@@ -321,37 +324,37 @@ a {
   opacity: 0.4;
 }
 
-/* line 197, style.scss */
+/* line 199, style.scss */
 .main-box {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 202, style.scss */
+/* line 204, style.scss */
 .box-item {
   color: #fff;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 207, style.scss */
+/* line 209, style.scss */
 .box-item .box-center {
   position: absolute;
   top: 23%;
   width: 100%;
 }
-/* line 211, style.scss */
+/* line 213, style.scss */
 .box-item .box-center h1 {
   font-size: 9vmin;
   font-weight: 100;
 }
-/* line 217, style.scss */
+/* line 219, style.scss */
 .box-item .box-center .box-btns {
   width: 100%;
   margin-top: 40px;
 }
-/* line 221, style.scss */
+/* line 223, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -363,18 +366,18 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 229, style.scss */
+/* line 231, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 236, style.scss */
+/* line 238, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
 
-/* line 239, style.scss */
+/* line 241, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
