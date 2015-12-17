@@ -5,6 +5,14 @@
 $color_text: #333;
 $color_blues: #3b95d3;
 
+@font-face {font-family: 'webfont';
+    src: url('../font/webfont.eot'); /* IE9*/
+    src: url('../font/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/webfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/webfont.svg#webfont') format('svg'); /* iOS 4.1- */
+}
+
 /* 滚动条 */
 ::-webkit-scrollbar{
     background-color: #F1F1F1;
@@ -213,7 +221,7 @@ a{
         h1{
             font:{
                 size: 9vmin;
-                weight: 100;
+                weight: 200;
             }
         }
         .box-btns{
@@ -237,6 +245,12 @@ a{
 }
 .box-1{
     background-color: $color_blues;
+    .box-center{
+        h1{
+            font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
 }
 .box-2{
     background-image: url("../img/box-2-bg.png");
