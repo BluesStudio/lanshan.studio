@@ -1,3 +1,62 @@
+var Page = (function() {
+    var config = {
+            $bookBlock: $('#bb-bookblock'),
+            $navNext: $('.next-btn'),
+            $navPrev: $('.prev-btn'),
+            $nav: $('.header-list li')
+        },
+        init = function() {
+            config.$bookBlock.bookblock({
+                speed: 800,
+                shadowSides: 0.8,
+                shadowFlip: 0.7,
+                easing: 'ease-out',
+                onBeforeFlip: function(page){
+                    setTimeout(function(){
+                        config.$nav.removeClass('active');
+                        $(config.$nav[1-page]).addClass('active');
+                    }, 250);
+                }
+            });
+            initEvents();
+        },
+        initEvents = function() {
+            var $slides = config.$bookBlock.children();
+            // add navigation events
+            config.$navNext.on('click touchstart', function() {
+                config.$bookBlock.bookblock('next');
+                return false;
+            });
+            config.$navPrev.on('click touchstart', function() {
+                config.$bookBlock.bookblock('prev');
+                return false;
+            });
+            config.$nav.each(function(i) {
+                $(this).on('click touchstart', function() {
+                    var $dot = $(this);
+                    config.$nav.removeClass('active');
+                    $dot.addClass('active');
+                    config.$bookBlock.bookblock('jump', i + 1);
+                    return false;
+                });
+            });
+            // add swipe events
+            $slides.on({
+                'swipeleft': function(event) {
+                    config.$bookBlock.bookblock('next');
+                    return false;
+                },
+                'swiperight': function(event) {
+                    config.$bookBlock.bookblock('prev');
+                    return false;
+                }
+            });
+        };
+    return {
+        init: init
+    };
+})();
+Page.init();
 $(function() {
     var menu_change = (function(){
         var config = {
@@ -32,65 +91,6 @@ $(function() {
         };
         return config.toggle;
     })();
-    var Page = (function() {
-        var config = {
-                $bookBlock: $('#bb-bookblock'),
-                $navNext: $('.next-btn'),
-                $navPrev: $('.prev-btn'),
-                $nav: $('.header-list li')
-            },
-            init = function() {
-                config.$bookBlock.bookblock({
-                    speed: 800,
-                    shadowSides: 0.8,
-                    shadowFlip: 0.7,
-                    easing: 'ease-out',
-                    onBeforeFlip: function(page){
-                        setTimeout(function(){
-                            config.$nav.removeClass('active');
-                            $(config.$nav[1-page]).addClass('active');
-                        }, 250);
-                    }
-                });
-                initEvents();
-            },
-            initEvents = function() {
-                var $slides = config.$bookBlock.children();
-                // add navigation events
-                config.$navNext.on('click touchstart', function() {
-                    config.$bookBlock.bookblock('next');
-                    return false;
-                });
-                config.$navPrev.on('click touchstart', function() {
-                    config.$bookBlock.bookblock('prev');
-                    return false;
-                });
-                config.$nav.each(function(i) {
-                    $(this).on('click touchstart', function() {
-                        var $dot = $(this);
-                        config.$nav.removeClass('active');
-                        $dot.addClass('active');
-                        config.$bookBlock.bookblock('jump', i + 1);
-                        return false;
-                    });
-                });
-                // add swipe events
-                $slides.on({
-                    'swipeleft': function(event) {
-                        config.$bookBlock.bookblock('next');
-                        return false;
-                    },
-                    'swiperight': function(event) {
-                        config.$bookBlock.bookblock('prev');
-                        return false;
-                    }
-                });
-            };
-        return {
-            init: init
-        };
-    })();
-    Page.init();
     $(".menu-btn").click(function(){
         $(".header").toggleClass("header-slide");
         $(".black-shadow").fadeToggle(300);
