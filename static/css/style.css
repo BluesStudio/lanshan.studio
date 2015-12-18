@@ -229,11 +229,11 @@ a {
 .header .menu-btn {
   cursor: pointer;
   position: absolute;
-  z-index: 1;
+  z-index: 1002;
   width: 28px;
   height: 28px;
-  top: 30px;
-  right: 70px;
+  top: 40px;
+  right: 80px;
   background: url("../img/menu2close.png");
   -moz-background-size: auto 28px;
   -o-background-size: auto 28px;
@@ -241,8 +241,12 @@ a {
   background-size: auto 28px;
   background-repeat: no-repeat;
   background-position: 0 0;
+  -moz-transition: right 0.6s ease;
+  -o-transition: right 0.6s ease;
+  -webkit-transition: right 0.6s ease;
+  transition: right 0.6s ease;
 }
-/* line 132, style.scss */
+/* line 133, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
   margin-top: -15px;
@@ -253,20 +257,20 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 138, style.scss */
+/* line 139, style.scss */
 .header .prev-btn:hover, .header .next-btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 141, style.scss */
+/* line 142, style.scss */
 .header .prev-btn {
   left: 25px;
 }
-/* line 144, style.scss */
+/* line 145, style.scss */
 .header .next-btn {
   right: 25px;
 }
-/* line 147, style.scss */
+/* line 148, style.scss */
 .header ul.header-list {
   position: absolute;
   z-index: 1;
@@ -275,7 +279,7 @@ a {
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 154, style.scss */
+/* line 155, style.scss */
 .header ul.header-list li {
   cursor: pointer;
   display: inline-block;
@@ -287,11 +291,11 @@ a {
   border-radius: 4px;
   background: #fff;
 }
-/* line 162, style.scss */
+/* line 163, style.scss */
 .header ul.header-list li:hover {
   background: #ccc;
 }
-/* line 165, style.scss */
+/* line 166, style.scss */
 .header ul.header-list li.active {
   position: relative;
   top: 2px;
@@ -304,31 +308,36 @@ a {
   background-size: cover;
 }
 
-/* line 176, style.scss */
+/* line 177, style.scss */
+.header-slide {
+  right: 300px;
+}
+
+/* line 180, style.scss */
 .menu {
   position: absolute;
-  z-index: 1;
+  z-index: 1001;
   top: 0;
   right: -300px;
   width: 300px;
   height: 100%;
   background-color: #fff;
 }
-/* line 184, style.scss */
+/* line 188, style.scss */
 .menu ul {
   position: relative;
   top: 25%;
 }
-/* line 187, style.scss */
+/* line 191, style.scss */
 .menu ul li {
   font-size: 1.3em;
   padding: 5px 20px;
 }
-/* line 191, style.scss */
+/* line 195, style.scss */
 .menu ul li a:hover, .menu ul li a.active {
   color: #3b95d3;
 }
-/* line 197, style.scss */
+/* line 201, style.scss */
 .menu .menu-footer {
   font-size: 0.8em;
   position: absolute;
@@ -337,12 +346,7 @@ a {
   color: #888;
 }
 
-/* line 205, style.scss */
-.header-slide {
-  right: 300px;
-}
-
-/* line 208, style.scss */
+/* line 209, style.scss */
 .black-shadow {
   display: none;
   position: absolute;
@@ -354,37 +358,37 @@ a {
   opacity: 0.4;
 }
 
-/* line 217, style.scss */
+/* line 218, style.scss */
 .main-box {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 222, style.scss */
+/* line 223, style.scss */
 .box-item {
   color: #fff;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 227, style.scss */
+/* line 228, style.scss */
 .box-item .box-center {
   position: absolute;
   top: 23%;
   width: 100%;
 }
-/* line 231, style.scss */
+/* line 232, style.scss */
 .box-item .box-center h1 {
   font-size: 9vmin;
   font-weight: 200;
 }
-/* line 237, style.scss */
+/* line 238, style.scss */
 .box-item .box-center .box-btns {
   width: 100%;
   margin-top: 40px;
 }
-/* line 241, style.scss */
+/* line 242, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -396,23 +400,23 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 249, style.scss */
+/* line 250, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 256, style.scss */
+/* line 257, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 259, style.scss */
+/* line 260, style.scss */
 .box-1 .box-center h1 {
   font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 265, style.scss */
+/* line 266, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
@@ -421,7 +425,7 @@ a {
   background-size: cover;
 }
 
-/* line 269, style.scss */
+/* line 270, style.scss */
 .box-3, .box-4, .box-5 {
   background-color: #3b95d3;
 }

@@ -198,10 +198,6 @@
                 return false;
             }
 
-            var isLimit = dir === 'next' && this.current === this.itemsCount - 1 || dir === 'prev' && this.current === 0;
-            // callback trigger
-            this.options.onBeforeFlip( this.current, isLimit );
-
             this.isAnimating = true;
             // update current value
             this.$current = this.$items.eq( this.current );
@@ -232,6 +228,8 @@
                 this._layout( dir );
             }
 
+            // callback trigger
+            this.options.onBeforeFlip( this.previous, this.current );
         },
         _layoutNoSupport : function(dir) {
             this.$items.hide();

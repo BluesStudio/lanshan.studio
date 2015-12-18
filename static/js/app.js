@@ -53,12 +53,10 @@ var Page = (function() {
                 shadowFlip: 0.7,
                 /*autoplay: true,*/
                 easing: 'ease-out',
-                onBeforeFlip: function(page, isLimit){
-                    console.log(page+","+isLimit);
-                    var index = (!isLimit && (page > 0 && page < 4))?(page+1):page;
+                onBeforeFlip: function(before, after){
                     setTimeout(function(){
                         config.$nav.removeClass('active');
-                        $(config.$nav[index]).addClass('active');
+                        $(config.$nav[after]).addClass('active');
                     }, 250);
                     return false;
                 },
@@ -120,24 +118,29 @@ $(function() {
                 }else{
                     config.index--;
                 }
-                if(config.index > 16 || config.index < 1){
+                if(config.index >= 16 || config.index < 1){
+                    config.index = config.index?config.index:1;
                     return 0;
                 }else{
                     $(e).css({
-                        "background-position": -29*(config.index-1) + "px 0"
-                    });
-                    $(e).css({
-                        "right": 70-8*(config.index-1) + "px"
+                        "background-position": -31*(config.index-1) + "px 0"
                     });
                     setTimeout(function(){
                         config.change(e, i);
-                    }, 100);
+                    }, 30);
                 }
             },
             toggle: function(e){
+                console.log(config.index);
                 if(config.index <= 1){
+                    $(e).css({
+                        "right": -60 + "px"
+                    });
                     config.change(e, 1);
-                }else if(config.index >= 14){
+                }else if(config.index >= 16){
+                    $(e).css({
+                        "right": 80 + "px"
+                    });
                     config.change(e, 0);
                 }
             }
