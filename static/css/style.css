@@ -172,7 +172,8 @@ a {
   transform: translate3d(0, 0, 0);
 }
 
-/* line 81, style.scss */
+/* header */
+/* line 82, style.scss */
 .header {
   position: relative;
   z-index: 0;
@@ -186,15 +187,16 @@ a {
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
-/* line 90, style.scss */
+/* line 91, style.scss */
 .header .logo {
   cursor: pointer;
   position: absolute;
   z-index: 1;
-  top: 40px;
-  left: 70px;
-  width: 60px;
-  height: 60px;
+  top: 5%;
+  left: 6%;
+  width: 50px;
+  height: 50px;
+  margin-top: -25;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
   opacity: 0.85;
   -moz-transition: all 0.3s ease-in-out;
@@ -202,17 +204,17 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 100, style.scss */
+/* line 102, style.scss */
 .header .logo:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 103, style.scss */
+/* line 105, style.scss */
 .header .logo img {
   width: 100%;
   height: 100%;
 }
-/* line 108, style.scss */
+/* line 110, style.scss */
 .header .main-btns {
   cursor: pointer;
   position: absolute;
@@ -220,20 +222,20 @@ a {
   width: 30px;
   height: 30px;
 }
-/* line 114, style.scss */
+/* line 116, style.scss */
 .header .main-btns img {
   width: 100%;
   height: 100%;
 }
-/* line 119, style.scss */
+/* line 121, style.scss */
 .header .menu-btn {
   cursor: pointer;
   position: absolute;
   z-index: 1002;
   width: 28px;
   height: 28px;
-  top: 40px;
-  right: 80px;
+  top: 5%;
+  right: 6%;
   background: url("../img/menu2close.png");
   -moz-background-size: auto 28px;
   -o-background-size: auto 28px;
@@ -246,7 +248,7 @@ a {
   -webkit-transition: right 0.6s ease;
   transition: right 0.6s ease;
 }
-/* line 133, style.scss */
+/* line 135, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
   margin-top: -15px;
@@ -257,20 +259,20 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 139, style.scss */
+/* line 141, style.scss */
 .header .prev-btn:hover, .header .next-btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 142, style.scss */
+/* line 144, style.scss */
 .header .prev-btn {
   left: 25px;
 }
-/* line 145, style.scss */
+/* line 147, style.scss */
 .header .next-btn {
   right: 25px;
 }
-/* line 148, style.scss */
+/* line 150, style.scss */
 .header ul.header-list {
   position: absolute;
   z-index: 1;
@@ -279,7 +281,7 @@ a {
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 155, style.scss */
+/* line 157, style.scss */
 .header ul.header-list li {
   cursor: pointer;
   display: inline-block;
@@ -291,11 +293,11 @@ a {
   border-radius: 4px;
   background: #fff;
 }
-/* line 163, style.scss */
+/* line 165, style.scss */
 .header ul.header-list li:hover {
   background: #ccc;
 }
-/* line 166, style.scss */
+/* line 168, style.scss */
 .header ul.header-list li.active {
   position: relative;
   top: 2px;
@@ -308,12 +310,12 @@ a {
   background-size: cover;
 }
 
-/* line 177, style.scss */
+/* line 179, style.scss */
 .header-slide {
   right: 300px;
 }
 
-/* line 180, style.scss */
+/* line 182, style.scss */
 .menu {
   position: absolute;
   z-index: 1001;
@@ -323,21 +325,21 @@ a {
   height: 100%;
   background-color: #fff;
 }
-/* line 188, style.scss */
+/* line 190, style.scss */
 .menu ul {
   position: relative;
   top: 25%;
 }
-/* line 191, style.scss */
+/* line 193, style.scss */
 .menu ul li {
   font-size: 1.3em;
   padding: 5px 20px;
 }
-/* line 195, style.scss */
+/* line 197, style.scss */
 .menu ul li a:hover, .menu ul li a.active {
   color: #3b95d3;
 }
-/* line 201, style.scss */
+/* line 203, style.scss */
 .menu .menu-footer {
   font-size: 0.8em;
   position: absolute;
@@ -346,7 +348,7 @@ a {
   color: #888;
 }
 
-/* line 209, style.scss */
+/* line 211, style.scss */
 .black-shadow {
   display: none;
   position: absolute;
@@ -358,37 +360,37 @@ a {
   opacity: 0.4;
 }
 
-/* line 218, style.scss */
+/* line 220, style.scss */
 .main-box {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 223, style.scss */
+/* line 225, style.scss */
 .box-item {
   color: #fff;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 228, style.scss */
+/* line 230, style.scss */
 .box-item .box-center {
   position: absolute;
   top: 23%;
   width: 100%;
 }
-/* line 232, style.scss */
+/* line 234, style.scss */
 .box-item .box-center h1 {
   font-size: 9vmin;
   font-weight: 200;
 }
-/* line 238, style.scss */
+/* line 240, style.scss */
 .box-item .box-center .box-btns {
   width: 100%;
   margin-top: 40px;
 }
-/* line 242, style.scss */
+/* line 244, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -400,23 +402,23 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 250, style.scss */
+/* line 252, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 257, style.scss */
+/* line 259, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 260, style.scss */
+/* line 262, style.scss */
 .box-1 .box-center h1 {
   font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 266, style.scss */
+/* line 268, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
@@ -425,7 +427,9 @@ a {
   background-size: cover;
 }
 
-/* line 270, style.scss */
+/* line 272, style.scss */
 .box-3, .box-4, .box-5 {
   background-color: #3b95d3;
 }
+
+/* //header */

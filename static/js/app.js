@@ -51,7 +51,8 @@ var Page = (function() {
                 speed: 800,
                 shadowSides: 0.8,
                 shadowFlip: 0.7,
-                /*autoplay: true,*/
+                autoplay: true,
+                interval: 5000,
                 easing: 'ease-out',
                 onBeforeFlip: function(before, after){
                     setTimeout(function(){
@@ -131,15 +132,14 @@ $(function() {
                 }
             },
             toggle: function(e){
-                console.log(config.index);
                 if(config.index <= 1){
                     $(e).css({
-                        "right": -60 + "px"
+                        "right": -65 + "px"
                     });
                     config.change(e, 1);
                 }else if(config.index >= 16){
                     $(e).css({
-                        "right": 80 + "px"
+                        "right": 6 + "%"
                     });
                     config.change(e, 0);
                 }
