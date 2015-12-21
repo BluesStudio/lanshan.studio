@@ -62,6 +62,29 @@ body{
     color: $color_text;
     line-height: 1.5;
     overflow-x: hidden;
+    @include transition(right 0.4s ease-out);
+    &.slide{
+        right: 300px;
+        .nav{
+            right: 300px;
+            .top{
+                left: -300px;
+                .logo{
+                    position: fixed;
+                    @include opacity(0.6);
+                    h1{
+                        width: 265px;
+                    }
+                }
+                .menu-btn{
+                    right: -60px;
+                }
+            }
+            .menu{
+                right: 0;
+            }
+        }
+    }
 }
 a{
     color: $color_text;
@@ -73,10 +96,145 @@ a{
     opacity: 0;
     @include transform(translate3d(0, 80px, 0));
     @include transition(all 2s cubic-bezier(.19, 1, .22, 1));
+    &.up{
+        opacity: 1;
+        @include transform(translate3d(0, 0, 0));
+    }
 }
-.willUp.up{
-    opacity: 1;
-    @include transform(translate3d(0, 0, 0));
+.black-shadow{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background: black;
+    @include opacity(0.4);
+}
+.nav{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    @include transition(all 0.4s ease-out);
+}
+.nav#fixed{
+    height: 80px;
+    .top{
+        height: 80px;
+        background: $color_blues;
+        .logo{
+            top: 20px;
+            left: 4%;
+            height: 40px;
+            @include opacity(0.85);
+            img{
+                width: 40px;
+                height: 40px;
+            }
+            h1{
+                width: 265px;
+                padding-left: 5px;
+                line-height: 40px;
+                font:{
+                    size: 1.25em;
+                }
+            }
+        }
+        .menu-btn{
+            top: 30px;
+        }
+    }
+}
+.top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1003;
+    width: 100%;
+    height: 100px;
+    @include transition(all 0.4s ease-out);
+    .logo{
+        float: left;
+        position: fixed;
+        top: 30px;
+        left: 5%;
+        cursor: pointer;
+        width: 350px;
+        height: 60px;
+        overflow: hidden;
+        @include opacity(0.8);
+        @include transition(all 0.4s ease-out);
+        &:hover{
+            @include opacity(1);
+        }
+        img{
+            float: left;
+            width: 60px;
+            height: 60px;
+            @include transition(all 0.4s ease-out);
+        }
+        h1{
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            padding-left: 10px;
+            line-height: 60px;
+            color: #fff;
+            @include transition(all 0.4s ease-out);
+            font:{
+                size: 1.5em;
+                weight: 300;
+            }
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    .menu-btn{
+        float: right;
+        position: absolute;
+        top: 38px;
+        right: 5%;
+        cursor: pointer;
+        width: 28px;
+        height: 28px;
+        background: url("../img/menu2close.png");
+        @include background-size(auto 28px);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        @include transition(right 0.6s ease);
+    }
+}
+.menu{
+    position: fixed;
+    z-index: 1002;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    text-align: center;
+    @include transition(right 0.4s ease-out);
+    ul{
+        position: relative;
+        top: 25%;
+        li{
+            font-size: 1.3em;
+            padding: 5px 20px;
+            a{
+                &:hover, &.active{
+                    color: $color_blues;
+                }
+            }
+        }
+    }
+    .menu-footer{
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 2%;
+        width: 100%;
+        color: #888;
+    }
 }
 /* header */
 .header{
@@ -87,26 +245,6 @@ a{
     top: 0;
     right: 0;
     text-align: center;
-    @include transition(all 0.4s ease-out);
-    .logo{
-        cursor: pointer;
-        position: absolute;
-        z-index: 1;
-        top: 5%;
-        left: 6%;
-        width: 50px;
-        height: 50px;
-        margin-top: -25px;
-        @include opacity(0.85);
-        @include transition(all 0.3s ease-in-out);
-        &:hover{
-            @include opacity(1);
-        }
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
     .main-btns{
         cursor: pointer;
         position: absolute;
@@ -118,34 +256,30 @@ a{
             height: 100%;
         }
     }
-    .menu-btn{
-        cursor: pointer;
-        position: absolute;
-        z-index: 1002;
-        width: 28px;
-        height: 28px;
-        top: 5%;
-        right: 6%;
-        background: url("../img/menu2close.png");
-        @include background-size(auto 28px);
-        background-repeat: no-repeat;
-        background-position: 0 0;
-        @include transition(right 0.6s ease);
-    }
     .prev-btn, .next-btn{
         top: 50%;
         margin-top: -15px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
-    }
-    .prev-btn:hover, .next-btn:hover{
-        @include opacity(1);
+        &:hover{
+            @include opacity(1);
+        }
     }
     .prev-btn{
         left: 25px;
     }
     .next-btn{
         right: 25px;
+    }
+    .down-btn{
+        left: 50%;
+        bottom: 60px;
+        margin-left: -15px;
+        @include opacity(0.6);
+        @include transition(all 0.3s ease-in-out);
+        &:hover{
+            @include opacity(1);
+        }
     }
     ul.header-list{
         position: absolute;
@@ -175,47 +309,6 @@ a{
             }
         }
     }
-}
-.header-slide{
-    right: 300px;
-}
-.menu{
-    position: absolute;
-    z-index: 1001;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    ul{
-        position: relative;
-        top: 25%;
-        li{
-            font-size: 1.3em;
-            padding: 5px 20px;
-            a{
-                &:hover, &.active{
-                    color: $color_blues;
-                }
-            }
-        }
-    }
-    .menu-footer{
-        font-size: 0.8em;
-        position: absolute;
-        bottom: 2%;
-        width: 100%;
-        color: #888;
-    }
-}
-.black-shadow{
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1001;
-    background: black;
-    @include opacity(0.4);
 }
 .main-box{
     position: relative;
@@ -273,3 +366,8 @@ a{
     background-color: $color_blues;
 }
 /* //header */
+/* container */
+.container{
+    width: 100%;
+    height: 1000px;
+}

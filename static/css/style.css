@@ -137,9 +137,43 @@ body {
   color: #333;
   line-height: 1.5;
   overflow-x: hidden;
+  -moz-transition: right 0.4s ease-out;
+  -o-transition: right 0.4s ease-out;
+  -webkit-transition: right 0.4s ease-out;
+  transition: right 0.4s ease-out;
+}
+/* line 66, style.scss */
+body.slide {
+  right: 300px;
+}
+/* line 68, style.scss */
+body.slide .nav {
+  right: 300px;
+}
+/* line 70, style.scss */
+body.slide .nav .top {
+  left: -300px;
+}
+/* line 72, style.scss */
+body.slide .nav .top .logo {
+  position: fixed;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+/* line 75, style.scss */
+body.slide .nav .top .logo h1 {
+  width: 265px;
+}
+/* line 79, style.scss */
+body.slide .nav .top .menu-btn {
+  right: -60px;
+}
+/* line 83, style.scss */
+body.slide .nav .menu {
+  right: 0;
 }
 
-/* line 66, style.scss */
+/* line 89, style.scss */
 a {
   color: #333;
   text-decoration: none;
@@ -149,7 +183,7 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-/* line 71, style.scss */
+/* line 94, style.scss */
 .willUp {
   position: relative;
   opacity: 0;
@@ -162,8 +196,7 @@ a {
   -webkit-transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
 }
-
-/* line 77, style.scss */
+/* line 99, style.scss */
 .willUp.up {
   opacity: 1;
   -moz-transform: translate3d(0, 0, 0);
@@ -172,70 +205,136 @@ a {
   transform: translate3d(0, 0, 0);
 }
 
-/* header */
-/* line 82, style.scss */
-.header {
-  position: relative;
-  z-index: 0;
-  height: 100%;
+/* line 104, style.scss */
+.black-shadow {
+  display: none;
+  position: fixed;
   width: 100%;
+  height: 100%;
+  z-index: 1001;
+  background: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+}
+
+/* line 113, style.scss */
+.nav {
+  position: fixed;
+  z-index: 1000;
   top: 0;
-  right: 0;
-  text-align: center;
+  left: 0;
+  width: 100%;
+  height: 100px;
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
 }
-/* line 91, style.scss */
-.header .logo {
-  cursor: pointer;
-  position: absolute;
-  z-index: 1;
-  top: 5%;
-  left: 6%;
-  width: 50px;
-  height: 50px;
-  margin-top: -25;
+
+/* line 122, style.scss */
+.nav#fixed {
+  height: 80px;
+}
+/* line 124, style.scss */
+.nav#fixed .top {
+  height: 80px;
+  background: #3b95d3;
+}
+/* line 127, style.scss */
+.nav#fixed .top .logo {
+  top: 20px;
+  left: 4%;
+  height: 40px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
   opacity: 0.85;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
-/* line 102, style.scss */
-.header .logo:hover {
+/* line 132, style.scss */
+.nav#fixed .top .logo img {
+  width: 40px;
+  height: 40px;
+}
+/* line 136, style.scss */
+.nav#fixed .top .logo h1 {
+  width: 265px;
+  padding-left: 5px;
+  line-height: 40px;
+  font-size: 1.25em;
+}
+/* line 145, style.scss */
+.nav#fixed .top .menu-btn {
+  top: 30px;
+}
+
+/* line 150, style.scss */
+.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1003;
+  width: 100%;
+  height: 100px;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+/* line 158, style.scss */
+.top .logo {
+  float: left;
+  position: fixed;
+  top: 30px;
+  left: 5%;
+  cursor: pointer;
+  width: 350px;
+  height: 60px;
+  overflow: hidden;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+/* line 169, style.scss */
+.top .logo:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 105, style.scss */
-.header .logo img {
-  width: 100%;
-  height: 100%;
+/* line 172, style.scss */
+.top .logo img {
+  float: left;
+  width: 60px;
+  height: 60px;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
-/* line 110, style.scss */
-.header .main-btns {
-  cursor: pointer;
+/* line 178, style.scss */
+.top .logo h1 {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 10px;
+  line-height: 60px;
+  color: #fff;
+  -moz-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  font-size: 1.5em;
+  font-weight: 300;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* line 193, style.scss */
+.top .menu-btn {
+  float: right;
   position: absolute;
-  z-index: 1;
-  width: 30px;
-  height: 30px;
-}
-/* line 116, style.scss */
-.header .main-btns img {
-  width: 100%;
-  height: 100%;
-}
-/* line 121, style.scss */
-.header .menu-btn {
+  top: 38px;
+  right: 5%;
   cursor: pointer;
-  position: absolute;
-  z-index: 1002;
   width: 28px;
   height: 28px;
-  top: 5%;
-  right: 6%;
   background: url("../img/menu2close.png");
   -moz-background-size: auto 28px;
   -o-background-size: auto 28px;
@@ -248,7 +347,70 @@ a {
   -webkit-transition: right 0.6s ease;
   transition: right 0.6s ease;
 }
-/* line 135, style.scss */
+
+/* line 208, style.scss */
+.menu {
+  position: fixed;
+  z-index: 1002;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  text-align: center;
+  -moz-transition: right 0.4s ease-out;
+  -o-transition: right 0.4s ease-out;
+  -webkit-transition: right 0.4s ease-out;
+  transition: right 0.4s ease-out;
+}
+/* line 218, style.scss */
+.menu ul {
+  position: relative;
+  top: 25%;
+}
+/* line 221, style.scss */
+.menu ul li {
+  font-size: 1.3em;
+  padding: 5px 20px;
+}
+/* line 225, style.scss */
+.menu ul li a:hover, .menu ul li a.active {
+  color: #3b95d3;
+}
+/* line 231, style.scss */
+.menu .menu-footer {
+  font-size: 0.8em;
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  color: #888;
+}
+
+/* header */
+/* line 240, style.scss */
+.header {
+  position: relative;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  text-align: center;
+}
+/* line 248, style.scss */
+.header .main-btns {
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+/* line 254, style.scss */
+.header .main-btns img {
+  width: 100%;
+  height: 100%;
+}
+/* line 259, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
   margin-top: -15px;
@@ -259,20 +421,37 @@ a {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-/* line 141, style.scss */
+/* line 264, style.scss */
 .header .prev-btn:hover, .header .next-btn:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 144, style.scss */
+/* line 268, style.scss */
 .header .prev-btn {
   left: 25px;
 }
-/* line 147, style.scss */
+/* line 271, style.scss */
 .header .next-btn {
   right: 25px;
 }
-/* line 150, style.scss */
+/* line 274, style.scss */
+.header .down-btn {
+  left: 50%;
+  bottom: 60px;
+  margin-left: -15px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+/* line 280, style.scss */
+.header .down-btn:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+/* line 284, style.scss */
 .header ul.header-list {
   position: absolute;
   z-index: 1;
@@ -281,7 +460,7 @@ a {
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 157, style.scss */
+/* line 291, style.scss */
 .header ul.header-list li {
   cursor: pointer;
   display: inline-block;
@@ -293,11 +472,11 @@ a {
   border-radius: 4px;
   background: #fff;
 }
-/* line 165, style.scss */
+/* line 299, style.scss */
 .header ul.header-list li:hover {
   background: #ccc;
 }
-/* line 168, style.scss */
+/* line 302, style.scss */
 .header ul.header-list li.active {
   position: relative;
   top: 2px;
@@ -310,87 +489,37 @@ a {
   background-size: cover;
 }
 
-/* line 179, style.scss */
-.header-slide {
-  right: 300px;
-}
-
-/* line 182, style.scss */
-.menu {
-  position: absolute;
-  z-index: 1001;
-  top: 0;
-  right: -300px;
-  width: 300px;
-  height: 100%;
-  background-color: #fff;
-}
-/* line 190, style.scss */
-.menu ul {
-  position: relative;
-  top: 25%;
-}
-/* line 193, style.scss */
-.menu ul li {
-  font-size: 1.3em;
-  padding: 5px 20px;
-}
-/* line 197, style.scss */
-.menu ul li a:hover, .menu ul li a.active {
-  color: #3b95d3;
-}
-/* line 203, style.scss */
-.menu .menu-footer {
-  font-size: 0.8em;
-  position: absolute;
-  bottom: 2%;
-  width: 100%;
-  color: #888;
-}
-
-/* line 211, style.scss */
-.black-shadow {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1001;
-  background: black;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
-  opacity: 0.4;
-}
-
-/* line 220, style.scss */
+/* line 313, style.scss */
 .main-box {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* line 225, style.scss */
+/* line 318, style.scss */
 .box-item {
   color: #fff;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
-/* line 230, style.scss */
+/* line 323, style.scss */
 .box-item .box-center {
   position: absolute;
   top: 23%;
   width: 100%;
 }
-/* line 234, style.scss */
+/* line 327, style.scss */
 .box-item .box-center h1 {
   font-size: 9vmin;
   font-weight: 200;
 }
-/* line 240, style.scss */
+/* line 333, style.scss */
 .box-item .box-center .box-btns {
   width: 100%;
   margin-top: 40px;
 }
-/* line 244, style.scss */
+/* line 337, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -402,23 +531,23 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 252, style.scss */
+/* line 345, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 259, style.scss */
+/* line 352, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 262, style.scss */
+/* line 355, style.scss */
 .box-1 .box-center h1 {
   font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 268, style.scss */
+/* line 361, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
@@ -427,9 +556,15 @@ a {
   background-size: cover;
 }
 
-/* line 272, style.scss */
+/* line 365, style.scss */
 .box-3, .box-4, .box-5 {
   background-color: #3b95d3;
 }
 
 /* //header */
+/* container */
+/* line 370, style.scss */
+.container {
+  width: 100%;
+  height: 1000px;
+}
