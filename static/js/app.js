@@ -57,7 +57,7 @@ var Page = (function() {
         },
         init = function() {
             config.$bookBlock.bookblock({
-                speed: 800,
+                speed: 666,
                 shadowSides: 0.8,
                 shadowFlip: 0.7,
                 autoplay: true,
@@ -69,11 +69,11 @@ var Page = (function() {
                         config.$nav.removeClass('active');
                         $(config.$nav[after]).addClass('active');
                     }, 250);
+                    /* 翻页后向前一页所有willUp去除up */
+                    config.flowing.down(before);
                     return false;
                 },
                 onEndFlip: function(before, after){
-                    /* 翻页后向前一页所有willUp去除up */
-                    config.flowing.down(before);
                     /* 向后一页所有willUp添加up */
                     config.flowing.up(after);
                     return false;
@@ -84,6 +84,12 @@ var Page = (function() {
             setTimeout(function(){
                 config.flowing.up(0);
             }, 250);
+        },
+        start = function() {
+            config.$bookBlock.bookblock("start");
+        },
+        stop = function() {
+            config.$bookBlock.bookblock("stop");
         },
         initEvents = function() {
             var $slides = config.$bookBlock.children();
@@ -119,7 +125,8 @@ var Page = (function() {
             });
         };
     return {
-        init: init
+        init: init,
+        stop: stop
     };
 })();
 /* 滚轮控制 */
@@ -228,6 +235,7 @@ var menu_change = (function(){
 $(function() {
     Page.init();
     $(".menu-btn").click(function(){
+        scrollControllers.disable();
         /* body滑动menu滑出 */
         $("body").toggleClass("slide");
         /* 蒙层出现 */
@@ -255,11 +263,12 @@ $(function() {
         $('.header').bind('mousewheel', function(event, delta) {
             if(delta < 0 && !hb.is(":animated")){
                 scrollMove(windowsHeight, 1200);
+                Page.stop();
             }
         });
         /* 内容上滚,执行滚动动画至首页 */
         container.bind('mousewheel', function(event, delta) {
-            if(delta > 0 && !hb.is(":animated")){
+            if(delta > 0 && !hb.is(":animated") && windowsHeight >= document.body.scrollTop){
                 scrollMove(0, 1200);
             }
         });
@@ -268,4 +277,124 @@ $(function() {
             scrollMove(windowsHeight, 1200);
         });
     })();
+    var particles_config = {
+        "particles": {
+            "number": {
+                "value": 20,
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                "value": "#e1e1e1"
+            },
+            "shape": {
+                "type": "circle",
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/cloud.png",
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.22,
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 0.1,
+                    "opacity_min": 0.2,
+                    "sync": true
+                }
+            },
+            "size": {
+                "value": 15,
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 3,
+                    "size_min": 10,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": true,
+                "distance": 400,
+                "color": "#cfcfcf",
+                "opacity": 0.18,
+                "width": 1
+            },
+            "move": {
+                "enable": true,
+                "speed": 1,
+                "direction": "none",
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 1200
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true,
+                    "mode": "grab"
+                },
+                "onclick": {
+                    "enable": true,
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 0.2
+                    }
+                },
+                "bubble": {
+                    "distance": 400,
+                    "size": 40,
+                    "duration": 2,
+                    "opacity": 8,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 200,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 1
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    };
+    particlesJS("particles-js", particles_config);
+    //bm-item, 部门介绍
+    $(".bm-item").hover(function() {
+        $(".bm-item").not($(this)).stop().animate({
+            width: 198
+        }).removeClass("on");
+        $(this).stop().animate({
+            width: 362
+        }).addClass("on");
+    });
 });

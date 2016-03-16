@@ -222,14 +222,16 @@
 
             this.$nextItem = !this.options.circular && this.end ? this.$current : this.$items.eq( this.current );
 
-            if ( !this.support ) {
-                this._layoutNoSupport( dir );
-            } else {
-                this._layout( dir );
-            }
-
             // callback trigger
             this.options.onBeforeFlip( this.previous, this.current );
+            var self = this;
+            setTimeout(function() {
+                if ( !self.support ) {
+                    self._layoutNoSupport( dir );
+                } else {
+                    self._layout( dir );
+                }
+            }, 350);
         },
         _layoutNoSupport : function(dir) {
             this.$items.hide();
@@ -428,6 +430,9 @@
                 clearTimeout( this.slideshow );
                 this.options.autoplay = false;
             }
+        },
+        stop : function() {
+            this._stopSlideshow();
         },
         // public method: flips next
         next : function() {
