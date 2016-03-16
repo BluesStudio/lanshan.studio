@@ -532,7 +532,7 @@ a {
 /* line 349, style.scss */
 .box-item .box-center .box-btns {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: 100%;
   margin-top: 40px;
 }
@@ -723,57 +723,54 @@ a {
 
 /* line 504, style.scss */
 .bm-box ul {
-  background: #fdfdfd;
   padding: 0 2px;
   width: 100%;
-  height: 300px;
-  overflow: hidden;
 }
-/* line 511, style.scss */
+/* line 508, style.scss */
 .bm-box li {
-  width: 198px;
+  background: #fdfdfd;
+  position: relative;
+  width: 178px;
   height: 300px;
   float: left;
   display: inline;
   overflow: hidden;
-  border-right: solid 2px #e9e9e9;
+  border: solid 2px #ebebeb;
+  margin-left: -2px;
 }
 /* line 518, style.scss */
 .bm-box li.on {
+  z-index: 1;
   background: #fff;
-  width: 362px;
-  border-left: solid 2px #c9c9c9;
-  border-right: solid 2px #c9c9c9;
+  width: 380px;
+  border: solid 2px #d8d8d8;
   margin: 0 -2px;
 }
-/* line 525, style.scss */
-.bm-box li.last {
-  border-right: none;
-}
 
-/* line 531, style.scss */
+/* line 528, style.scss */
 .bm-item .item-inner {
-  width: 362px;
+  width: 380px;
   height: 100%;
 }
-/* line 535, style.scss */
+/* line 532, style.scss */
 .bm-item .item-main {
   float: left;
   height: 100%;
-  width: 198px;
+  width: 178px;
   text-align: center;
   overflow: hidden;
+  border-right: 1px solid #er;
 }
-/* line 541, style.scss */
+/* line 539, style.scss */
 .bm-item .item-main h2 {
   margin: 15px auto;
   font-size: 26px;
   font-weight: 300;
 }
-/* line 549, style.scss */
+/* line 547, style.scss */
 .bm-item .item-detail {
   float: left;
-  width: 164px;
+  width: 201px;
   height: 100%;
   text-align: center;
   overflow: hidden;

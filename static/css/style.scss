@@ -348,7 +348,7 @@ a{
         }
         .box-btns{
             position: relative;
-            z-index: 2;
+            z-index: 3;
             width: 100%;
             margin-top: 40px;
         }
@@ -502,42 +502,40 @@ a{
 }
 .bm-box{
     ul{
-        background: #fdfdfd;
         padding: 0 2px;
         width: 100%;
-        height: 300px;
-        overflow: hidden;
     }
     li{
-        width: 198px;
+        background: #fdfdfd;
+        position: relative;
+        width: 178px;
         height: 300px;
         float: left;
         display: inline;
         overflow: hidden;
-        border-right: solid 2px #e9e9e9;
+        border: solid 2px #ebebeb;
+        margin-left: -2px;
         &.on{
+            z-index: 1;
             background: #fff;
-            width: 362px;
-            border-left: solid 2px #c9c9c9;
-            border-right: solid 2px #c9c9c9;
+            width: 380px;
+            border: solid 2px #d8d8d8;
             margin: 0 -2px;
-        }
-        &.last{
-            border-right: none;
         }
     }
 }
 .bm-item{
     .item-inner{
-        width: 362px;
+        width: 380px;
         height: 100%;
     }
     .item-main{
         float: left;
         height: 100%;
-        width: 198px;
+        width: 178px;
         text-align: center;
         overflow: hidden;
+        border-right: 1px solid #eee;
         h2{
             margin: 15px auto;
             font:{
@@ -548,7 +546,7 @@ a{
     }
     .item-detail{
         float: left;
-        width: 164px;
+        width: 201px;
         height: 100%;
         text-align: center;
         overflow: hidden;

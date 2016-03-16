@@ -391,10 +391,10 @@ $(function() {
     //bm-item, 部门介绍
     $(".bm-item").hover(function() {
         $(".bm-item").not($(this)).stop().animate({
-            width: 198
+            width: 178
         }).removeClass("on");
         $(this).stop().animate({
-            width: 362
+            width: 380
         }).addClass("on");
     });
 });
