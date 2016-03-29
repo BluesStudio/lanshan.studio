@@ -133,7 +133,7 @@ html {
 body {
   position: relative;
   font-family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
   color: #333;
   line-height: 1.5;
@@ -407,16 +407,16 @@ a {
   z-index: 1;
   width: 30px;
   height: 30px;
+  padding: 20px;
 }
-/* line 260, style.scss */
+/* line 261, style.scss */
 .header .main-btns img {
   width: 100%;
-  height: 100%;
 }
 /* line 265, style.scss */
 .header .prev-btn, .header .next-btn {
   top: 50%;
-  margin-top: -15px;
+  margin-top: -35px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
   -moz-transition: all 0.3s ease-in-out;
@@ -431,17 +431,17 @@ a {
 }
 /* line 274, style.scss */
 .header .prev-btn {
-  left: 25px;
+  left: 15px;
 }
 /* line 277, style.scss */
 .header .next-btn {
-  right: 25px;
+  right: 15px;
 }
 /* line 280, style.scss */
 .header .down-btn {
   left: 50%;
-  bottom: 60px;
-  margin-left: -15px;
+  bottom: 50px;
+  margin-left: -35px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
   opacity: 0.6;
   -moz-transition: all 0.3s ease-in-out;
@@ -680,98 +680,231 @@ a {
   padding-bottom: 60px;
   background-color: #fff;
 }
+/* line 472, style.scss */
+.section-1 .swiper-pagination {
+  bottom: -30px !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+/* line 476, style.scss */
+.section-1 .swiper-button-prev {
+  left: -50px !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
+/* line 480, style.scss */
+.section-1 .swiper-button-next {
+  right: -50px !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5;
+}
 
-/* line 473, style.scss */
+/* line 485, style.scss */
 .bs-box {
   background-color: #f8f8f8;
   box-shadow: 0 0 5px #e1e1e1;
   height: 200px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
   border-radius: 5px;
   overflow: hidden;
 }
 
-/* line 480, style.scss */
+/* line 492, style.scss */
 .bs-img {
   float: left;
-  width: 33%;
+  width: 30%;
   height: 100%;
 }
-/* line 484, style.scss */
+/* line 496, style.scss */
 .bs-img img {
   width: 100%;
   height: 100%;
 }
 
-/* line 489, style.scss */
+/* line 501, style.scss */
 .bs-text {
   float: left;
-  width: 67%;
+  width: 70%;
   height: 100%;
   overflow: hidden;
 }
-/* line 494, style.scss */
-.bs-text p {
-  margin: 20px 20px;
+/* line 506, style.scss */
+.bs-text .bs-text-inner {
+  margin: 15px 25px;
+}
+/* line 508, style.scss */
+.bs-text .bs-text-inner h3 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+/* line 513, style.scss */
+.bs-text .bs-text-inner p {
+  text-indent: 0;
+  line-height: 1.75;
+}
+/* line 517, style.scss */
+.bs-text .bs-text-inner i {
+  color: #999;
+}
+/* line 520, style.scss */
+.bs-text .bs-text-inner strong {
+  font-weight: 500;
+  color: #3b95d3;
 }
 
-/* line 498, style.scss */
+/* line 526, style.scss */
 .section-2 {
   padding-top: 35px;
   padding-bottom: 60px;
   background-color: #f8f8f8;
 }
 
-/* line 504, style.scss */
+/* line 532, style.scss */
 .bm-box ul {
   padding: 0 2px;
-  width: 100%;
+  width: 964px;
+  height: 254px;
+  overflow: hidden;
 }
-/* line 508, style.scss */
+/* line 538, style.scss */
 .bm-box li {
   background: #fdfdfd;
   position: relative;
-  width: 178px;
-  height: 300px;
+  width: 158px;
+  height: 250px;
   float: left;
   display: inline;
   overflow: hidden;
   border: solid 2px #ebebeb;
   margin-left: -2px;
 }
-/* line 518, style.scss */
+/* line 548, style.scss */
 .bm-box li.on {
   z-index: 1;
   background: #fff;
-  width: 380px;
-  border: solid 2px #d8d8d8;
-  margin: 0 -2px;
+  width: 318px;
+  border: solid 2px #ddd;
 }
 
-/* line 528, style.scss */
+/* line 557, style.scss */
 .bm-item .item-inner {
-  width: 380px;
+  width: 318px;
   height: 100%;
 }
-/* line 532, style.scss */
+/* line 561, style.scss */
 .bm-item .item-main {
   float: left;
   height: 100%;
-  width: 178px;
+  width: 158px;
   text-align: center;
   overflow: hidden;
   border-right: 1px solid #eee;
 }
-/* line 539, style.scss */
+/* line 568, style.scss */
 .bm-item .item-main h2 {
   margin: 15px auto;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 300;
 }
-/* line 547, style.scss */
+/* line 576, style.scss */
 .bm-item .item-detail {
   float: left;
-  width: 201px;
+  width: 160px;
   height: 100%;
   text-align: center;
   overflow: hidden;
+  margin-left: -1px;
+  font-size: 14px;
+}
+
+/* line 588, style.scss */
+.section-3 {
+  padding-top: 35px;
+  padding-bottom: 60px;
+  background-color: #fff;
+}
+
+/* line 593, style.scss */
+.section-4 {
+  padding-top: 35px;
+  padding-bottom: 60px;
+  background-color: #f8f8f8;
+}
+
+/* line 598, style.scss */
+.gg-box {
+  background-color: #fff;
+  box-shadow: 0 0 5px #e2e2e2;
+  overflow: hidden;
+  padding: 10px;
+}
+/* line 603, style.scss */
+.gg-box li {
+  width: 12.5%;
+  float: left;
+  padding: 5px;
+}
+/* line 607, style.scss */
+.gg-box li .item-inner {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+/* line 613, style.scss */
+.gg-box li .item-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* line 618, style.scss */
+.gg-box li .item-detail {
+  position: absolute;
+  background: rgba(59, 149, 211, 0.6);
+  width: 100%;
+  height: 100%;
+}
+/* line 623, style.scss */
+.gg-box li .item-detail.da-animate {
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+/* line 629, style.scss */
+.da-slideFromTop {
+  left: 0;
+  top: -100%;
+}
+
+/* line 633, style.scss */
+.da-slideFromBottom {
+  left: 0;
+  top: 100%;
+}
+
+/* line 637, style.scss */
+.da-slideFromLeft {
+  top: 0;
+  left: -100%;
+}
+
+/* line 641, style.scss */
+.da-slideFromRight {
+  top: 0;
+  left: 100%;
+}
+
+/* 动画结果阶段的class: */
+/* line 646, style.scss */
+.da-slideTop {
+  top: 0;
+}
+
+/* line 649, style.scss */
+.da-slideLeft {
+  left: 0;
 }

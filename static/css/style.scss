@@ -58,7 +58,7 @@ body{
     position: relative;
     font:{
         family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
-        size: 16px;
+        size: 14px;
         weight: 300;
     }
     color: $color_text;
@@ -257,14 +257,14 @@ a{
         z-index: 1;
         width: 30px;
         height: 30px;
+        padding: 20px;
         img{
             width: 100%;
-            height: 100%;
         }
     }
     .prev-btn, .next-btn{
         top: 50%;
-        margin-top: -15px;
+        margin-top: -35px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
         &:hover{
@@ -272,15 +272,15 @@ a{
         }
     }
     .prev-btn{
-        left: 25px;
+        left: 15px;
     }
     .next-btn{
-        right: 25px;
+        right: 15px;
     }
     .down-btn{
         left: 50%;
-        bottom: 60px;
-        margin-left: -15px;
+        bottom: 50px;
+        margin-left: -35px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
         &:hover{
@@ -469,17 +469,29 @@ a{
     padding-top: 35px;
     padding-bottom: 60px;
     background-color: #fff;
+    .swiper-pagination{
+        bottom: -30px !important;
+        @include opacity(0.5);
+    }
+    .swiper-button-prev{
+        left: -50px !important;
+        @include opacity(0.5);
+    }
+    .swiper-button-next{
+        right: -50px !important;
+        @include opacity(0.5);
+    }
 }
 .bs-box{
     background-color: #f8f8f8;
     box-shadow: 0 0 5px #e1e1e1;
     height: 200px;
-    border-radius: 5px;
+    @include border-radius(5px);
     overflow: hidden;
 }
 .bs-img{
     float: left;
-    width: 33%;
+    width: 30%;
     height: 100%;
     img{
         width: 100%;
@@ -488,11 +500,27 @@ a{
 }
 .bs-text{
     float: left;
-    width: 67%;
+    width: 70%;
     height: 100%;
     overflow: hidden;
-    p{
-        margin: 20px 20px;
+    .bs-text-inner{
+        margin: 15px 25px;
+        h3{
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        p{
+            text-indent: 0;
+            line-height: 1.75;
+        }
+        i{
+            color: #999;
+        }
+        strong{
+            font-weight: 500;
+            color: $color_blues;
+        }
     }
 }
 .section-2{
@@ -503,13 +531,15 @@ a{
 .bm-box{
     ul{
         padding: 0 2px;
-        width: 100%;
+        width: 964px;
+        height: 254px;
+        overflow: hidden;
     }
     li{
         background: #fdfdfd;
         position: relative;
-        width: 178px;
-        height: 300px;
+        width: 158px;
+        height: 250px;
         float: left;
         display: inline;
         overflow: hidden;
@@ -518,37 +548,104 @@ a{
         &.on{
             z-index: 1;
             background: #fff;
-            width: 380px;
-            border: solid 2px #d8d8d8;
-            margin: 0 -2px;
+            width: 318px;
+            border: solid 2px #ddd;
         }
     }
 }
 .bm-item{
     .item-inner{
-        width: 380px;
+        width: 318px;
         height: 100%;
     }
     .item-main{
         float: left;
         height: 100%;
-        width: 178px;
+        width: 158px;
         text-align: center;
         overflow: hidden;
         border-right: 1px solid #eee;
         h2{
             margin: 15px auto;
             font:{
-                size: 26px;
+                size: 20px;
                 weight: 300;
             }
         }
     }
     .item-detail{
         float: left;
-        width: 201px;
+        width: 160px;
         height: 100%;
         text-align: center;
         overflow: hidden;
+        margin-left: -1px;
+        font:{
+            size: 14px;
+        }
     }
+}
+.section-3{
+    padding-top: 35px;
+    padding-bottom: 60px;
+    background-color: #fff;
+}
+.section-4{
+    padding-top: 35px;
+    padding-bottom: 60px;
+    background-color: #f8f8f8;
+}
+.gg-box{
+    background-color: #fff;
+    box-shadow: 0 0 5px #e2e2e2;
+    overflow: hidden;
+    padding: 10px;
+    li{
+        width: 12.5%;
+        float: left;
+        padding: 5px;
+        .item-inner{
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .item-img{
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        .item-detail{
+            position: absolute;
+            background: rgba(59, 149, 211, 0.6);
+            width: 100%;
+            height: 100%;
+            &.da-animate {
+                @include transition(all 0.3s ease-out);
+            }
+        }
+    }
+}
+.da-slideFromTop {
+    left: 0;
+    top: -100%;
+}
+.da-slideFromBottom {
+    left: 0;
+    top: 100%;
+}
+.da-slideFromLeft {
+    top: 0;
+    left: -100%;
+}
+.da-slideFromRight {
+    top: 0;
+    left: 100%;
+}
+/* 动画结果阶段的class: */
+.da-slideTop {
+    top: 0;
+}
+.da-slideLeft{
+    left: 0;
 }

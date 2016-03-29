@@ -61,14 +61,14 @@ var Page = (function() {
                 shadowSides: 0.8,
                 shadowFlip: 0.7,
                 autoplay: true,
-                interval: 8000,
+                interval: 5000,
                 easing: 'ease-out',
                 onBeforeFlip: function(before, after){
                     /* 翻页前下方导航原点切换 */
                     setTimeout(function(){
                         config.$nav.removeClass('active');
                         $(config.$nav[after]).addClass('active');
-                    }, 250);
+                    }, 500);
                     /* 翻页后向前一页所有willUp去除up */
                     config.flowing.down(before);
                     return false;
@@ -106,8 +106,10 @@ var Page = (function() {
                 /* 下方导航圆点点击切换 */
                 $(this).on('click touchstart', function() {
                     var $dot = $(this);
-                    config.$nav.removeClass('active');
-                    $dot.addClass('active');
+                    setTimeout(function(){
+                        config.$nav.removeClass('active');
+                        $dot.addClass('active');
+                    }, 250);
                     config.$bookBlock.bookblock('jump', i + 1);
                     return false;
                 });
@@ -224,18 +226,119 @@ var menu_change = (function(){
         toggle: function(e){
             /* 当序号为1时,传入参数i=1正向移动;序号为16时,传入参数i=0反向移动 */
             if(config.index <= 1){
+                scrollControllers.disable();
                 config.change(e, 1);
             }else if(config.index >= 16){
+                scrollControllers.enable();
                 config.change(e, 0);
             }
         }
     };
     return config.toggle;
 })();
+//hoverDir
+(function($, undefined) {
+    $.HoverDir = function(options, element) {
+        this.$el = $(element);
+        this._init(options);
+    };
+    $.HoverDir.defaults = {
+        hoverDelay: 0,
+        reverse: false
+    };
+    $.HoverDir.prototype = {
+        _init: function(options) {
+            this.options = $.extend(true, {}, $.HoverDir.defaults, options);
+            this._loadEvents();
+        },
+        _loadEvents: function() {
+            var _self = this;
+            this.$el.on('mouseenter.hoverdir, mouseleave.hoverdir', function(event) {
+                var $el = $(this), evType = event.type, $hoverElem = $el.find('.item-detail'), direction = _self._getDir($el, {
+                    x: event.pageX,
+                    y: event.pageY
+                }), hoverClasses = _self._getClasses(direction);
+                $hoverElem.removeClass().addClass('item-detail');
+                if (evType === 'mouseenter') {
+                    $hoverElem.hide().addClass(hoverClasses.from);
+                    clearTimeout(_self.tmhover);
+                    _self.tmhover = setTimeout(function() {
+                        $hoverElem.show(0, function() {
+                            $(this).addClass('da-animate').addClass(hoverClasses.to);
+                        });
+                    }, _self.options.hoverDelay);
+                } else {
+                    $hoverElem.addClass('da-animate');
+                    clearTimeout(_self.tmhover);
+                    $hoverElem.addClass(hoverClasses.from);
+                }
+            });
+        },
+        _getDir: function($el, coordinates) {
+            var w = $el.width(), h = $el.height(), x = (coordinates.x - $el.offset().left - (w / 2)) * (w > h ? (h / w) : 1), y = (coordinates.y - $el.offset().top - (h / 2)) * (h > w ? (w / h) : 1), direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90 ) + 3 ) % 4;
+            return direction;
+        },
+        _getClasses: function(direction) {
+            var fromClass, toClass;
+            switch (direction) {
+                case 0:
+                    (!this.options.reverse) ? fromClass = 'da-slideFromTop' : fromClass = 'da-slideFromBottom';
+                    toClass = 'da-slideTop';
+                    break;
+                case 1:
+                    (!this.options.reverse) ? fromClass = 'da-slideFromRight' : fromClass = 'da-slideFromLeft';
+                    toClass = 'da-slideLeft';
+                    break;
+                case 2:
+                    (!this.options.reverse) ? fromClass = 'da-slideFromBottom' : fromClass = 'da-slideFromTop';
+                    toClass = 'da-slideTop';
+                    break;
+                case 3:
+                    (!this.options.reverse) ? fromClass = 'da-slideFromLeft' : fromClass = 'da-slideFromRight';
+                    toClass = 'da-slideLeft';
+                    break;
+            };
+            return {
+                from: fromClass,
+                to: toClass
+            };
+        }
+    };
+    var logError = function(message) {
+        if (this.console) {
+            console.error(message);
+        }
+    };
+    $.fn.hoverdir = function(options) {
+        if (typeof options === 'string') {
+            var args = Array.prototype.slice.call(arguments, 1);
+            this.each(function() {
+                var instance = $.data(this, 'hoverdir');
+                if (!instance) {
+                    logError("cannot call methods on hoverdir prior to initialization; " + "attempted to call method '" + options + "'");
+                    return;
+                }
+                if (!$.isFunction(instance[options]) || options.charAt(0) === "_") {
+                    logError("no such method '" + options + "' for hoverdir instance");
+                    return;
+                }
+                instance[options].apply(instance, args);
+            });
+        } else {
+            this.each(function() {
+                var instance = $.data(this, 'hoverdir');
+                if (!instance) {
+                    $.data(this, 'hoverdir', new $.HoverDir(options, this));
+                }
+            });
+        }
+        return this;
+    };
+})(jQuery);
+//document.ready
 $(function() {
     Page.init();
     $(".menu-btn").click(function(){
-        scrollControllers.disable();
         /* body滑动menu滑出 */
         $("body").toggleClass("slide");
         /* 蒙层出现 */
@@ -388,13 +491,22 @@ $(function() {
         "retina_detect": true
     };
     particlesJS("particles-js", particles_config);
+    //走进我们, 轮播
+    var mySwiper = new Swiper ('.swiper-container', {
+        effect: 'flip',
+        pagination: '.swiper-pagination',
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev'
+    });
     //bm-item, 部门介绍
     $(".bm-item").hover(function() {
         $(".bm-item").not($(this)).stop().animate({
-            width: 178
+            width: 158
         }).removeClass("on");
         $(this).stop().animate({
-            width: 380
+            width: 318
         }).addClass("on");
     });
+    //骨干团
+    $(".da-thumbs > li").hoverdir();
 });
