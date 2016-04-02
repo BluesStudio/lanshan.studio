@@ -1,4 +1,8 @@
-/* Cong Min 于 2015.12.21 */
+/* 
+*Cong Min 于 2015.12.21 
+*sudan 于 2016.3.29
+*/
+
 /* willUp添加up */
 var flow = (function() {
     var t = 0,
@@ -31,6 +35,7 @@ var flow = (function() {
         toggle: toggle
     }
 })();
+
 /* 翻页插件 */
 var Page = (function() {
     var config = {
@@ -131,6 +136,7 @@ var Page = (function() {
         stop: stop
     };
 })();
+
 /* 滚轮控制 */
 var scrollControllers = (function(){
     /* 滚轮上下左右 */
@@ -144,7 +150,7 @@ var scrollControllers = (function(){
             e.returnValue = false;
         },
         keydown: function(e){
-            cosnole.log(e);
+            console.log(e);
             for (var i = keys.length; i--;) {
                 if (e.keyCode === keys[i]) {
                     functions.preventDefault(e);
@@ -177,6 +183,7 @@ var scrollControllers = (function(){
         enable: functions.enable
     }
 })();
+
 /* 滚轮移动 */
 var scrollMove = (function(){
     var w = $(window);
@@ -195,6 +202,7 @@ var scrollMove = (function(){
         scrollControllers.disable();
     };
 })();
+
 /* 菜单按钮变换 */
 var menu_change = (function(){
     var config = {
@@ -236,6 +244,7 @@ var menu_change = (function(){
     };
     return config.toggle;
 })();
+
 //hoverDir
 (function($, undefined) {
     $.HoverDir = function(options, element) {
@@ -335,17 +344,21 @@ var menu_change = (function(){
         return this;
     };
 })(jQuery);
+
 //document.ready
 $(function() {
     Page.init();
+
     $(".menu-btn").click(function(){
-        /* body滑动menu滑出 */
+        /* body滑动menu滑出，切换当前class名称 */
         $("body").toggleClass("slide");
-        /* 蒙层出现 */
+        /* 蒙层交替出现 */
         $(".black-shadow").fadeToggle(300);
         /* 菜单按钮背景变换 */
         menu_change(this);
     });
+
+    /* 首屏动画和内容的过渡    */
     (function(){
         var container = $(".container");
         var w = $(window);
@@ -358,8 +371,10 @@ $(function() {
             scrollTop = w.scrollTop();
             if(scrollTop>=windowsHeight-60){
                 $(".nav").attr("id", "fixed");
+                $(".menu-btn").fadeOut();
             }else{
                 $(".nav").removeAttr("id");
+                $(".menu-btn").fadeIn();
             }
         });
         /* 首屏下滚,执行滚动动画至内容 */
@@ -507,6 +522,41 @@ $(function() {
             width: 318
         }).addClass("on");
     });
-    //骨干团
+
+    /* 骨干团 */
     $(".da-thumbs > li").hoverdir();
+
+    /* 页面书签平滑跳转 */
+    (function() {
+
+        $(".home").bind("click", function() {
+            $("html,body").animate({
+                scrollTop: $(".header").offset().top
+            }, 1000);
+        });
+        // $(".comein-us").bind("click", function() {
+        //      $("html,body").animate({
+        //         scrollTop: $("").offset().top
+        //     }, 2000);
+        // });
+        // $(".join-us").bind("click", function() {
+        //     $("html,body").animate({
+        //         scrollTop: $("").offset().top
+        //     }, 2000);
+        // });
+        // $(".production-show").bind("click", function() {
+        //     $("html,body").animate({
+        //         scrollTop: $("").offset().top
+        //     }, 2000);
+        // });
+        // $(".about-us").bind("click", function() {
+        //     $("html,body").animate({
+        //         scrollTop: $("").offset().top
+        //     }, 2000);
+        // });
+    })();
+
+
 });
+
+

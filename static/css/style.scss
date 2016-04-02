@@ -46,6 +46,159 @@ $color_blues: #3b95d3;
     background: transparent;
 }
 
+/* 悬停导航慢摇 */
+@keyframes shake-slow {
+     0% {
+         @include transform(translate(0px, 0px), rotate(0deg));
+        }
+     2% {
+         @include transform(translate(-6px, -8px), rotate(2.5deg));
+        }
+     4% {
+         @include transform(translate(3px, -9px), rotate(-0.5deg));
+        }
+     6% {
+         @include transform(translate(3px, -8px), rotate(2.5deg));
+        }
+     8% {
+         @include transform(translate(0px, 5px), rotate(0.5deg));
+        }
+     10% {        
+         @include transform(translate(3px, 2px), rotate(0.5deg));
+        }
+     12% {
+         @include transform(translate(8px, 0px), rotate(0.5deg));
+        }
+     14% {
+         @include transform(translate(4px, 7px), rotate(-3.5deg));
+        }
+     16% {
+         @include transform(translate(-4px, 0px), rotate(-0.5deg));
+        }
+     18% {
+         @include transform(translate(1px, 3px), rotate(-1.5deg));
+        }
+     20% {
+         @include transform(translate(-8px, -1px), rotate(-3.5deg));
+        }
+     22% {
+         @include transform(translate(5px, 9px), rotate(2.5deg));
+        }
+     24% {
+         @include transform(translate(-9px, -10px), rotate(-2.5deg));
+        }
+     26% {
+         @include transform(translate(0px, 7px), rotate(-1.5deg));
+        }
+     28% {
+         @include transform(translate(-10px, 7px), rotate(2.5deg));
+        }
+     30% {
+        @include transform(translate(8px, -7px), rotate(-1.5deg));
+        }
+     32% {
+         @include transform(translate(0px, -8px), rotate(-0.5deg));
+        }
+     34% {
+         @include transform(translate(9px, 7px), rotate(-0.5deg));
+        }
+     36% {
+         @include transform(translate(-7px, 6px), rotate(0.5deg));
+        }
+     38% {
+         @include transform(translate(8px, -10px), rotate(-0.5deg));
+        }
+     40% {
+         @include transform(translate(8px, 0px), rotate(0.5deg));
+        }
+     42% {
+         @include transform(translate(0px, -2px), rotate(1.5deg));
+        }
+     44% {
+         @include transform(translate(5px, -2px), rotate(-0.5deg));
+        }
+     46% {
+         @include transform(translate(1px, -10px), rotate(-2.5deg));
+        }
+     48% {
+         @include transform(translate(4px, -1px), rotate(2.5deg));
+        }
+     50% {
+         @include transform(translate(-5px, -4px), rotate(2.5deg));
+        }
+     52% {
+         @include transform(translate(3px, 2px), rotate(-3.5deg));
+        }
+     54% {
+         @include transform(translate(1px, -6px), rotate(-0.5deg));
+        }
+     56% {
+         @include transform(translate(-3px, -4px), rotate(-0.5deg));
+        }
+     58% {
+         @include transform(translate(-10px, -10px), rotate(2.5deg));
+        }
+     60% {
+         @include transform(translate(8px, 7px), rotate(-3.5deg));
+        }
+     62% {
+         @include transform(translate(9px, -6px), rotate(-3.5deg));
+        }
+     64% {
+         @include transform(translate(-5px, 8px), rotate(-0.5deg));
+        }
+     66% {
+         @include transform(translate(1px, -3px), rotate(0.5deg));
+        }
+     68% {
+         @include transform(translate(-6px, 9px), rotate(1.5deg));
+        }
+     70% {
+         @include transform(translate(-5px, 8px), rotate(-1.5deg));
+        }
+     72% {
+         @include transform(translate(-10px, -2px), rotate(2.5deg));
+        }
+     74% {
+         @include transform(translate(0px, -4px), rotate(1.5deg));
+        }
+     76% {
+         @include transform(translate(3px, 2px), rotate(0.5deg));
+        }
+     78% {
+         @include transform(translate(-2px, 9px), rotate(-3.5deg));
+        }
+     80% {
+         @include transform(translate(7px, 4px), rotate(-3.5deg));
+        }
+     82% {
+         @include transform(translate(-1px, -4px), rotate(-1.5deg));
+        }
+     84% {
+         @include transform(translate(3px, -6px), rotate(0.5deg));
+        }
+     86% {
+         @include transform(translate(7px, -8px), rotate(-1.5deg));
+        }
+     88% {
+         @include transform(translate(4px, -9px), rotate(1.5deg));
+        }
+     90% {
+         @include transform(translate(1px, -6px), rotate(2.5deg));
+        }
+     92% {
+         @include transform(translate(-8px, -1px), rotate(-1.5deg));
+        }
+     94% {
+         @include transform(translate(-4px, -1px), rotate(0.5deg));
+        }
+     96% {
+         @include transform(translate(-6px, 9px), rotate(1.5deg));
+        }
+     98% {
+         @include transform(translate(7px, 4px), rotate(-0.5deg));        
+        }
+}
 html, body{
     width: 100%;
     height: 100%;
@@ -148,6 +301,18 @@ a{
                 }
             }
         }
+        .menu-guide {
+            left: 30%;
+            li {
+                @include transition(all 0.4s ease-out);
+                font: {
+                    size: 1.15em;
+                }
+                &:hover {
+                   animation: shake-slow 5s;
+                }
+            }
+        }
         .menu-btn{
             top: 15px;
         }
@@ -195,6 +360,23 @@ a{
             }
             -moz-osx-font-smoothing: grayscale;
         }
+    }
+    .menu-guide {
+        float: left;
+        position: fixed;
+        top: 10px;
+        left: -1000px;
+        width: 60%;
+        ul {            
+            li {
+                display: inline-block;
+                padding: 10px 5%;
+                color: #fff;
+                cursor: pointer;
+                -moz-osx-font-smoothing: grayscale;               
+            }
+        }
+        @include transition(all 0.4s ease-out);
     }
     .menu-btn{
         float: right;
@@ -264,7 +446,7 @@ a{
     }
     .prev-btn, .next-btn{
         top: 50%;
-        margin-top: -35px;
+        //margin-top: -35px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
         &:hover{
@@ -583,6 +765,13 @@ a{
         font:{
             size: 14px;
         }
+        .detail-top {
+            height: 50%;
+            border-bottom: 1px solid #eee;
+        }
+        .detail-bottom {
+            height: 50%;
+        }
     }
 }
 .section-3{
@@ -649,3 +838,6 @@ a{
 .da-slideLeft{
     left: 0;
 }
+
+
+/* sudan 2016.3.30 */
