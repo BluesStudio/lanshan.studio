@@ -622,6 +622,7 @@ a{
     width: 100%;
     overflow: hidden;
     .content{
+        overflow: hidden;
         width: 960px;
         margin: 0 auto;
     }
@@ -754,6 +755,11 @@ a{
                 weight: 300;
             }
         }
+        img {
+            margin-top: 15%;
+            width: 80%;
+            height: 55%;
+        }
     }
     .item-detail{
         float: left;
@@ -791,6 +797,7 @@ a{
     padding: 10px;
     li{
         width: 12.5%;
+        //width: 18%;
         float: left;
         padding: 5px;
         .item-inner{
@@ -811,6 +818,12 @@ a{
             height: 100%;
             &.da-animate {
                 @include transition(all 0.3s ease-out);
+            }
+            p {
+                text-indent: 0;
+                color: #fff;
+                padding: 2% 2%;
+                font-size: 14px;
             }
         }
     }
@@ -841,3 +854,91 @@ a{
 
 
 /* sudan 2016.3.30 */
+/* 加入我们 */
+.section-5 {
+    margin-top: 20px;
+    .content {
+        margin-top: 30px;
+        padding-top: 3%;
+        box-shadow: -3px -3px 8px #eee;
+        background: #f8f8f8;
+    }
+}
+.information, .two-dimesion-code {
+    overflow: hidden;
+    float: left;
+    margin-left: 5%;
+    width: 40%;
+    h2 {
+        padding: 10px 5%;
+        margin-bottom: 10px;
+        font: {
+            size: 16px;
+            weight: bold;
+        }
+        border-left: 3px solid #3b95d3;
+    }
+    background: #fff;
+}
+
+/* 报名表单 */
+.information {
+    form {
+        padding-left: 5%;
+        div {
+            margin-bottom: 30px;
+            label {
+                font: {
+                    size: 14px;
+                }
+            }
+        }
+        input[type="text"] {
+            margin-left: 5%;
+            width: 65%;
+            outline: none;
+            border: 0;
+            border-bottom: 1px solid #eee;
+        }
+        .tel-msg, .mail-msg {
+            display: none;
+        }
+        .save {
+            text-align: center;
+            input {
+                @include transition(all 0.5s ease-in-out);
+                padding: 5px 25px;
+                border-radius: 4px;
+                box-shadow: 1px 1px 5px #3b95d3;
+                border: 0;
+                font: {
+                    size: 16px;
+                }   
+                color: #fff;            
+                background: #3b95d3;
+                &:hover {
+                    background: #1a74b2;
+                }
+            }            
+        }
+    }
+}
+
+/* 二维码 */
+.code-wraper {
+    float: left;
+    width: 45%;
+    margin-left: 5%;
+    margin-top: 15%;
+    text-align: center;
+    img {
+        width: 70%;
+        height: 50%;
+    }
+}
+.join-logo {
+    margin-left:50%;
+    margin-top: 15%;
+    width: 10%;
+    height: 10%;
+}

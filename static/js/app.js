@@ -345,6 +345,59 @@ var menu_change = (function(){
     };
 })(jQuery);
 
+/* 表单验证 */
+var checkForm = function() {
+ 
+    var telPattern = /^1[3|4|5|7|8]\d{9}$/,
+        emailPattern = /^([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
+        saveFlag = false;
+
+    $(".stu-tel input").focus(function() {
+        var telephone = $(".stu-tel input").val();
+        if (!telPattern.test(telephone)) {
+           $(this).val("");
+        }
+       
+    }).blur(function() {
+
+        var telephone = $(".stu-tel input").val();       
+        if (!telPattern.test(telephone)) {
+           $(this).val("请输入正确的电话号码!");
+        } else {
+            saveFlag = true;
+        }
+    });
+    $(".stu-mail input").focus(function() {
+
+        var email = $(".stu-mail input").val();
+        if (!emailPattern.test(email)) {
+           $(this).val("");
+        }
+    }).blur(function() {
+        
+        var email = $(".stu-mail input").val();       
+        if (!emailPattern.test(email)) {
+           $(this).val("请输入正确的邮箱!");
+        } else {
+            saveFlag = true;
+        }
+    });
+   
+    $("#stu-info").submit(function() {
+        if (!saveFlag) {
+            alert("请填写正确的信息！");
+            return false;
+        } else {
+            return saveReport($(this));
+        }         
+    });
+};
+function saveReport(that) {  
+    that.ajaxSubmit(function(message) {  
+       alert("提交成功！");       
+    });            
+    return false;  
+}  
 //document.ready
 $(function() {
     Page.init();
@@ -369,7 +422,7 @@ $(function() {
         w.on("scroll", function(){
             /* 滚动出首屏后,顶部菜单变化样式且固定 */
             scrollTop = w.scrollTop();
-            if(scrollTop>=windowsHeight-60){
+            if(scrollTop >= windowsHeight - 60){
                 $(".nav").attr("id", "fixed");
                 $(".menu-btn").fadeOut();
             }else{
@@ -506,14 +559,16 @@ $(function() {
         "retina_detect": true
     };
     particlesJS("particles-js", particles_config);
-    //走进我们, 轮播
+
+    /*走进我们, 轮播*/
     var mySwiper = new Swiper ('.swiper-container', {
         effect: 'flip',
         pagination: '.swiper-pagination',
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev'
     });
-    //bm-item, 部门介绍
+
+    /*bm-item, 部门介绍*/
     $(".bm-item").hover(function() {
         $(".bm-item").not($(this)).stop().animate({
             width: 158
@@ -539,11 +594,11 @@ $(function() {
         //         scrollTop: $("").offset().top
         //     }, 2000);
         // });
-        // $(".join-us").bind("click", function() {
-        //     $("html,body").animate({
-        //         scrollTop: $("").offset().top
-        //     }, 2000);
-        // });
+        $(".join-us").bind("click", function() {
+            $("html,body").animate({
+                scrollTop: $(".section-5").offset().top - $(".nav").outerHeight(true)
+            }, 1000);
+        });
         // $(".production-show").bind("click", function() {
         //     $("html,body").animate({
         //         scrollTop: $("").offset().top
@@ -554,9 +609,62 @@ $(function() {
         //         scrollTop: $("").offset().top
         //     }, 2000);
         // });
+
+        /* 侧栏导航滑退*/
+        var subMenuBtns = $(".menu ul li"),
+            subMenuBtnsLen = subMenuBtns.length;
+        for (var i = 0; i < subMenuBtnsLen; i ++) {
+            subMenuBtns.eq(i).bind("click", function() {
+               $(".menu-btn").click();
+            });
+        }
     })();
 
+    /* 部门介绍 */
+    (function() {
 
+        $(".FE").hover(function() {
+            
+            $(this).children().find("img").attr("src", "static/img/FE_focus.png");
+        }, function() {
+
+            $(this).children().find("img").attr("src", "static/img/FE_blur.png");
+        });
+        $(".BE").hover(function() {
+            
+            $(this).children().find("img").attr("src", "static/img/BE_focus.png");
+        }, function() {
+
+            $(this).children().find("img").attr("src", "static/img/BE_blur.png");
+        });
+        $(".design").hover(function() {
+            
+            $(this).children().find("img").attr("src", "static/img/design_focus.png");
+        }, function() {
+
+            $(this).children().find("img").attr("src", "static/img/design_blur.png");
+        });
+        $(".operation").hover(function() {
+            
+            $(this).children().find("img").attr("src", "static/img/operation_focus.png");
+        }, function() {
+
+            $(this).children().find("img").attr("src", "static/img/operation_blur.png");
+        });
+        $(".mobile").hover(function() {
+            
+            $(this).children().find("img").attr("src", "static/img/mobile_focus.png");
+        }, function() {
+
+            $(this).children().find("img").attr("src", "static/img/mobile_blur.png");
+        });
+    })();
+
+    /* 加入我们 */
+    (function() {
+        $(".two-dimesion-code").height($(".information").outerHeight(true));
+        checkForm();
+    })();
 });
 
 
