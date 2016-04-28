@@ -1,0 +1,6 @@
+
+/index/getdepartmentall
+/index/getgroupall
+/index/gethistoryall
+
+

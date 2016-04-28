@@ -36,6 +36,7 @@ var flow = (function() {
     }
 })();
 
+
 /* 翻页插件 */
 var Page = (function() {
     var config = {
@@ -345,6 +346,55 @@ var menu_change = (function(){
     };
 })(jQuery);
 
+/* 首屏 */
+// (function() {
+//     $.ajax({
+//         type: "GET",
+//         url: link.vedio,
+//         success: function(result) {
+//             console.log(result);
+//             $(".blues-video video").attr("src", "http://172.20.2.24" + result.data[0].vi_url);
+//             $("#look-blues").click(function() {
+//                 $(".blues-video").fadeIn();
+//                 return false;
+//             });
+//         }
+//     });
+// })();
+
+/* 发展历史 */
+(function() {
+    $.ajax({
+        type: "GET",
+        url: link.history,
+        success: function(result) {
+            console.log(result);
+
+            var historyTpl = Handlebars.compile($("#history").html());
+            $(".swiper-wrapper").html(historyTpl(result.data));
+
+            /*走进我们, 轮播*/
+            var mySwiper = new Swiper ('.swiper-container', {
+                //effect: 'flip',
+                //pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev'
+            });
+            var nowIndex = 0;
+
+            $(".swiper-button-next").click(function() {
+                if (nowIndex < 3) {
+                    $(".time-node").eq(nowIndex++).next().addClass("now").siblings().removeClass("now");
+                }                
+            });
+            $(".swiper-button-prev").click(function() {
+                if (nowIndex >= 0) {
+                    $(".time-node").eq(nowIndex--).prev().addClass("now").siblings().removeClass("now");
+                }                
+            });
+        }
+    });
+})();
 /* 表单验证 */
 var checkForm = function() {
  
@@ -382,8 +432,16 @@ var checkForm = function() {
             saveFlag = true;
         }
     });
-   
+
+
+    var inputBoxs = $(".information form input");
+    
     $("#stu-info").submit(function() {
+        inputBoxs.each(function() {
+            if ($(this).val() == "") {
+                saveFlag = false;
+            }
+        });
         if (!saveFlag) {
             alert("请填写正确的信息！");
             return false;
@@ -393,25 +451,135 @@ var checkForm = function() {
     });
 };
 function saveReport(that) {  
+
     that.ajaxSubmit(function(message) {  
        alert("提交成功！");       
     });            
-    return false;  
+   
 }  
+
+/* 作品展示 */
+var showPro = function() {
+    var productsBtn = $(".college-wraper div"),
+        detailBoxLen = $(".pro-detail li").length,
+        liIndex = 0;
+
+    /* 显示作品 */
+    productsBtn.click(function() {
+        liIndex = productsBtn.index(this);
+        $(".pro-detail").addClass("pro-detail-show");
+  
+        $(".pro-detail li").eq(liIndex).addClass("show-current-li")
+            .siblings().removeClass("show-current-li");
+    });
+
+    /* 关闭展示 */
+    $(".circle .circle-close").click(function() {
+        
+        $(".pro-detail").removeClass("pro-detail-show");
+        $(".pro-detail").removeClass("next-pro-detail");
+        $(".pro-detail").removeClass("prev-pro-detail");
+        return false;
+    });
+
+    /* 下一张 */
+    $(".next").click(function() {
+        if (liIndex == detailBoxLen) {
+            liIndex = 0;
+        } else {
+             liIndex = liIndex + 1;
+        }
+        $(".pro-detail").removeClass("prev-pro-detail");
+        $(".pro-detail").removeClass("next-pro-detail");
+       
+        setTimeout(function() {
+            $(".pro-detail li").eq(liIndex).addClass("show-current-li")
+                .siblings().removeClass("show-current-li");
+            $(".pro-detail").addClass("next-pro-detail");
+            
+        }, 300);
+        
+    });
+
+    /* 上一张 */
+    $(".prev").click(function() {
+        if (liIndex == 0) {
+            liIndex = detailBoxLen;
+        } else {
+            liIndex = liIndex - 1;
+        }        
+        $(".pro-detail").removeClass("next-pro-detail");
+        $(".pro-detail").removeClass("prev-pro-detail");
+       
+        setTimeout(function() {
+            $(".pro-detail li").eq(liIndex).addClass("show-current-li")
+                .siblings().removeClass("show-current-li");
+            $(".pro-detail").addClass("prev-pro-detail");
+            
+        }, 300);
+    });
+};
+(function() {
+
+    $.ajax({
+
+        type: "GET",
+        url: link.production,
+        success: function(result) {
+            console.log(result);
+            var productionTpl = Handlebars.compile($("#production").html());
+            $(".pro-detail ul").html(productionTpl(result.data));
+
+            showPro();
+        }
+    });
+})();
+
+/* 部门介绍 */
+(function() {
+   
+    $.ajax({
+        type: "GET",
+        url: link.department,
+        success: function(result) {
+
+            console.log(result);
+
+            var departmentTpl = Handlebars.compile($("#department").html());
+            $(".bm-box ul").html(departmentTpl(result.data));
+            
+            $(".bm-box ul li").eq(0).addClass("on");
+
+            /*展开 部门介绍*/
+            $(".bm-item").hover(function() {
+                $(".bm-item").not($(this)).stop().animate({
+                    width: 158
+                }).removeClass("on");
+                $(this).stop().animate({
+                    width: 318
+                }).addClass("on");
+            });
+
+        }
+    });
+
+})();
+
 //document.ready
 $(function() {
     Page.init();
 
     $(".menu-btn").click(function(){
+
         /* body滑动menu滑出，切换当前class名称 */
         $("body").toggleClass("slide");
-        /* 蒙层交替出现 */
         $(".black-shadow").fadeToggle(300);
+
         /* 菜单按钮背景变换 */
         menu_change(this);
     });
 
-    /* 首屏动画和内容的过渡    */
+    /* 首屏动画和内容的过渡 */
     (function(){
         var container = $(".container");
         var w = $(window);
@@ -559,112 +727,155 @@ $(function() {
         "retina_detect": true
     };
     particlesJS("particles-js", particles_config);
-
-    /*走进我们, 轮播*/
-    var mySwiper = new Swiper ('.swiper-container', {
-        effect: 'flip',
-        pagination: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev'
-    });
-
-    /*bm-item, 部门介绍*/
-    $(".bm-item").hover(function() {
-        $(".bm-item").not($(this)).stop().animate({
-            width: 158
-        }).removeClass("on");
-        $(this).stop().animate({
-            width: 318
-        }).addClass("on");
-    });
-
-    /* 骨干团 */
-    $(".da-thumbs > li").hoverdir();
-
-    /* 页面书签平滑跳转 */
-    (function() {
-
-        $(".home").bind("click", function() {
-            $("html,body").animate({
-                scrollTop: $(".header").offset().top
-            }, 1000);
-        });
-        // $(".comein-us").bind("click", function() {
-        //      $("html,body").animate({
-        //         scrollTop: $("").offset().top
-        //     }, 2000);
-        // });
-        $(".join-us").bind("click", function() {
-            $("html,body").animate({
-                scrollTop: $(".section-5").offset().top - $(".nav").outerHeight(true)
-            }, 1000);
-        });
-        // $(".production-show").bind("click", function() {
-        //     $("html,body").animate({
-        //         scrollTop: $("").offset().top
-        //     }, 2000);
-        // });
-        // $(".about-us").bind("click", function() {
-        //     $("html,body").animate({
-        //         scrollTop: $("").offset().top
-        //     }, 2000);
-        // });
-
-        /* 侧栏导航滑退*/
-        var subMenuBtns = $(".menu ul li"),
-            subMenuBtnsLen = subMenuBtns.length;
-        for (var i = 0; i < subMenuBtnsLen; i ++) {
-            subMenuBtns.eq(i).bind("click", function() {
-               $(".menu-btn").click();
-            });
-        }
-    })();
-
-    /* 部门介绍 */
-    (function() {
-
-        $(".FE").hover(function() {
-            
-            $(this).children().find("img").attr("src", "static/img/FE_focus.png");
-        }, function() {
-
-            $(this).children().find("img").attr("src", "static/img/FE_blur.png");
-        });
-        $(".BE").hover(function() {
-            
-            $(this).children().find("img").attr("src", "static/img/BE_focus.png");
-        }, function() {
-
-            $(this).children().find("img").attr("src", "static/img/BE_blur.png");
-        });
-        $(".design").hover(function() {
-            
-            $(this).children().find("img").attr("src", "static/img/design_focus.png");
-        }, function() {
-
-            $(this).children().find("img").attr("src", "static/img/design_blur.png");
-        });
-        $(".operation").hover(function() {
-            
-            $(this).children().find("img").attr("src", "static/img/operation_focus.png");
-        }, function() {
-
-            $(this).children().find("img").attr("src", "static/img/operation_blur.png");
-        });
-        $(".mobile").hover(function() {
-            
-            $(this).children().find("img").attr("src", "static/img/mobile_focus.png");
-        }, function() {
-
-            $(this).children().find("img").attr("src", "static/img/mobile_blur.png");
-        });
-    })();
-
-    /* 加入我们 */
-    (function() {
-        $(".two-dimesion-code").height($(".information").outerHeight(true));
-        checkForm();
-    })();
 });
+
+/* 骨干团--毕业去向 */
+(function() {
+
+    $.ajax({
+        type: "GET",
+        url: link.member,
+        success: function(result) {
+            console.log(result);
+
+            var mainMemberTpl = Handlebars.compile($("#main-member").html());
+            $("#da-thumbs").html(mainMemberTpl(result.data));
+
+            var dataLen = result.data.length;
+            var startYear = 2008,
+                maxGrade = 2008;
+
+            /* 最大的一年 */
+            for (var i = 0; i < dataLen; i ++) {
+               
+                if (parseInt(result.data[i].m_grade) > maxGrade ) {
+                    maxGrade = result.data[i].m_grade;
+                }
+            }
+            console.log(maxGrade);
+                   
+            var group_2008 = [],
+                group_2009 = [],
+                group_2010 = [],
+                group_2011 = [],
+                group_2012 = [];
+            for (var i = 0; i < dataLen; i ++) {
+                if (result.data[i].m_out) {
+
+                    var gradeArr = result.data[i],
+                        gradeNum = result.data[i].m_grade;
+
+                    if (gradeNum == 2008) {
+                        
+                        group_2008.push(gradeArr);
+                    } else if (gradeNum == 2009) {
+                        
+                        group_2009.push(gradeArr);
+                    } else if (gradeNum == 2010) {
+                        
+                        group_2010.push(gradeArr);
+                    } else if (gradeNum == 2011) {
+                        
+                        group_2011.push(gradeArr);
+                    } else if (gradeNum == 2012) {
+                        
+                        group_2012.push(gradeArr);
+                    }
+                }
+            }   
+            var during = maxGrade - startYear;
+            var gradeBox = [];
+            var newDataArr = [];
+            gradeBox.push(group_2008, group_2009, group_2010, group_2011, group_2012);             
+            console.log(gradeBox);
+            for (var i = 0; i < 5; i ++) {
+                if (gradeBox[i].length) {
+                    newDataArr.push({
+                        "gradeNew": gradeBox[i][0].m_grade,
+                        "gradeData": gradeBox[i]
+                    });
+                }
+            }
+            console.log(newDataArr);
+            var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
+            $(".card-left").html(graduatedMemberTpl(newDataArr));  
+
+            /* 骨干团 */
+            $(".da-thumbs > li").hoverdir();
+
+        }
+    });
+})();
+  
+/* 页面书签平滑跳转 */
+(function() {
+    //主页
+    $(".home").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".header").offset().top
+        }, 1000);
+    });
+
+    //发展历史
+      $(".history-nav").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-1").offset().top - $(".nav").outerHeight(true)
+        }, 2000);
+    });
+
+      //部门介绍
+      $(".department-nav").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-2").offset().top - $(".nav").outerHeight(true)
+        }, 2000);
+    });
+
+      //作品展示
+     $(".production-nav").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-3").offset().top - $(".nav").outerHeight(true)
+        }, 2000);
+    });
+
+    //骨干团
+    $(".main-menber-nav").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-4").offset().top - $(".nav").outerHeight(true)
+        }, 2000);
+    });
+
+    //毕业去向
+    $(".education-nav").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-5").offset().top - $(".nav").outerHeight(true)
+        }, 1000);
+    });
+
+    //加入我们
+    $(".join-us").bind("click", function() {
+        $("html,body").animate({
+            scrollTop: $(".section-6").offset().top - $(".nav").outerHeight(true)
+        }, 1000);
+    });
+
+     
+
+    /* 侧栏导航滑退*/
+    var subMenuBtns = $(".menu ul li"),
+        subMenuBtnsLen = subMenuBtns.length;
+    for (var i = 0; i < subMenuBtnsLen; i ++) {
+        subMenuBtns.eq(i).bind("click", function() {
+           $(".menu-btn").click();
+        });
+    }
+})();
+
+
+/* 加入我们 */
+(function() {
+    $(".two-dimesion-code").height($(".information").outerHeight(true));
+    checkForm();
+})();
+
 
 

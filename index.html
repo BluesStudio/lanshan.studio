@@ -20,10 +20,12 @@
         <div class="menu-guide">
             <ul>
                 <li class="home">主页</li>
-                <li class="comein-us">走进我们</li>
-                <li class="production-show">作品展示</li>
+                <li class="history-nav">发展历史</li>
+                <li class="department-nav">部门介绍</li>
+                <li class="production-nav">作品展示</li>
+                <li class="main-menber-nav">骨干团</li>
+                <li class="education-nav">毕业去向</li>
                 <li class="join-us">加入我们</li>
-                <li class="about-us">关于我们</li>
             </ul>
 
         </div>
@@ -33,11 +35,13 @@
     <!-- 菜单 -->
     <div class="menu">
         <ul>
-            <li class="home"><a class="active" href="#">主页</a></li>
-            <li class="comein-us"><a href="#">走进我们</a></li>
-            <li class="production-show"><a href="#">作品展示</a></li>
-            <li class="join-us"><a href="#">加入我们</a></li>
-            <li class="about-us"><a href="#">关于我们</a></li>
+            <li class="home">主页</li>
+            <li class="history-nav">发展历史</li>
+            <li class="department-nav">部门介绍</li>
+            <li class="production-nav">作品展示</li>
+            <li class="main-menber-nav">骨干团</li>
+            <li class="education-nav">毕业去向</li>
+            <li class="join-us">加入我们</li>
         </ul>
         <div class="menu-footer">
             <p>Copyright © 2008-2016 蓝山工作室</p>
@@ -79,7 +83,7 @@
                     <h1 class="willUp">介绍视频</h1>
                     <h2 class="willUp">教育信息化创新创业协会</h2>
                     <div class="box-btns">
-                        <a href="#" class="willUp box-btn">观看视频</a>
+                        <a href="#" class="willUp box-btn" id="look-blues">观看视频</a>
                     </div>
                 </div>
                 <div class="header-flip">
@@ -87,6 +91,12 @@
                     <div class="main-btns next-btn"><img src="static/img/next.png"></div>
                 </div>
             </div>
+            <div class="blues-video">
+                <video src="">
+                    不好意思，您的浏览器不能播放视频。。。
+                </video>
+            </div>
+            
         </div>
         <div class="bb-item">
             <div class="box-item box-3">
@@ -123,51 +133,46 @@
     <section class="section section-1">
         <div class="content">
             <h1>发展历史</h1>
+            <script type="text/x-handlebars-template" id="history">
+                {{#each this}}
+                    <div class="swiper-slide">
+                        <div class="bs-box">
+                            <div class="bs-img">
+                                <img src="static/img/bbs.png">
+                            </div>
+                            <div class="bs-text">
+                                <div class="bs-text-inner">
+                                    <h3>{{h_name}}</h3>
+                                    <p>
+                                        <i class="fa fa-calendar-check-o"></i> 
+                                        {{h_description}}
+                                        <strong>{{h_name}}</strong>；
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            </script>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="bs-box">
-                            <div class="bs-img">
-                                <img src="static/img/bbs.png">
-                            </div>
-                            <div class="bs-text">
-                                <div class="bs-text-inner">
-                                    <h3>幽幽黄桷兰BBS站务组</h3>
-                                    <p><i class="fa fa-calendar-check-o"></i> 1998年11月，校园网络建设时期，在当时的网络管理中心支持下，成立<strong>幽幽黄桷兰BBS站务组</strong>；</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bs-box">
-                            <div class="bs-img">
-                                <img src="static/img/bbs.png">
-                            </div>
-                            <div class="bs-text">
-                                <div class="bs-text-inner">
-                                    <h3>蓝山工作室</h3>
-                                    <p><i class="fa fa-calendar-check-o"></i> 2008年，随着数字校园的推进，信息与网络管理中心指导成立<strong>蓝山工作室</strong>；</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bs-box">
-                            <div class="bs-img">
-                                <img src="static/img/bbs.png">
-                            </div>
-                            <div class="bs-text">
-                                <div class="bs-text-inner">
-                                    <h3>教育信息化创新创业协会</h3>
-                                    <p><i class="fa fa-calendar-check-o"></i> 2015年10月，顺应学校智慧校园建设的需要，信息化办以<strong>蓝山工作室</strong>学生队伍为骨干，秉承幽幽黄桷兰BBS的文化传承，经学校正式批准成立<strong>教育信息化创新创业协会</strong>；</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev swiper-button-white"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+            </div>
+            <div class="time-wraper">
+                <div class="bg-wraper"></div>
+                <div class="first time-node now">
+                    <p>1998</p>
+                </div>
+                <div class="second time-node">
+                    <p>2008</p>
+                </div>
+                <div class="third time-node">
+                    <p>2015</p>
+                </div>
             </div>
         </div>
     </section>
@@ -176,68 +181,30 @@
     <section class="section section-2">
         <div class="content">
             <h1>部门介绍</h1>
+            <script type="text/x-handlebars-template" id="department">
+                {{#each this}}
+                    <li class="bm-item">
+                        <div class="item-inner">
+                            <div class="item-main">
+                                <h2>{{d_name}}</h2>
+                                <div class="depart-logo"></div>
+                            </div>
+                            <div class="item-detail">
+                                {{#with groups}}
+                                    {{#each this}}
+                                       <div class="detail-top">
+                                           <p>{{g_description}}</p>
+                                       </div>
+                                   {{/each}}
+                                {{/with}}
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </script>
             <div class="bm-box">
                 <ul>
-                    <li class="bm-item on">
-                        <div class="item-inner FE">
-                            <div class="item-main">
-                                <h2>前端开发</h2>
-                                <img src="static/img/FE_blur.png" alt="前端开发">
-                            </div>
-                            <div class="item-detail">
-                               <div class="detail-top"></div>
-                               <div class="detail-bottom"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="bm-item">
-                        <div class="item-inner BE">
-                            <div class="item-main">
-                                <h2>后台开发</h2>
-                                <img src="static/img/BE_blur.png" alt="后台开发">
-                            </div>
-                            <div class="item-detail">
-                                <div class="detail-top"></div>
-                               <div class="detail-bottom"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="bm-item">
-                        <div class="item-inner  mobile">
-                            <div class="item-main">
-                                <h2>移动端开发</h2>
-                                <img src="static/img/mobile_blur.png" alt="移动端开发">
-                            </div>
-                            <div class="item-detail">
-                                <div class="detail-top"></div>
-                               <div class="detail-bottom"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="bm-item">
-                        <div class="item-inner design">
-                            <div class="item-main">
-                                <h2>视觉设计</h2>
-                                <img src="static/img/design_blur.png" alt="视觉设计">
-                            </div>
-                            <div class="item-detail">
-                                <div class="detail-top"></div>
-                               <div class="detail-bottom"></div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="bm-item">
-                        <div class="item-inner operation">
-                            <div class="item-main">
-                                <h2>运营策划</h2>
-                                <img src="static/img/operation_blur.png" alt="运营策划">
-                            </div>
-                            <div class="item-detail">
-                                <div class="detail-top"></div>
-                               <div class="detail-bottom"></div>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -247,101 +214,284 @@
     <section class="section section-3">
         <div class="content">
             <h1>作品展示</h1>
+
+            <!-- 作品展示圆盘 -->
+            <div class="circle-wraper">
+                <div class="tip-zone">  
+                    <div class="law part">  
+                        <div class="bing"></div>  
+                    </div>
+                    <div class="icy part">  
+                        <div class="bing"></div> 
+                    </div> 
+                    <div class="hk part">  
+                        <div class="bing"></div> 
+                    </div> 
+
+                    <div class="advanced part">  
+                        <div class="bing"></div>  
+                    </div>
+                    <div class="international part">  
+                        <div class="bing"></div> 
+                    </div> 
+                    <div class="wechart part">  
+                        <div class="bing"></div> 
+                    </div>  
+             </div>
+            
+            <!-- 作品展示按钮 -->
+            <div class="pro-button">
+                <div class="circle">
+                    <div class="circle-top college-wraper">
+                        <div class="icy-btn"><p>i重邮</p></div>
+                        <div class="law-btn"><p>法学院</p></div>
+                    </div>
+                    <div class="circle-middle college-wraper">
+                        <div class="hk-btn"><p>港澳台</p></div>
+                        <div class="advanced-btn"><p>先进制造</p></div>
+                    </div>
+                    <div class="circle-bottom college-wraper">
+                        <div class="international-btn"><p>国际学院</p></div>
+                        <div class="wechart-btn"><p>微信平台</p></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品展示 -->
+            <div class="pro-detail">
+                <div class="circle">
+                    <a href="#" class="circle-close">
+                        <img src="static/img/pro_close.png" alt="">
+                    </a>
+                    <span class="prev">
+                        <img src="static/img/prev.png" alt="关闭">
+                    </span>
+                    <script type="text/x-handlebars-template" id="production">
+                        {{#each this}}
+                            <li>                        
+                                <div class="intro-wraper">
+                                    <div class="index-img">
+                                        <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                    </div>
+                                    <div class="index-intro">
+                                        <h3>——{{p_name}}——</h3>
+                                        <p>{{p_description}}</p>
+                                        <img src="static/img/code-blues.png" alt="">
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </script>
+                    <ul>
+                        <!-- <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——i重邮——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——法学院——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——港澳台——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        
+                        <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——先进制造——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                    
+                        <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——国际学院——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li>
+                        <li>                        
+                            <div class="intro-wraper">
+                                <div class="index-img">
+                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>——微信平台——</h3>
+                                    <p>介绍文字介绍文字</p>
+                                    <img src="static/img/code-blues.png" alt="">
+                                </div>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <span class="next"><img src="static/img/next.png" alt=""></span>
+                </div>
+            </div>
+           
         </div>
     </section>
 
     <!-- 骨干团 -->
     <section class="section section-4">
         <div class="content">
-            <h1>骨干团</h1>
+            <h1 class="main-number">骨干团</h1>
+            <script type="text/x-handlebars-template" id="main-member">
+                {{#each this}}
+                    {{#if this.m_out}}
+
+                        {{else}}
+                        <li>
+                            <div class="item-inner">
+                                <img class="item-img" src="static/img/member.jpg">
+                                <div class="item-detail">
+                                    <p><span>{{m_name}}&nbsp;&nbsp;</span></p>
+                                    <p>{{m_group}}</p>
+                                    <p>{{m_motto}}</p>
+                                </div>
+                            </div>
+                        </li>
+                       
+                    {{/if}}
+                {{/each}}
+            </script>
             <ul class="gg-box da-thumbs" id="da-thumbs">
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            <p><span>文健蔚&nbsp;&nbsp;</span><span>室长</span></p>
-                            <p>后台（PHP）</p>
-                            <p>我什么都会，没有什么我不会！！</p>
-                        </div>
+              
+            </ul>
+        </div>
+    </section>
+
+    
+    <!-- 毕业去向 -->
+    <section class="section section-5">
+        <h1>毕业去向</h1>
+        <div class="content">
+            
+            <script type="text/x-handlebars-template" id="graduated-member">
+                {{#each this}}
+                    <div class="people-card">
+                        <h2>——<span>{{gradeNew}}级</span>——</h2>
+                        {{#each gradeData}}
+                            <div class="company">
+                                <p>
+                                    <span>{{m_name}}</span>
+                                    <span>就职于啦啦啦</span>
+                                </p>
+                                <span class="direction">2015年加入蓝山/后台</span>
+                            </div>
+                        {{/each}}
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                {{/each}}
+            </script>
+            <!-- 左边 -->
+            <div class="card-left">
+                <!-- <div class="people-card">
+                    <h2>——<span>2009级</span>——</h2>
+                    <div class="company">
+                        <p>
+                            <span>啦啦啦</span>
+                            <span>就职于啦啦啦</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                    <div class="company">
+                        <p>
+                            <span>哈哈哈</span>
+                            <span>就职于哈哈哈</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                </div>
+                <div class="people-card">
+                    <h2>——<span>2010级</span>——</h2>
+                    <div class="company">
+                        <p>
+                            <span>啦啦啦</span>
+                            <span>就职于啦啦啦</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                    <div class="company">
+                        <p>
+                            <span>哈哈哈</span>
+                            <span>就职于哈哈哈</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                </div>          
+                <div class="people-card">
+                    <h2>——<span>2011级</span>——</h2>
+                    <div class="company">
+                        <p>
+                            <span>啦啦啦</span>
+                            <span>就职于啦啦啦</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                    <div class="company">
+                        <p>
+                            <span>哈哈哈</span>
+                            <span>就职于哈哈哈</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                </div>
+                <div class="people-card">
+                    <h2>——<span>2012级</span>——</h2>
+                    <div class="company">
+                        <p>
+                            <span>啦啦啦</span>
+                            <span>就职于啦啦啦</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
+                    <div class="company">
+                        <p>
+                            <span>哈哈哈</span>
+                            <span>就职于哈哈哈</span>
+                        </p>
+                        <span class="direction">2015年加入蓝山/后台</span>
                     </div>
-                </li>
-                <li>
-                    <div class="item-inner">
-                        <img class="item-img" src="static/img/gg.jpg">
-                        <div class="item-detail">
-                            222
-                        </div>
-                    </div>
-                </li>
+                </div> -->
+           </div>
         </div>
     </section>
 
     <!-- 加入我们 -->
-    <section class="section section-5">
+    <section class="section section-6">
         <h1 class="join-us">加入我们</h1>
         <div class="content">            
             <div class="information">
@@ -351,15 +501,19 @@
                         <label for="stu-name">姓名</label>
                         <input type="text">
                     </div>
+                    <div class="stu-number">
+                        <label for="stu-number">学号</label>
+                        <input type="text">
+                    </div>
                     <div class="stu-college">
                         <label for="stu-college">学院</label>
                         <input type="text">
                     </div>
-                    <div class="stu-grade">
+                   <!--  <div class="stu-grade">
                         <label for="stu-grade">年级</label>
                         <input type="radio" name="grade">大一
                         <input type="radio" name="grade">大二
-                    </div>
+                    </div> -->
                     <div class="stu-tel">
                         <label for="stu-telephone">电话</label>
                         <input type="text">
@@ -387,9 +541,8 @@
             </div>
         </div>
     </section>
+
 </div>
-
-
 
 
 <!-- javascript -->
@@ -399,6 +552,8 @@
 <script src="http://malsup.github.io/jquery.form.js"></script>
 <script src="static/js/swiper.jquery.min.js"></script>
 <script src="static/js/particles.min.js"></script>
+<script src="static/js/url.js"></script>
+<script src="static/js/handlebars.js"></script>
 <script src="static/js/app.js"></script>
 </body>
 </html>
