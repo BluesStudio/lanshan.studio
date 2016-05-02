@@ -4,7 +4,6 @@ var link = {
 	//部门
 	department: urlStr + "index/getdepartmentall",
 
-
 	//历史
 	history: urlStr + "index/gethistoryall",
 
@@ -14,5 +13,12 @@ var link = {
 	//作品
 	production: urlStr + "index/getproductionall",
 
-	vedio: urlStr + "index/getvideoall"
+	//视频
+	vedio: urlStr + "index/getvideoall",
+
+	//报名
+	apply: urlStr + "index/addmenteesingroup/",
+
+	//组别
+	group: urlStr + "background/groups/getall"
 };

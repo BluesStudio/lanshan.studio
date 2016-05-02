@@ -193,7 +193,8 @@
                                 {{#with groups}}
                                     {{#each this}}
                                        <div class="detail-top">
-                                           <p>{{g_description}}</p>
+                                            <h3>{{g_name}}</h3>
+                                            <p>{{g_description}}</p>
                                        </div>
                                    {{/each}}
                                 {{/with}}
@@ -271,92 +272,23 @@
                             <li>                        
                                 <div class="intro-wraper">
                                     <div class="index-img">
-                                        <img src="static/img/index_img_1.jpg" alt="微信平台">
+                                        <img src="{{p_url}}" alt="微信平台">
                                     </div>
                                     <div class="index-intro">
-                                        <h3>——{{p_name}}——</h3>
+                                        <h3>—{{p_name}}—</h3>
                                         <p>{{p_description}}</p>
+                                        {{#if p_address}}
+                                        <a href="{{p_address}}">{{p_address}}</a>
+                                        {{else}}
                                         <img src="static/img/code-blues.png" alt="">
+                                        {{/if}}
                                     </div>
                                 </div>
                             </li>
                         {{/each}}
                     </script>
                     <ul>
-                        <!-- <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——i重邮——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——法学院——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——港澳台——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——先进制造——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                    
-                        <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——国际学院——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        <li>                        
-                            <div class="intro-wraper">
-                                <div class="index-img">
-                                    <img src="static/img/index_img_1.jpg" alt="微信平台">
-                                </div>
-                                <div class="index-intro">
-                                    <h3>——微信平台——</h3>
-                                    <p>介绍文字介绍文字</p>
-                                    <img src="static/img/code-blues.png" alt="">
-                                </div>
-                            </div>
-                        </li> -->
+                       
                     </ul>
                     <span class="next"><img src="static/img/next.png" alt=""></span>
                 </div>
@@ -376,7 +308,7 @@
                         {{else}}
                         <li>
                             <div class="item-inner">
-                                <img class="item-img" src="static/img/member.jpg">
+                                <img class="item-img" src="{{m_url}}">
                                 <div class="item-detail">
                                     <p><span>{{m_name}}&nbsp;&nbsp;</span></p>
                                     <p>{{m_group}}</p>
@@ -408,9 +340,9 @@
                             <div class="company">
                                 <p>
                                     <span>{{m_name}}</span>
-                                    <span>就职于啦啦啦</span>
+                                    <span>就职于{{m_company}}</span>
                                 </p>
-                                <span class="direction">2015年加入蓝山/后台</span>
+                                <span class="direction">2015年加入蓝山/{{m_group}}</span>
                             </div>
                         {{/each}}
                     </div>
@@ -418,74 +350,7 @@
             </script>
             <!-- 左边 -->
             <div class="card-left">
-                <!-- <div class="people-card">
-                    <h2>——<span>2009级</span>——</h2>
-                    <div class="company">
-                        <p>
-                            <span>啦啦啦</span>
-                            <span>就职于啦啦啦</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                    <div class="company">
-                        <p>
-                            <span>哈哈哈</span>
-                            <span>就职于哈哈哈</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                </div>
-                <div class="people-card">
-                    <h2>——<span>2010级</span>——</h2>
-                    <div class="company">
-                        <p>
-                            <span>啦啦啦</span>
-                            <span>就职于啦啦啦</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                    <div class="company">
-                        <p>
-                            <span>哈哈哈</span>
-                            <span>就职于哈哈哈</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                </div>          
-                <div class="people-card">
-                    <h2>——<span>2011级</span>——</h2>
-                    <div class="company">
-                        <p>
-                            <span>啦啦啦</span>
-                            <span>就职于啦啦啦</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                    <div class="company">
-                        <p>
-                            <span>哈哈哈</span>
-                            <span>就职于哈哈哈</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                </div>
-                <div class="people-card">
-                    <h2>——<span>2012级</span>——</h2>
-                    <div class="company">
-                        <p>
-                            <span>啦啦啦</span>
-                            <span>就职于啦啦啦</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                    <div class="company">
-                        <p>
-                            <span>哈哈哈</span>
-                            <span>就职于哈哈哈</span>
-                        </p>
-                        <span class="direction">2015年加入蓝山/后台</span>
-                    </div>
-                </div> -->
+                
            </div>
         </div>
     </section>
@@ -499,28 +364,39 @@
                 <form action="#" id="stu-info">
                     <div class="stu-name">
                         <label for="stu-name">姓名</label>
-                        <input type="text">
+                        <input type="text" name="me_name">
                     </div>
                     <div class="stu-number">
                         <label for="stu-number">学号</label>
-                        <input type="text">
+                        <input type="text" name="me_sno">
                     </div>
                     <div class="stu-college">
                         <label for="stu-college">学院</label>
-                        <input type="text">
+                        <input type="text" name="me_major">
                     </div>
-                   <!--  <div class="stu-grade">
-                        <label for="stu-grade">年级</label>
-                        <input type="radio" name="grade">大一
-                        <input type="radio" name="grade">大二
-                    </div> -->
+                    <div class="stu-group group-select">
+                        <label for="stu-grade">方向</label>
+                        
+                    </div>
+                    <script type="text/x-handlebars-template" id="group-tpl">
+                        <select>
+                            {{#each this}}
+                            <option value="">{{g_name}}</option>
+                            {{/each}}
+                        </select>
+                        <ul class="group-id" style="display:none;">
+                            {{#each this}}
+                            <li>{{group_id}}</li>
+                            {{/each}}
+                        </ul>
+                    </script>
                     <div class="stu-tel">
                         <label for="stu-telephone">电话</label>
-                        <input type="text">
+                        <input type="text" name="me_phone">
                     </div>                    
                     <div class="stu-mail">
                         <label for="stu-mail">邮箱</label>
-                        <input type="text">
+                        <input type="text" name="me_email">
                     </div>                    
                     <div class="save">
                         <input type="submit" value="提交" class="submitBtn">

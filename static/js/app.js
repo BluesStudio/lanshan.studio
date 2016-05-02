@@ -368,7 +368,7 @@ var menu_change = (function(){
         type: "GET",
         url: link.history,
         success: function(result) {
-            console.log(result);
+            //console.log(result);
 
             var historyTpl = Handlebars.compile($("#history").html());
             $(".swiper-wrapper").html(historyTpl(result.data));
@@ -395,11 +395,13 @@ var menu_change = (function(){
         }
     });
 })();
+
 /* 表单验证 */
 var checkForm = function() {
  
     var telPattern = /^1[3|4|5|7|8]\d{9}$/,
         emailPattern = /^([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
+        stuNumPattern = /^2015\w+/;
         saveFlag = false;
 
     $(".stu-tel input").focus(function() {
@@ -432,11 +434,30 @@ var checkForm = function() {
             saveFlag = true;
         }
     });
-
-
-    var inputBoxs = $(".information form input");
+    $(".stu-number input").blur(function() {
+        var stuNumber = $(this).val();
+        if (!stuNumPattern.test(stuNumber)) {
+            $(this).val("不好意思，本次招生面向2015级");
+            saveFlag = false;
+        }
+    });
+    $(".stu-number input").focus(function() {
+        var stuNumber = $(".stu-number input").val();
+        if (!stuNumPattern.test(stuNumber)) {
+           $(this).val("");
+        }
+    });
+   
+    $(".group-select").change(function() {
+        var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
+            groupId = $(".group-id li").eq(groupIdIndex).html();
+        console.log(link.apply + groupId);
+    });
     
-    $("#stu-info").submit(function() {
+    $("#stu-info").on("submit", function(e) {
+
+        var inputBoxs = $(".information form input");
+        e.preventDefault();
         inputBoxs.each(function() {
             if ($(this).val() == "") {
                 saveFlag = false;
@@ -446,17 +467,41 @@ var checkForm = function() {
             alert("请填写正确的信息！");
             return false;
         } else {
-            return saveReport($(this));
+            var applyForm = new FormData($("#stu-info")[0]);
+            $.ajax({
+                type: "POST",
+                url: link.apply + groupId,
+                data: applyForm,
+                processData: false,
+                contentType: false,
+                success: function() {
+                    alert("提交成功！");
+                },
+                error: function() {
+                    alert("提交失败！");
+                }
+            });
         }         
     });
 };
-function saveReport(that) {  
 
-    that.ajaxSubmit(function(message) {  
-       alert("提交成功！");       
-    });            
-   
-}  
+/* 加入我们 */
+(function() {
+    $.ajax({
+        type: "GET",
+        url: link.group,
+        success: function(result) {
+            console.log(result);
+            var groupTpl = Handlebars.compile($("#group-tpl").html());
+            $(".group-select").append(groupTpl(result.data));
+
+            /* 取得组别id */
+            var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
+                groupId = $(".group-id li").eq(groupIdIndex).html();
+            console.log(link.apply + groupId);
+        }
+    });
+})();
 
 /* 作品展示 */
 var showPro = function() {
