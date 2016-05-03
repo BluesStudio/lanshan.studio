@@ -525,14 +525,23 @@ a{
     .blues-video {
         display: none;
         position: absolute;
+        padding: 2% 5%;
         z-index: 999;
-        margin: 0 15%;
-        width: 70%;
-        height: 80%;
-        video {
-            width: 100%;
-            height: 100%;
+        margin: 5% 15%;
+        width: 60%;
+        height: 70%;
+        background: rgba(0, 0, 0, 0.6);
+        .close-video {
+            float: right;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
         }
+        #player {
+            width: 90%;
+            height: 95%;
+        }
+        
     }
 }
 .box-item{

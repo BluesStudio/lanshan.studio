@@ -346,21 +346,35 @@ var menu_change = (function(){
     };
 })(jQuery);
 
-/* 首屏 */
-// (function() {
-//     $.ajax({
-//         type: "GET",
-//         url: link.vedio,
-//         success: function(result) {
-//             console.log(result);
-//             $(".blues-video video").attr("src", "http://172.20.2.24" + result.data[0].vi_url);
-//             $("#look-blues").click(function() {
-//                 $(".blues-video").fadeIn();
-//                 return false;
-//             });
-//         }
-//     });
-// })();
+/* 首屏视频 */
+(function() {
+    $.ajax({
+        type: "GET",
+        url: link.vedio,
+        success: function(result) {
+            console.log(result);
+
+            $("#look-blues").bind("click", function(e) {
+                e.preventDefault();
+                $(".blues-video").fadeIn();
+            });
+            $(".close-video").bind("click", function() {
+                $(".blues-video").fadeOut();
+            });
+            flowplayer("player","./static/js/flowplayer-3.2.18.swf",{
+                clip:{
+                    url: "http://172.20.2.24:8080/blues/upload/video/other/1461502962321.flv",
+                    autoPlay:false,//是否自动播放，默认true
+                    autoBuffering:true//是否自动缓冲视频，默认true
+                },
+                onLoad:function(){// 当播放器载入完成时调用
+                    this.setVolume(30);// 设置音量0-100，默认50
+                }
+            });           
+
+        }
+    });
+ })();
 
 /* 发展历史 */
 (function() {

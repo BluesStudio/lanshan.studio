@@ -812,18 +812,27 @@ a {
 .bb-item .blues-video {
   display: none;
   position: absolute;
+  padding: 2% 5%;
   z-index: 999;
-  margin: 0 15%;
-  width: 70%;
-  height: 80%;
+  margin: 5% 15%;
+  width: 60%;
+  height: 70%;
+  background: rgba(0, 0, 0, 0.6);
 }
-/* line 532, style.scss */
-.bb-item .blues-video video {
-  width: 100%;
-  height: 100%;
+/* line 534, style.scss */
+.bb-item .blues-video .close-video {
+  float: right;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+/* line 540, style.scss */
+.bb-item .blues-video #player {
+  width: 90%;
+  height: 95%;
 }
 
-/* line 538, style.scss */
+/* line 547, style.scss */
 .box-item {
   position: absolute;
   z-index: 1;
@@ -832,25 +841,25 @@ a {
   width: 100%;
   overflow: hidden;
 }
-/* line 545, style.scss */
+/* line 554, style.scss */
 .box-item .box-center {
   position: absolute;
   top: 23%;
   width: 100%;
 }
-/* line 549, style.scss */
+/* line 558, style.scss */
 .box-item .box-center h1 {
   font-size: 9vmin;
   font-weight: 200;
 }
-/* line 555, style.scss */
+/* line 564, style.scss */
 .box-item .box-center .box-btns {
   position: relative;
   z-index: 3;
   width: 100%;
   margin-top: 40px;
 }
-/* line 561, style.scss */
+/* line 570, style.scss */
 .box-item .box-center .box-btn {
   display: inline-block;
   font-size: 1.2em;
@@ -862,23 +871,23 @@ a {
   border: 1px solid #fff;
   color: #fff;
 }
-/* line 569, style.scss */
+/* line 578, style.scss */
 .box-item .box-center .box-btn:hover {
   color: #3b95d3;
   background-color: #fff;
 }
 
-/* line 576, style.scss */
+/* line 585, style.scss */
 .box-1 {
   background-color: #3b95d3;
 }
-/* line 579, style.scss */
+/* line 588, style.scss */
 .box-1 .box-center h1 {
   font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* line 585, style.scss */
+/* line 594, style.scss */
 .box-2 {
   background-image: url("../img/box-2-bg.png");
   -moz-background-size: cover;
@@ -887,20 +896,20 @@ a {
   background-size: cover;
 }
 
-/* line 589, style.scss */
+/* line 598, style.scss */
 .box-3, .box-4, .box-5 {
   background-color: #3b95d3;
 }
 
 /* //header */
 /* container */
-/* line 594, style.scss */
+/* line 603, style.scss */
 .container {
   width: 100%;
   height: 1000px;
 }
 
-/* line 598, style.scss */
+/* line 607, style.scss */
 .bs-header {
   position: relative;
   width: 100%;
@@ -914,7 +923,7 @@ a {
   -webkit-background-size: cover;
   background-size: cover;
 }
-/* line 607, style.scss */
+/* line 616, style.scss */
 .bs-header .content {
   position: absolute;
   top: 35%;
@@ -923,17 +932,17 @@ a {
   color: #fff;
   line-height: 1.25;
 }
-/* line 614, style.scss */
+/* line 623, style.scss */
 .bs-header .content h1 {
   font-size: 60px;
   font-weight: 200;
 }
-/* line 620, style.scss */
+/* line 629, style.scss */
 .bs-header .content h2 {
   font-size: 35px;
   font-weight: 100;
 }
-/* line 627, style.scss */
+/* line 636, style.scss */
 .bs-header .icons {
   position: absolute;
   bottom: 0;
@@ -941,7 +950,7 @@ a {
   margin: 0 auto;
   text-align: center;
 }
-/* line 633, style.scss */
+/* line 642, style.scss */
 .bs-header .icons .icon {
   display: inline-block;
   color: #ddd;
@@ -949,87 +958,87 @@ a {
   margin: 10px 5px;
   padding: 5px;
 }
-/* line 639, style.scss */
+/* line 648, style.scss */
 .bs-header .icons .icon:hover {
   color: #fff;
 }
 
-/* line 645, style.scss */
+/* line 654, style.scss */
 .section {
   width: 100%;
   overflow: hidden;
 }
-/* line 648, style.scss */
+/* line 657, style.scss */
 .section .content {
   overflow: hidden;
   width: 960px;
   margin: 0 auto;
 }
 @media screen and (min-width: 750px) and (max-width: 1000px) {
-  /* line 654, style.scss */
+  /* line 663, style.scss */
   .section .content {
     width: 800px;
   }
 }
 @media screen and (max-width: 750px) {
-  /* line 659, style.scss */
+  /* line 668, style.scss */
   .section .content {
     width: 90%;
   }
 }
-/* line 663, style.scss */
+/* line 672, style.scss */
 .section h1 {
   margin-bottom: 20px;
   text-align: center;
   font-size: 32px;
   font-weight: 300;
 }
-/* line 671, style.scss */
+/* line 680, style.scss */
 .section p {
   text-indent: 2em;
 }
 
-/* line 675, style.scss */
+/* line 684, style.scss */
 .section-1 {
   padding-top: 35px;
   padding-bottom: 60px;
   background-color: #fff;
 }
-/* line 679, style.scss */
+/* line 688, style.scss */
 .section-1 .swiper-pagination {
   bottom: -30px !important;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
   opacity: 0.5;
 }
-/* line 683, style.scss */
+/* line 692, style.scss */
 .section-1 .swiper-button-next {
   background: url("../img/next.png") no-repeat;
 }
-/* line 686, style.scss */
+/* line 695, style.scss */
 .section-1 .swiper-button-prev {
   background: url("../img/prev.png") no-repeat;
 }
-/* line 689, style.scss */
+/* line 698, style.scss */
 .section-1 .time-wraper {
   position: relative;
   margin-top: 10px;
   height: 150px;
   width: 100%;
 }
-/* line 694, style.scss */
+/* line 703, style.scss */
 .section-1 .time-wraper div {
   position: absolute;
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-/* line 699, style.scss */
+/* line 708, style.scss */
 .section-1 .time-wraper div p {
   text-align: center;
   line-height: 40px;
   text-indent: 0;
 }
-/* line 705, style.scss */
+/* line 714, style.scss */
 .section-1 .time-wraper .bg-wraper {
   position: absolute;
   top: 15%;
@@ -1038,27 +1047,27 @@ a {
   background: url("../img/time-line.png") no-repeat;
   background-size: 100% 100%;
 }
-/* line 713, style.scss */
+/* line 722, style.scss */
 .section-1 .time-wraper .first {
   left: 7.5%;
   top: 10px;
 }
-/* line 717, style.scss */
+/* line 726, style.scss */
 .section-1 .time-wraper .second {
   left: 44%;
   bottom: 0;
 }
-/* line 721, style.scss */
+/* line 730, style.scss */
 .section-1 .time-wraper .third {
   right: 10.2%;
 }
-/* line 724, style.scss */
+/* line 733, style.scss */
 .section-1 .time-wraper .now {
   color: #fff;
   background: #3B95D3;
 }
 
-/* line 730, style.scss */
+/* line 739, style.scss */
 .bs-box {
   background-color: #f8f8f8;
   box-shadow: 0 0 5px #e1e1e1;
@@ -1069,65 +1078,65 @@ a {
   overflow: hidden;
 }
 
-/* line 737, style.scss */
+/* line 746, style.scss */
 .bs-img {
   float: left;
   width: 30%;
   height: 100%;
 }
-/* line 741, style.scss */
+/* line 750, style.scss */
 .bs-img img {
   width: 100%;
   height: 100%;
 }
 
-/* line 746, style.scss */
+/* line 755, style.scss */
 .bs-text {
   float: left;
   width: 70%;
   height: 100%;
   overflow: hidden;
 }
-/* line 751, style.scss */
+/* line 760, style.scss */
 .bs-text .bs-text-inner {
   margin: 15px 25px;
 }
-/* line 753, style.scss */
+/* line 762, style.scss */
 .bs-text .bs-text-inner h3 {
   font-size: 20px;
   text-align: center;
   margin-bottom: 8px;
 }
-/* line 758, style.scss */
+/* line 767, style.scss */
 .bs-text .bs-text-inner p {
   text-indent: 0;
   line-height: 1.75;
 }
-/* line 762, style.scss */
+/* line 771, style.scss */
 .bs-text .bs-text-inner i {
   color: #999;
 }
-/* line 765, style.scss */
+/* line 774, style.scss */
 .bs-text .bs-text-inner strong {
   font-weight: 500;
   color: #3b95d3;
 }
 
-/* line 771, style.scss */
+/* line 780, style.scss */
 .section-2 {
   padding-top: 35px;
   padding-bottom: 60px;
   background-color: #f8f8f8;
 }
 
-/* line 777, style.scss */
+/* line 786, style.scss */
 .bm-box ul {
   padding: 0 2px;
   width: 964px;
   height: 254px;
   overflow: hidden;
 }
-/* line 783, style.scss */
+/* line 792, style.scss */
 .bm-box li {
   background: #fdfdfd;
   position: relative;
@@ -1139,7 +1148,7 @@ a {
   border: solid 2px #ebebeb;
   margin-left: -2px;
 }
-/* line 793, style.scss */
+/* line 802, style.scss */
 .bm-box li.on {
   z-index: 1;
   background: #fff;
@@ -1147,57 +1156,57 @@ a {
   border: solid 2px #ddd;
 }
 
-/* line 803, style.scss */
+/* line 812, style.scss */
 .bm-item .item-inner {
   width: 318px;
   height: 100%;
 }
-/* line 809, style.scss */
+/* line 818, style.scss */
 .bm-item:nth-of-type(1) .depart-logo {
   background: url("../img/FE_blur.png") no-repeat;
 }
-/* line 813, style.scss */
+/* line 822, style.scss */
 .bm-item:nth-of-type(1):hover .depart-logo {
   background: url("../img/FE_focus.png");
   background-size: 100% 100%;
 }
-/* line 820, style.scss */
+/* line 829, style.scss */
 .bm-item:nth-of-type(2) .depart-logo {
   background: url("../img/BE_blur.png") no-repeat;
 }
-/* line 824, style.scss */
+/* line 833, style.scss */
 .bm-item:nth-of-type(2):hover .depart-logo {
   background: url("../img/BE_focus.png");
   background-size: 100% 100%;
 }
-/* line 831, style.scss */
+/* line 840, style.scss */
 .bm-item:nth-of-type(3) .depart-logo {
   background: url("../img/mobile_blur.png") no-repeat;
 }
-/* line 835, style.scss */
+/* line 844, style.scss */
 .bm-item:nth-of-type(3):hover .depart-logo {
   background: url("../img/mobile_focus.png");
   background-size: 100% 100%;
 }
-/* line 842, style.scss */
+/* line 851, style.scss */
 .bm-item:nth-of-type(4) .depart-logo {
   background: url("../img/design_blur.png") no-repeat;
 }
-/* line 846, style.scss */
+/* line 855, style.scss */
 .bm-item:nth-of-type(4):hover .depart-logo {
   background: url("../img/design_focus.png");
   background-size: 100% 100%;
 }
-/* line 853, style.scss */
+/* line 862, style.scss */
 .bm-item:nth-of-type(5) .depart-logo {
   background: url("../img/operation_blur.png") no-repeat;
 }
-/* line 857, style.scss */
+/* line 866, style.scss */
 .bm-item:nth-of-type(5):hover .depart-logo {
   background: url("../img/operation_focus.png") no-repeat;
   background-size: 100% 100%;
 }
-/* line 863, style.scss */
+/* line 872, style.scss */
 .bm-item .item-main {
   float: left;
   height: 100%;
@@ -1206,14 +1215,14 @@ a {
   overflow: hidden;
   border-right: 1px solid #eee;
 }
-/* line 870, style.scss */
+/* line 879, style.scss */
 .bm-item .item-main h2 {
   margin: 15px auto;
   height: 40px;
   font-size: 20px;
   font-weight: 300;
 }
-/* line 878, style.scss */
+/* line 887, style.scss */
 .bm-item .item-main .depart-logo {
   margin-top: 15%;
   margin-left: 22%;
@@ -1221,7 +1230,7 @@ a {
   height: 52%;
   background-size: 100% 100%;
 }
-/* line 886, style.scss */
+/* line 895, style.scss */
 .bm-item .item-detail {
   float: left;
   width: 160px;
@@ -1231,7 +1240,7 @@ a {
   margin-left: -1px;
   font-size: 14px;
 }
-/* line 896, style.scss */
+/* line 905, style.scss */
 .bm-item .item-detail .detail-top {
   padding-top: 3%;
   height: 50%;
@@ -1239,13 +1248,13 @@ a {
 }
 
 /* 作品展示 */
-/* line 907, style.scss */
+/* line 916, style.scss */
 .section-3 {
   padding-top: 35px;
   padding-bottom: 60px;
   background-color: #fff;
 }
-/* line 911, style.scss */
+/* line 920, style.scss */
 .section-3 .circle-wraper {
   position: relative;
   overflow: hidden;
@@ -1253,7 +1262,7 @@ a {
   height: 600px;
   width: 600px;
 }
-/* line 920, style.scss */
+/* line 929, style.scss */
 .section-3 .tip-zone {
   position: relative;
   z-index: 1;
@@ -1262,7 +1271,7 @@ a {
   height: 600px;
   overflow: hidden;
 }
-/* line 928, style.scss */
+/* line 937, style.scss */
 .section-3 .part {
   position: absolute;
   z-index: 1;
@@ -1270,7 +1279,7 @@ a {
   height: 600px;
   clip: rect(0px, 600px, 600px, 300px);
 }
-/* line 935, style.scss */
+/* line 944, style.scss */
 .section-3 .bing {
   position: absolute;
   z-index: 1;
@@ -1279,64 +1288,64 @@ a {
   clip: rect(0px, 300px, 600px, 0px);
   border-radius: 300px;
 }
-/* line 942, style.scss */
+/* line 951, style.scss */
 .section-3 .bing p {
   position: absolute;
   z-index: 999;
   margin-top: 300px;
   color: #fff;
 }
-/* line 950, style.scss */
+/* line 959, style.scss */
 .section-3 .law .bing {
   background: #8CD0FF;
   transform: rotate(60deg);
 }
-/* line 955, style.scss */
+/* line 964, style.scss */
 .section-3 .icy {
   transform: rotate(60deg);
 }
-/* line 957, style.scss */
+/* line 966, style.scss */
 .section-3 .icy .bing {
   background: #68BFF6;
   transform: rotate(108deg);
 }
-/* line 962, style.scss */
+/* line 971, style.scss */
 .section-3 .hk {
   transform: rotate(120deg);
 }
-/* line 964, style.scss */
+/* line 973, style.scss */
 .section-3 .hk .bing {
   background: #64B6F0;
   transform: rotate(144deg);
 }
-/* line 969, style.scss */
+/* line 978, style.scss */
 .section-3 .advanced {
   transform: rotate(180deg);
 }
-/* line 971, style.scss */
+/* line 980, style.scss */
 .section-3 .advanced .bing {
   background: #3693D2;
   transform: rotate(144deg);
 }
-/* line 976, style.scss */
+/* line 985, style.scss */
 .section-3 .international {
   transform: rotate(240deg);
 }
-/* line 978, style.scss */
+/* line 987, style.scss */
 .section-3 .international .bing {
   background: #175583;
   transform: rotate(60deg);
 }
-/* line 983, style.scss */
+/* line 992, style.scss */
 .section-3 .wechart {
   transform: rotate(300deg);
 }
-/* line 985, style.scss */
+/* line 994, style.scss */
 .section-3 .wechart .bing {
   background: #0B3856;
   transform: rotate(60deg);
 }
-/* line 991, style.scss */
+/* line 1000, style.scss */
 .section-3 .circle {
   position: absolute;
   overflow: hidden;
@@ -1344,7 +1353,7 @@ a {
   height: 100%;
   border-radius: 50%;
 }
-/* line 1000, style.scss */
+/* line 1009, style.scss */
 .section-3 .pro-button {
   position: absolute;
   z-index: 999;
@@ -1354,13 +1363,13 @@ a {
   height: 600px;
   overflow: hidden;
 }
-/* line 1008, style.scss */
+/* line 1017, style.scss */
 .section-3 .pro-button .college-wraper {
   position: relative;
   overflow: hidden;
   height: 33%;
 }
-/* line 1012, style.scss */
+/* line 1021, style.scss */
 .section-3 .pro-button .college-wraper div {
   position: absolute;
   float: left;
@@ -1371,37 +1380,37 @@ a {
   text-align: center;
   cursor: pointer;
 }
-/* line 1021, style.scss */
+/* line 1030, style.scss */
 .section-3 .pro-button .college-wraper div p {
   line-height: 200px;
   text-indent: 0;
   font-size: 2rem;
 }
-/* line 1028, style.scss */
+/* line 1037, style.scss */
 .section-3 .pro-button .law-btn {
   right: 17%;
 }
-/* line 1031, style.scss */
+/* line 1040, style.scss */
 .section-3 .pro-button .icy-btn {
   left: 17%;
 }
-/* line 1034, style.scss */
+/* line 1043, style.scss */
 .section-3 .pro-button .hk-btn {
   left: 0;
 }
-/* line 1037, style.scss */
+/* line 1046, style.scss */
 .section-3 .pro-button .advanced-btn {
   right: 0;
 }
-/* line 1040, style.scss */
+/* line 1049, style.scss */
 .section-3 .pro-button .international-btn {
   left: 17%;
 }
-/* line 1043, style.scss */
+/* line 1052, style.scss */
 .section-3 .pro-button .wechart-btn {
   right: 17%;
 }
-/* line 1048, style.scss */
+/* line 1057, style.scss */
 .section-3 .pro-detail {
   overflow: hidden;
   position: absolute;
@@ -1417,11 +1426,11 @@ a {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
-/* line 1060, style.scss */
+/* line 1069, style.scss */
 .section-3 .pro-detail .circle {
   background: #e3e3e3;
 }
-/* line 1063, style.scss */
+/* line 1072, style.scss */
 .section-3 .pro-detail.pro-detail-show {
   height: 100%;
   width: 100%;
@@ -1430,20 +1439,20 @@ a {
   transform: scale(0.9) rotate(0);
   opacity: 1;
 }
-/* line 1071, style.scss */
+/* line 1080, style.scss */
 .section-3 .pro-detail.next-pro-detail {
   transform: scale(1) rotate(720deg);
 }
-/* line 1074, style.scss */
+/* line 1083, style.scss */
 .section-3 .pro-detail.prev-pro-detail {
   transform: scale(1) rotate(-720deg);
 }
-/* line 1077, style.scss */
+/* line 1086, style.scss */
 .section-3 .pro-detail .circle {
   position: relative;
   overflow: hidden;
 }
-/* line 1080, style.scss */
+/* line 1089, style.scss */
 .section-3 .pro-detail .circle span {
   position: absolute;
   top: 42%;
@@ -1451,26 +1460,26 @@ a {
   width: 60px;
   cursor: pointer;
 }
-/* line 1086, style.scss */
+/* line 1095, style.scss */
 .section-3 .pro-detail .circle span img {
   width: 100%;
   height: 100%;
 }
-/* line 1091, style.scss */
+/* line 1100, style.scss */
 .section-3 .pro-detail .circle .prev {
   left: 10px;
 }
-/* line 1094, style.scss */
+/* line 1103, style.scss */
 .section-3 .pro-detail .circle .next {
   right: 10px;
 }
-/* line 1097, style.scss */
+/* line 1106, style.scss */
 .section-3 .pro-detail .circle .circle-close {
   position: absolute;
   top: 80px;
   right: 100px;
 }
-/* line 1102, style.scss */
+/* line 1111, style.scss */
 .section-3 .pro-detail .circle ul {
   position: relative;
   top: 25%;
@@ -1478,117 +1487,117 @@ a {
   width: 80%;
   height: 50%;
 }
-/* line 1108, style.scss */
+/* line 1117, style.scss */
 .section-3 .pro-detail .circle ul li {
   display: none;
   position: absolute;
   height: 100%;
   width: 100%;
 }
-/* line 1113, style.scss */
+/* line 1122, style.scss */
 .section-3 .pro-detail .circle ul li.show-current-li {
   display: block;
 }
-/* line 1116, style.scss */
+/* line 1125, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper {
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-/* line 1120, style.scss */
+/* line 1129, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper div {
   float: left;
   margin-left: 5%;
   width: 45%;
   height: 100%;
 }
-/* line 1126, style.scss */
+/* line 1135, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-img {
   height: 100%;
 }
-/* line 1128, style.scss */
+/* line 1137, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-img img {
   width: 100%;
   height: 100%;
 }
-/* line 1133, style.scss */
+/* line 1142, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-intro {
   text-align: center;
 }
-/* line 1135, style.scss */
+/* line 1144, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-intro h3 {
   text-align: center;
   font-size: 1.6rem;
 }
-/* line 1139, style.scss */
+/* line 1148, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-intro p {
   margin-bottom: 60%;
   text-align: center;
   text-indent: 0;
   font-size: 1.3rem;
 }
-/* line 1145, style.scss */
+/* line 1154, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-intro a {
   display: block;
   font-size: 1.1rem;
   margi-top: 60%;
 }
-/* line 1150, style.scss */
+/* line 1159, style.scss */
 .section-3 .pro-detail .circle ul li .intro-wraper .index-intro img {
   margin-top: 10%;
   width: 60%;
   height: 60%;
 }
 
-/* line 1163, style.scss */
+/* line 1172, style.scss */
 .section-4 {
   padding-top: 35px;
   padding-bottom: 60px;
   background-color: #f8f8f8;
 }
 
-/* line 1168, style.scss */
+/* line 1177, style.scss */
 .gg-box {
   background-color: #fff;
   box-shadow: 0 0 5px #e2e2e2;
   overflow: hidden;
   padding: 10px;
 }
-/* line 1173, style.scss */
+/* line 1182, style.scss */
 .gg-box li {
   width: 15%;
   height: 140px;
   float: left;
   padding: 5px;
 }
-/* line 1178, style.scss */
+/* line 1187, style.scss */
 .gg-box li .item-inner {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-/* line 1184, style.scss */
+/* line 1193, style.scss */
 .gg-box li .item-img {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 1189, style.scss */
+/* line 1198, style.scss */
 .gg-box li .item-detail {
   position: absolute;
   background: rgba(59, 149, 211, 0.6);
   width: 100%;
   height: 100%;
 }
-/* line 1194, style.scss */
+/* line 1203, style.scss */
 .gg-box li .item-detail.da-animate {
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-/* line 1197, style.scss */
+/* line 1206, style.scss */
 .gg-box li .item-detail p {
   text-indent: 0;
   color: #fff;
@@ -1596,56 +1605,56 @@ a {
   font-size: 14px;
 }
 
-/* line 1206, style.scss */
+/* line 1215, style.scss */
 .da-slideFromTop {
   left: 0;
   top: -100%;
 }
 
-/* line 1210, style.scss */
+/* line 1219, style.scss */
 .da-slideFromBottom {
   left: 0;
   top: 100%;
 }
 
-/* line 1214, style.scss */
+/* line 1223, style.scss */
 .da-slideFromLeft {
   top: 0;
   left: -100%;
 }
 
-/* line 1218, style.scss */
+/* line 1227, style.scss */
 .da-slideFromRight {
   top: 0;
   left: 100%;
 }
 
 /* 动画结果阶段的class: */
-/* line 1223, style.scss */
+/* line 1232, style.scss */
 .da-slideTop {
   top: 0;
 }
 
-/* line 1226, style.scss */
+/* line 1235, style.scss */
 .da-slideLeft {
   left: 0;
 }
 
 /* sudan 2016.3.30 */
 /* 加入我们 */
-/* line 1232, style.scss */
+/* line 1241, style.scss */
 .section-6 {
   padding: 35px 0;
   /* 报名表单 */
   /* 二维码 */
 }
-/* line 1234, style.scss */
+/* line 1243, style.scss */
 .section-6 .content {
   padding: 3% 0;
   box-shadow: -3px -3px 8px #eee;
   background: #f8f8f8;
 }
-/* line 1239, style.scss */
+/* line 1248, style.scss */
 .section-6 .information, .section-6 .two-dimesion-code {
   overflow: hidden;
   float: left;
@@ -1653,7 +1662,7 @@ a {
   width: 40%;
   background: #fff;
 }
-/* line 1244, style.scss */
+/* line 1253, style.scss */
 .section-6 .information h2, .section-6 .two-dimesion-code h2 {
   padding: 10px 5%;
   margin-bottom: 10px;
@@ -1661,19 +1670,19 @@ a {
   font-weight: bold;
   border-left: 3px solid #3b95d3;
 }
-/* line 1258, style.scss */
+/* line 1267, style.scss */
 .section-6 .information form {
   padding-left: 5%;
 }
-/* line 1260, style.scss */
+/* line 1269, style.scss */
 .section-6 .information form div {
   margin-bottom: 30px;
 }
-/* line 1262, style.scss */
+/* line 1271, style.scss */
 .section-6 .information form div label {
   font-size: 14px;
 }
-/* line 1268, style.scss */
+/* line 1277, style.scss */
 .section-6 .information form input[type="text"] {
   margin-left: 5%;
   width: 65%;
@@ -1681,15 +1690,15 @@ a {
   border: 0;
   border-bottom: 1px solid #eee;
 }
-/* line 1275, style.scss */
+/* line 1284, style.scss */
 .section-6 .information form .tel-msg, .section-6 .information form .mail-msg {
   display: none;
 }
-/* line 1278, style.scss */
+/* line 1287, style.scss */
 .section-6 .information form .save {
   text-align: center;
 }
-/* line 1280, style.scss */
+/* line 1289, style.scss */
 .section-6 .information form .save input {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1703,11 +1712,11 @@ a {
   color: #fff;
   background: #3b95d3;
 }
-/* line 1291, style.scss */
+/* line 1300, style.scss */
 .section-6 .information form .save input:hover {
   background: #1a74b2;
 }
-/* line 1297, style.scss */
+/* line 1306, style.scss */
 .section-6 .information form .stu-group select {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1719,7 +1728,7 @@ a {
   height: 30px;
   border: 1px solid #eee;
 }
-/* line 1310, style.scss */
+/* line 1319, style.scss */
 .section-6 .code-wraper {
   float: left;
   width: 45%;
@@ -1727,12 +1736,12 @@ a {
   margin-top: 15%;
   text-align: center;
 }
-/* line 1316, style.scss */
+/* line 1325, style.scss */
 .section-6 .code-wraper img {
   width: 70%;
   height: 50%;
 }
-/* line 1321, style.scss */
+/* line 1330, style.scss */
 .section-6 .join-logo {
   margin-left: 50%;
   margin-top: 15%;
@@ -1741,49 +1750,49 @@ a {
 }
 
 /* 毕业去向 */
-/* line 1330, style.scss */
+/* line 1339, style.scss */
 .section-5 {
   margin-top: 35px;
   padding: 35px 0;
   background: #F8F8F8;
 }
-/* line 1334, style.scss */
+/* line 1343, style.scss */
 .section-5 .content {
   overflow: hidden;
   background: #fff;
 }
-/* line 1338, style.scss */
+/* line 1347, style.scss */
 .section-5 .card-left {
   float: left;
   overflow: hidden;
   margin-left: 5%;
   width: 100%;
 }
-/* line 1345, style.scss */
+/* line 1354, style.scss */
 .section-5 .people-card {
   float: left;
   width: 45%;
   padding: 40px 20px;
 }
-/* line 1349, style.scss */
+/* line 1358, style.scss */
 .section-5 .people-card h2 {
   font-size: 2rem;
 }
-/* line 1351, style.scss */
+/* line 1360, style.scss */
 .section-5 .people-card h2 span {
   color: #3b95d3;
 }
-/* line 1355, style.scss */
+/* line 1364, style.scss */
 .section-5 .people-card .company {
   overflow: hidden;
   margin-top: 30px;
   width: 60%;
 }
-/* line 1359, style.scss */
+/* line 1368, style.scss */
 .section-5 .people-card .company p {
   font-size: 1rem;
 }
-/* line 1362, style.scss */
+/* line 1371, style.scss */
 .section-5 .people-card .company .direction {
   float: right;
   font-size: 0.7rem;
