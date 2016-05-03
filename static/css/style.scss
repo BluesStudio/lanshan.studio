@@ -702,9 +702,10 @@ a{
         width: 100%;
         div {
             position: absolute;
-            width: 40px;
-            height: 40px;
+            width: 0;
+            height: 0;
             border-radius: 50%;
+            @include transition(all 0.3s ease-in-out);
             p {
                 text-align: center;
                 line-height: 40px;
@@ -731,6 +732,8 @@ a{
             right: 10.2%;
         }
         .now {
+            width: 40px;
+            height: 40px;
             color: #fff;
             background: #3B95D3;
         }

@@ -1,6 +1,6 @@
 /* 
 *Cong Min 于 2015.12.21 
-*sudan 于 2016.3.29
+*Sudan 于 2016.3.29
 */
 
 /* willUp添加up */
@@ -364,10 +364,10 @@ var menu_change = (function(){
             flowplayer("player","./static/js/flowplayer-3.2.18.swf",{
                 clip:{
                     url: "http://172.20.2.24:8080/blues/upload/video/other/1461502962321.flv",
-                    autoPlay:false,//是否自动播放，默认true
-                    autoBuffering:true//是否自动缓冲视频，默认true
+                    autoPlay:false,
+                    autoBuffering:true
                 },
-                onLoad:function(){// 当播放器载入完成时调用
+                onLoad:function(){
                     this.setVolume(30);// 设置音量0-100，默认50
                 }
             });           
@@ -390,21 +390,53 @@ var menu_change = (function(){
             /*走进我们, 轮播*/
             var mySwiper = new Swiper ('.swiper-container', {
                 //effect: 'flip',
-                //pagination: '.swiper-pagination',
+                pagination: '.swiper-pagination',
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev'
             });
             var nowIndex = 0;
 
             $(".swiper-button-next").click(function() {
-                if (nowIndex < 3) {
-                    $(".time-node").eq(nowIndex++).next().addClass("now").siblings().removeClass("now");
-                }                
+            
+                if (nowIndex < 2) {
+                   
+                    $(".time-node").eq(nowIndex).next().addClass("now").siblings().removeClass("now");
+                    nowIndex ++;
+                }           
             });
             $(".swiper-button-prev").click(function() {
-                if (nowIndex >= 0) {
-                    $(".time-node").eq(nowIndex--).prev().addClass("now").siblings().removeClass("now");
-                }                
+                if (nowIndex > 0) {
+                    
+                    $(".time-node").eq(nowIndex).prev().addClass("now").siblings().removeClass("now");
+                    nowIndex --;
+                }          
+            });
+
+            var startX = 0,
+                endX = 0;
+            $(".swiper-container").on("mousedown", function(e) {
+                startX = e.pageX;
+            });
+
+            $(".swiper-container").on("mouseup", function(e) {
+                endX = e.pageX;
+
+                if (endX - startX > 0) {
+                   
+                    if (nowIndex > 0) {
+                    
+                        $(".time-node").eq(nowIndex).prev().addClass("now").siblings().removeClass("now");
+                        nowIndex --;
+                    }     
+                    
+                } else if (endX - startX < 0) {
+                   
+                    if (nowIndex < 2) {
+                   
+                        $(".time-node").eq(nowIndex).next().addClass("now").siblings().removeClass("now");
+                        nowIndex ++;
+                    }  
+                }
             });
         }
     });
@@ -461,13 +493,7 @@ var checkForm = function() {
            $(this).val("");
         }
     });
-   
-    $(".group-select").change(function() {
-        var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
-            groupId = $(".group-id li").eq(groupIdIndex).html();
-        console.log(link.apply + groupId);
-    });
-    
+
     $("#stu-info").on("submit", function(e) {
 
         var inputBoxs = $(".information form input");
@@ -482,6 +508,17 @@ var checkForm = function() {
             return false;
         } else {
             var applyForm = new FormData($("#stu-info")[0]);
+
+            /* 取得组别id */
+            var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
+                groupId = $(".group-id li").eq(groupIdIndex).html();
+
+            $(".group-select").change(function() {
+                var groupIdIndex = $('.group-select option').index($('.group-select option:selected'));
+                groupId = $(".group-id li").eq(groupIdIndex).html();
+                console.log(link.apply + groupId);
+            });
+
             $.ajax({
                 type: "POST",
                 url: link.apply + groupId,
@@ -543,14 +580,14 @@ var showPro = function() {
 
     /* 下一张 */
     $(".next").click(function() {
-        if (liIndex == detailBoxLen) {
+        if (liIndex == detailBoxLen - 1) {
             liIndex = 0;
         } else {
              liIndex = liIndex + 1;
         }
         $(".pro-detail").removeClass("prev-pro-detail");
         $(".pro-detail").removeClass("next-pro-detail");
-       
+       console.log(liIndex);
         setTimeout(function() {
             $(".pro-detail li").eq(liIndex).addClass("show-current-li")
                 .siblings().removeClass("show-current-li");
@@ -563,7 +600,7 @@ var showPro = function() {
     /* 上一张 */
     $(".prev").click(function() {
         if (liIndex == 0) {
-            liIndex = detailBoxLen;
+            liIndex = detailBoxLen - 1;
         } else {
             liIndex = liIndex - 1;
         }        
