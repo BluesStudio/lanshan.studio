@@ -93,7 +93,7 @@
             </div>
             <div class="blues-video">
                 <span class="close-video">X</span>
-                <div id="player"></div>
+                <video id="player"></video>
             </div>
             
         </div>
@@ -241,20 +241,15 @@
             
             <!-- 作品展示按钮 -->
             <div class="pro-button">
-                <div class="circle">
-                    <div class="circle-top college-wraper">
-                        <div class="icy-btn"><p>i重邮</p></div>
-                        <div class="law-btn"><p>法学院</p></div>
+                <script type="text/x-handlebars-template" id="pro-btn">
+                    <div class="circle">
+                        <div class="college-wraper">
+                        {{#each this}}
+                            <div class="icy-btn"><p>{{p_name}}</p></div>
+                       {{/each}}
+                       </div>
                     </div>
-                    <div class="circle-middle college-wraper">
-                        <div class="hk-btn"><p>港澳台</p></div>
-                        <div class="advanced-btn"><p>先进制造</p></div>
-                    </div>
-                    <div class="circle-bottom college-wraper">
-                        <div class="international-btn"><p>国际学院</p></div>
-                        <div class="wechart-btn"><p>微信平台</p></div>
-                    </div>
-                </div>
+                </script>
             </div>
             
             <!-- 作品展示 -->
@@ -262,7 +257,7 @@
                 <div class="circle">
                     <a href="#" class="circle-close">
                         <img src="static/img/pro_close.png" alt="">
-                    </a>
+                    </a> 
                     <span class="prev">
                         <img src="static/img/prev.png" alt="关闭">
                     </span>

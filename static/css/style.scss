@@ -293,7 +293,8 @@ a{
                 height: 40px;
             }
             h1{
-                width: 265px;
+                //width: 265px;
+                width: 80%;
                 padding-left: 5px;
                 line-height: 40px;
                 font:{
@@ -302,7 +303,7 @@ a{
             }
         }
         .menu-guide {
-            left: 26%;
+            left: 30%;
             li {
                 @include transition(all 0.4s ease-out);
                 font: {
@@ -335,7 +336,8 @@ a{
         top: 30px;
         left: 5%;
         cursor: pointer;
-        width: 350px;
+        //width: 350px;
+        width: 30%;
         height: 60px;
         overflow: hidden;
         @include opacity(0.8);
@@ -430,6 +432,20 @@ a{
         bottom: 2%;
         width: 100%;
         color: #888;
+    }
+}
+@media screen and (max-width: 850px) {
+    .nav#fixed .top {
+        .logo {
+            h1 {
+                width: 0;
+            }
+        }
+        .menu-guide {
+            width: 90%;
+            left: 10%;
+            font-size: 0.8rem;
+        }
     }
 }
 /* header */
@@ -702,8 +718,6 @@ a{
         width: 100%;
         div {
             position: absolute;
-            width: 0;
-            height: 0;
             border-radius: 50%;
             @include transition(all 0.3s ease-in-out);
             p {
@@ -789,14 +803,15 @@ a{
     ul{
         padding: 0 2px;
         width: 964px;
-        height: 254px;
+        //height: 254px;
+        height: 260px;
         overflow: hidden;
     }
     li{
         background: #fdfdfd;
         position: relative;
         width: 158px;
-        height: 250px;
+        height: 260px;
         float: left;
         display: inline;
         overflow: hidden;
@@ -906,7 +921,7 @@ a{
             size: 14px;
         }
         .detail-top {
-            padding-top: 3%;
+            padding: 5px;
             height: 50%;
             border-top: 1px solid #eee;
         }
@@ -1020,7 +1035,7 @@ a{
         .college-wraper {
             position: relative;
             overflow: hidden;
-            height: 33%;
+            height: 100%;
             div {
                 position: absolute;
                 float: left;
@@ -1035,26 +1050,55 @@ a{
                     text-indent: 0;
                     font-size: 2rem;
                 }
+            
+                &:nth-of-type(1) {
+                    left: 17%;
+                }
+                &:nth-of-type(2) {
+                    right: 17%;
+                }
+                &:nth-of-type(3) {
+                    top: 33%;
+                    left: 0;
+                }
+                &:nth-of-type(4) {
+                    top: 33%;
+                    right: 0;
+                }
+                &:nth-of-type(5) {
+                    top: 66%;
+                    left: 17%;
+                }
+                &:nth-of-type(6) {
+                    top: 66%;
+                    right: 17%;
+                }
             }
          }
-        .law-btn {
-            right: 17%;
-        }
-        .icy-btn {
-            left: 17%;
-        }
-        .hk-btn {
-            left: 0;
-        }
-        .advanced-btn {
-            right: 0;
-        }
-        .international-btn {
-            left: 17%;
-        }
-        .wechart-btn {
-            right: 17%;
-        }
+        /* 
+            .law-btn {
+                right: 17%;
+            }
+            .icy-btn {
+                left: 17%;
+            }
+            .hk-btn {
+                top: 33%;
+                left: 0;
+            }
+            .advanced-btn {
+                top: 33%;
+                right: 0;
+            }
+            .international-btn {
+                top: 66%;
+                left: 17%;
+            }
+            .wechart-btn {
+                top: 66%;
+                right: 17%;
+            } 
+        */
    }
     
     .pro-detail {
@@ -1149,7 +1193,7 @@ a{
                                 font-size: 1.6rem;
                             }
                             p {
-                                margin-bottom: 60%;
+                                //margin-bottom: 60%;
                                 text-align: center;
                                 text-indent: 0;
                                 font-size: 1.3rem;
@@ -1157,7 +1201,7 @@ a{
                             a {
                                 display: block;
                                 font-size: 1.1rem;
-                                margi-top: 60%;
+                                margin-top: 60%;
                             }
                             img {
                                 margin-top: 10%;
@@ -1166,6 +1210,64 @@ a{
                             }
                         }
                         
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section-3 {
+        .circle-wraper {
+            width: 450px;
+            height: 450px;
+        }
+        .tip-zone {
+            width: 450px;
+            height: 450px;
+        }
+        .part {
+            width: 450px;  
+            height: 450px;  
+            clip: rect(0px, 450px, 450px, 225px); 
+        }
+        .bing {
+            width: 450px;  
+            height: 450px;  
+            clip: rect(0px, 225px, 450px, 0px);
+        }
+        .pro-button {
+            width: 450px;
+            height: 450px;
+            .college-wraper {
+                div {
+                    height: 150px;
+                    width: 150px;
+                    p {
+                        line-height: 150px;
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+        .pro-detail {
+            .circle {
+                span {
+                    height: 40px;
+                    width: 40px;
+                }
+                ul li .intro-wraper {
+                    .index-intro {
+                        h3 {
+                            font-size: 1.3rem;
+                        }
+                        p {
+                            font-size: 1rem;
+                        }
+                        a {
+                            font-size: 0.8rem;
+                        }
                     }
                 }
             }
@@ -1359,7 +1461,7 @@ a{
         width: 45%;
         padding: 40px 20px;
         h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             span {
                 color: #3b95d3;
             }            
@@ -1371,10 +1473,23 @@ a{
             p {
                 font-size: 1rem;
             }
-            .direction {
+            .direction { 
                 float: right;
                 font-size: 0.7rem;
                 color: #696969;
+            }
+        }
+    }
+}
+@media screen and (max-width: 750px) {
+    .section-5 {
+        .people-card {
+            width: 40%;
+            .company {
+                width: 80%; 
+                p {
+                    text-indent: 1em;
+                }
             }
         }
     }

@@ -347,12 +347,14 @@ var menu_change = (function(){
 })(jQuery);
 
 /* 首屏视频 */
-(function() {
+/*(function() {
     $.ajax({
         type: "GET",
         url: link.vedio,
         success: function(result) {
             console.log(result);
+
+            $("#player").attr("src", result.data[0].vi_url);
 
             $("#look-blues").bind("click", function(e) {
                 e.preventDefault();
@@ -360,21 +362,10 @@ var menu_change = (function(){
             });
             $(".close-video").bind("click", function() {
                 $(".blues-video").fadeOut();
-            });
-            flowplayer("player","./static/js/flowplayer-3.2.18.swf",{
-                clip:{
-                    url: "http://172.20.2.24:8080/blues/upload/video/other/1461502962321.flv",
-                    autoPlay:false,
-                    autoBuffering:true
-                },
-                onLoad:function(){
-                    this.setVolume(30);// 设置音量0-100，默认50
-                }
-            });           
-
+            });  
         }
     });
- })();
+ })();*/
 
 /* 发展历史 */
 (function() {
@@ -513,11 +504,11 @@ var checkForm = function() {
             var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
                 groupId = $(".group-id li").eq(groupIdIndex).html();
 
-            $(".group-select").change(function() {
-                var groupIdIndex = $('.group-select option').index($('.group-select option:selected'));
-                groupId = $(".group-id li").eq(groupIdIndex).html();
-                console.log(link.apply + groupId);
-            });
+            // $(".group-select").change(function() {
+            //     var groupIdIndex = $('.group-select option').index($('.group-select option:selected'));
+            //     groupId = $(".group-id li").eq(groupIdIndex).html();
+            //     console.log(link.apply + groupId);
+            // });
 
             $.ajax({
                 type: "POST",
@@ -526,7 +517,10 @@ var checkForm = function() {
                 processData: false,
                 contentType: false,
                 success: function() {
+                    $(".submitBtn").attr("disabled", "true");
+                    $(".submitBtn").css("background", "#eee");
                     alert("提交成功！");
+
                 },
                 error: function() {
                     alert("提交失败！");
@@ -544,12 +538,8 @@ var checkForm = function() {
         success: function(result) {
             console.log(result);
             var groupTpl = Handlebars.compile($("#group-tpl").html());
-            $(".group-select").append(groupTpl(result.data));
-
-            /* 取得组别id */
-            var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
-                groupId = $(".group-id li").eq(groupIdIndex).html();
-            console.log(link.apply + groupId);
+            $(".group-select").append(groupTpl(result.data)); 
+            
         }
     });
 })();
@@ -587,7 +577,7 @@ var showPro = function() {
         }
         $(".pro-detail").removeClass("prev-pro-detail");
         $(".pro-detail").removeClass("next-pro-detail");
-       console.log(liIndex);
+      
         setTimeout(function() {
             $(".pro-detail li").eq(liIndex).addClass("show-current-li")
                 .siblings().removeClass("show-current-li");
@@ -626,6 +616,9 @@ var showPro = function() {
             var productionTpl = Handlebars.compile($("#production").html());
             $(".pro-detail ul").html(productionTpl(result.data));
 
+            var proBtnTpl = Handlebars.compile($("#pro-btn").html());
+            $(".pro-button").html(proBtnTpl(result.data));
+
             showPro();
         }
     });
@@ -649,10 +642,12 @@ var showPro = function() {
             /*展开 部门介绍*/
             $(".bm-item").hover(function() {
                 $(".bm-item").not($(this)).stop().animate({
-                    width: 158
+                    //width: 158
+                   width: "16.5%"
                 }).removeClass("on");
                 $(this).stop().animate({
-                    width: 318
+                    //width: 318
+                   width: "32.9%"
                 }).addClass("on");
             });
 

@@ -1,3 +1,4 @@
+
 var urlStr = "http://172.20.2.24:8080/blues/";
 var link = {
 
