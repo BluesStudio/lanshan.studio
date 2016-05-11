@@ -1,5 +1,5 @@
 
-var urlStr = "http://172.20.2.24:8080/blues/";
+var urlStr = "http://localhost:8080/blues-0.0.1-SNAPSHOT/";
 var link = {
 
 	//部门
@@ -21,5 +21,5 @@ var link = {
 	apply: urlStr + "index/addmenteesingroup/",
 
 	//组别
-	group: urlStr + "background/groups/getall"
+	group: urlStr + "index/getgroupall"
 };

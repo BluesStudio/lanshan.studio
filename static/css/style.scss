@@ -448,6 +448,19 @@ a{
         }
     }
 }
+@media screen and (max-width: 615px) {
+    .nav#fixed .top {
+        .logo {
+            width: 80%;
+            h1 {
+                width: 80%;
+            }
+        }
+        .menu-guide {
+            display: none;
+        }
+    }
+}
 /* header */
 .header{
     position: relative;
@@ -667,6 +680,18 @@ a{
         }
     }
 }
+@media screen and (max-width:420px) {
+    .bs-header {
+        .content {
+            h1 {
+                font-size: 2.6rem;
+            }
+            p{
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
 .section{
     width: 100%;
     overflow: hidden;
@@ -750,6 +775,27 @@ a{
             height: 40px;
             color: #fff;
             background: #3B95D3;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .section-1 {
+        .time-wraper {
+            .first {
+                left: 4%;
+            }
+            .second {
+                left: 40%;
+            }
+            .third {
+                right: 6%;
+            }
+        }
+        .swiper-button-next {
+            display: none;
+        }
+        .swiper-button-prev {
+            display: none;
         }
     }
 }
@@ -928,7 +974,64 @@ a{
        
     }
 }
-
+@media screen and (max-width: 800px) {
+    .bm-box {
+        ul {
+            height: auto;
+            width: 100%;
+            li {
+                margin-left: 0.5%;
+                margin-right: 0.5%;
+                margin-bottom: 10px;
+                width: 48%;
+                &.on {
+                    width: 48%;
+                }
+            }
+        }
+    }
+    .bm-item {
+        .item-inner {
+            width: 100%;
+        }
+        .item-main {
+            width: 45%;
+        }
+        .item-detail {
+            width: 55%;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .bm-item {
+        .item-inner {
+            width: 100%;
+        }
+        .item-main {
+            width: 45%;
+            .depart-logo {
+                margin-left: 10%;
+                width: 75%;
+            }
+        }
+        .item-detail {
+            width: 55%;
+        }
+    }
+    .bm-box {
+        ul {
+            height: auto;
+            width: 100%;
+            li {
+                margin-bottom: 10px;
+                width: 100%;
+                &.on {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
 /* 作品展示 */
 
 .section-3 {
@@ -1075,30 +1178,7 @@ a{
                 }
             }
          }
-        /* 
-            .law-btn {
-                right: 17%;
-            }
-            .icy-btn {
-                left: 17%;
-            }
-            .hk-btn {
-                top: 33%;
-                left: 0;
-            }
-            .advanced-btn {
-                top: 33%;
-                right: 0;
-            }
-            .international-btn {
-                top: 66%;
-                left: 17%;
-            }
-            .wechart-btn {
-                top: 66%;
-                right: 17%;
-            } 
-        */
+       
    }
     
     .pro-detail {
@@ -1193,7 +1273,7 @@ a{
                                 font-size: 1.6rem;
                             }
                             p {
-                                //margin-bottom: 60%;
+                                
                                 text-align: center;
                                 text-indent: 0;
                                 font-size: 1.3rem;
@@ -1220,26 +1300,26 @@ a{
 @media screen and (max-width: 768px) {
     .section-3 {
         .circle-wraper {
-            width: 450px;
-            height: 450px;
+            width: 550px;
+            height: 550px;
         }
         .tip-zone {
-            width: 450px;
-            height: 450px;
+            width: 550px;
+            height: 550px;
         }
         .part {
-            width: 450px;  
-            height: 450px;  
-            clip: rect(0px, 450px, 450px, 225px); 
+            width: 550px;  
+            height: 550px;  
+            clip: rect(0px, 550px, 550px, 275px); 
         }
         .bing {
-            width: 450px;  
-            height: 450px;  
-            clip: rect(0px, 225px, 450px, 0px);
+            width: 550px;  
+            height: 550px;  
+            clip: rect(0px, 275px, 550px, 0px);
         }
         .pro-button {
-            width: 450px;
-            height: 450px;
+            width: 550px;
+            height: 550px;
             .college-wraper {
                 div {
                     height: 150px;
@@ -1267,6 +1347,72 @@ a{
                         }
                         a {
                             font-size: 0.8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .section-3 {
+        .circle-wraper {
+            width: 280px;
+            height: 280px;
+        }
+        .tip-zone {
+            width: 280px;
+            height: 280px;
+        }
+        .part {
+            width: 280px;  
+            height: 280px;  
+            clip: rect(0px, 280px, 280px, 140px); 
+        }
+        .bing {
+            width: 280px;  
+            height: 280px;  
+            clip: rect(0px, 140px, 280px, 0px);
+        }
+        .pro-button {
+            width: 280px;
+            height: 280px;
+            .college-wraper {
+                div {
+                    height: 100px;
+                    width: 100px;
+                    p {
+                        line-height: 100px;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        .pro-detail {
+            .circle {
+                .circle-close {
+                    top: 20px;
+                    right: 80px;
+                }
+                span {
+                    height: 30px;
+                    width: 30px;
+                }
+                ul {
+                    width: 70%;
+                    left: 15%;
+                    li .intro-wraper {
+                        .index-intro {
+                            h3 {
+                                font-size: 1rem;
+                            }
+                            p {
+                                font-size: 0.5rem;
+                            }
+                            a {
+                                font-size: 0.8rem;
+                            }
                         }
                     }
                 }
@@ -1315,6 +1461,13 @@ a{
                 font-size: 14px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .gg-box li {
+        width: 29%;
+        height: 80px;
     }
 }
 .da-slideFromTop {
@@ -1440,6 +1593,24 @@ a{
     }
 }
 
+@media screen and (max-width: 615px) {
+    .section-6 .information, .section-6 .two-dimesion-code {
+        margin: 5%;
+        width: 90%;
+    }
+    .section-6 {
+        .join-logo {
+            margin-left: 45%;
+            width: 15%;
+            height: 10%;
+        }
+        .two-dimesion-code {
+            height: auto;
+        }
+    }
+    
+}
+
 /* 毕业去向 */
 .section-5 {
     margin-top: 35px;
@@ -1491,6 +1662,29 @@ a{
                     text-indent: 1em;
                 }
             }
+        }
+    }
+}
+@media screen and (max-width: 615px) {
+     .section-5 {
+        .people-card {
+            width: 40%;
+            padding: 40px 10px;
+            h2 {
+                font-size: 0.8rem;
+            }
+            .company {
+                width: 80%; 
+                p {
+                    font-size: 0.7rem;
+                    text-indent: 0em;
+                }
+            }
+        }
+    }
+    .section {
+        h1 {
+            font-size: 1.5rem;
         }
     }
 }

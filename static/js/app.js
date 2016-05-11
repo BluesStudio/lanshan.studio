@@ -347,7 +347,8 @@ var menu_change = (function(){
 })(jQuery);
 
 /* 首屏视频 */
-/*(function() {
+(function() {
+   
     $.ajax({
         type: "GET",
         url: link.vedio,
@@ -365,7 +366,7 @@ var menu_change = (function(){
             });  
         }
     });
- })();*/
+ })();
 
 /* 发展历史 */
 (function() {
