@@ -431,6 +431,9 @@
                 this.options.autoplay = false;
             }
         },
+        start : function(){
+            this._startSlideshow();
+        },
         stop : function() {
             this._stopSlideshow();
         },

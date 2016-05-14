@@ -20,6 +20,7 @@ $color_blues: #3b95d3;
     background-color: #F1F1F1;
     overflow: visible;
     width: 3px;
+    height: 3px;
 }
 ::-webkit-scrollbar-thumb{
     background-color: rgba(0, 0, 0, .2);
@@ -217,25 +218,13 @@ body{
     color: $color_text;
     line-height: 1.5;
     overflow-x: hidden;
-    @include transition(right 0.4s ease-out);
+    @include transform(translate3d(0, 0, 0));
+    @include transition(all 0.3s ease-in-out);
     &.slide{
-        right: 300px;
-        .nav{
-            right: 300px;
-            .top{
-                left: -300px;
-                .logo{
-                    position: fixed;
-                    h1{
-                        width: 265px;
-                    }
-                }
-                .menu-btn{
-                    right: -70px;
-                }
-            }
-            .menu{
-                right: 0;
+        @include transform(translate3d(-300px, 0, 0));
+        .nav .top{
+            .menu-btn{
+                right: -70px;
             }
         }
         .nav#fixed{
@@ -292,15 +281,6 @@ a{
                 width: 40px;
                 height: 40px;
             }
-            h1{
-                //width: 265px;
-                width: 80%;
-                padding-left: 5px;
-                line-height: 40px;
-                font:{
-                    size: 1.15em;
-                }
-            }
         }
         .menu-guide {
             left: 30%;
@@ -350,20 +330,6 @@ a{
             width: 60px;
             height: 60px;
             @include transition(all 0.4s ease-out);
-        }
-        h1{
-            width: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            padding-left: 10px;
-            line-height: 60px;
-            color: #fff;
-            @include transition(all 0.4s ease-out);
-            font:{
-                size: 1.5em;
-                weight: 400;
-            }
-            -moz-osx-font-smoothing: grayscale;
         }
     }
     .menu-guide {
@@ -436,11 +402,6 @@ a{
 }
 @media screen and (max-width: 850px) {
     .nav#fixed .top {
-        .logo {
-            h1 {
-                width: 0;
-            }
-        }
         .menu-guide {
             width: 90%;
             left: 10%;
@@ -450,12 +411,6 @@ a{
 }
 @media screen and (max-width: 615px) {
     .nav#fixed .top {
-        .logo {
-            width: 80%;
-            h1 {
-                width: 80%;
-            }
-        }
         .menu-guide {
             display: none;
         }
