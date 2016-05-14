@@ -67,8 +67,8 @@ var Page = (function() {
                 shadowSides: 0.8,
                 shadowFlip: 0.7,
                 autoplay: true,
-                interval: 5000,
-                easing: 'ease-out',
+                interval: 8000,
+                easing: 'ease-out-in',
                 onBeforeFlip: function(before, after){
                     /* 翻页前下方导航原点切换 */
                     setTimeout(function(){
@@ -108,17 +108,15 @@ var Page = (function() {
                 config.$bookBlock.bookblock('prev');
                 return false;
             });
-            config.$nav.each(function(i) {
-                /* 下方导航圆点点击切换 */
-                $(this).on('click touchstart', function() {
-                    var $dot = $(this);
-                    setTimeout(function(){
-                        config.$nav.removeClass('active');
-                        $dot.addClass('active');
-                    }, 250);
-                    config.$bookBlock.bookblock('jump', i + 1);
-                    return false;
-                });
+            /* 下方导航圆点点击切换 */
+            config.$nav.on('click touchstart', function() {
+                var $dot = $(this);
+                setTimeout(function(){
+                    config.$nav.removeClass('active');
+                    $dot.addClass('active');
+                }, 250);
+                config.$bookBlock.bookblock('jump', $dot.data('id'));
+                return false;
             });
             // add swipe events
             $slides.on({
@@ -134,6 +132,7 @@ var Page = (function() {
         };
     return {
         init: init,
+        start: start,
         stop: stop
     };
 })();
@@ -141,8 +140,8 @@ var Page = (function() {
 /* 滚轮控制 */
 var scrollControllers = (function(){
     /* 滚轮上下左右 */
-    var keys = [37, 38, 39, 40];
-    var functions = {
+    var keys = [37, 38, 39, 40],
+        functions = {
         preventDefault: function(e){
             e = e || window.event;
             if (e.preventDefault){
@@ -151,7 +150,6 @@ var scrollControllers = (function(){
             e.returnValue = false;
         },
         keydown: function(e){
-            console.log(e);
             for (var i = keys.length; i--;) {
                 if (e.keyCode === keys[i]) {
                     functions.preventDefault(e);
@@ -183,25 +181,6 @@ var scrollControllers = (function(){
         disable: functions.disable,
         enable: functions.enable
     }
-})();
-
-/* 滚轮移动 */
-var scrollMove = (function(){
-    var w = $(window);
-    w.on("scroll", function(){
-        /* 当页面无动画滚动时启用滚轮滚动 */
-        if(!$("html, body").is(":animated")){
-            scrollControllers.enable();
-        }
-    });
-    return function(e, time){
-        /* 当参数e为数字时,则scrollTop为e,当为字符串时,获取该元素到文档顶部的距离为scrollTop */
-        var scrollTop = !isNaN(e)?e:$(e)[0].offsetTop;
-        /* 执行动画滚动 */
-        $("html, body").animate({scrollTop: scrollTop}, time);
-        /* 当页面动画滚动时禁用滚轮滚动 */
-        scrollControllers.disable();
-    };
 })();
 
 /* 菜单按钮变换 */
@@ -236,9 +215,11 @@ var menu_change = (function(){
             /* 当序号为1时,传入参数i=1正向移动;序号为16时,传入参数i=0反向移动 */
             if(config.index <= 1){
                 scrollControllers.disable();
+                Page.stop();
                 config.change(e, 1);
             }else if(config.index >= 16){
                 scrollControllers.enable();
+                Page.start();
                 config.change(e, 0);
             }
         }
@@ -673,41 +654,48 @@ $(function() {
 
     /* 首屏动画和内容的过渡 */
     (function(){
-        var container = $(".container");
-        var w = $(window);
-        var hb = $("html, body");
-        var scrollTop;
-        var windowsHeight = w.height();
-        w.scroll();
+        var container = $(".container"),
+            w = $(window),
+            hb = $("html, body"),
+            scrollTop,
+            windowsHeight = w.height();
         w.on("scroll", function(){
-            /* 滚动出首屏后,顶部菜单变化样式且固定 */
-            scrollTop = w.scrollTop();
-            if(scrollTop >= windowsHeight - 60){
-                $(".nav").attr("id", "fixed");
-                $(".menu-btn").fadeOut();
-            }else{
-                $(".nav").removeAttr("id");
-                $(".menu-btn").fadeIn();
-            }
-        });
-        /* 首屏下滚,执行滚动动画至内容 */
-        $('.header').bind('mousewheel', function(event, delta) {
-            if(delta < 0 && !hb.is(":animated")){
-                scrollMove(windowsHeight, 1200);
-                Page.stop();
-            }
-        });
-        /* 内容上滚,执行滚动动画至首页 */
-        container.bind('mousewheel', function(event, delta) {
-            if(delta > 0 && !hb.is(":animated") && windowsHeight >= document.body.scrollTop){
-                scrollMove(0, 1200);
-            }
+
         });
         /* 点击按钮,执行滚动动画至内容 */
         $(".down-btn").click(function(){
-            scrollMove(windowsHeight, 1200);
+            smoothScroll(container[0], 1200, function(){
+                $(".nav").attr("id", "fixed");
+                $(".menu-btn").fadeOut();
+            });
         });
+        // w.scroll();
+        // w.on("scroll", function(){
+        //     /* 滚动出首屏后,顶部菜单变化样式且固定 */
+        //     scrollTop = w.scrollTop();
+        //     if(scrollTop >= windowsHeight - 60){
+        //         $(".nav").attr("id", "fixed");
+        //         $(".menu-btn").fadeOut();
+        //     }else{
+        //         $(".nav").removeAttr("id");
+        //         $(".menu-btn").fadeIn();
+        //     }
+        // });
+        // /* 首屏下滚,执行滚动动画至内容 */
+        // $('.header').bind('mousewheel', function(event, delta) {
+        //     if(delta < 0 && !hb.is(":animated")){
+        //         scrollMove(windowsHeight, 1200);
+        //         Page.stop();
+        //     }
+        // });
+        // /* 内容上滚,执行滚动动画至首页 */
+        // container.bind('mousewheel', function(event, delta) {
+        //     if(delta > 0 && !hb.is(":animated") && windowsHeight >= document.body.scrollTop){
+        //         scrollMove(0, 1200);
+        //     }
+        // });
     })();
+
     var particles_config = {
         "particles": {
             "number": {
