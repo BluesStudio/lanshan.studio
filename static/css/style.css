@@ -1816,57 +1816,61 @@ a {
     width: 29%;
     height: 80px;
   }
+  /* line 1427, style.scss */
+  .gg-box li .item-detail p {
+    font-size: 0.2rem;
+  }
 }
-/* line 1428, style.scss */
+/* line 1433, style.scss */
 .da-slideFromTop {
   left: 0;
   top: -100%;
 }
 
-/* line 1432, style.scss */
+/* line 1437, style.scss */
 .da-slideFromBottom {
   left: 0;
   top: 100%;
 }
 
-/* line 1436, style.scss */
+/* line 1441, style.scss */
 .da-slideFromLeft {
   top: 0;
   left: -100%;
 }
 
-/* line 1440, style.scss */
+/* line 1445, style.scss */
 .da-slideFromRight {
   top: 0;
   left: 100%;
 }
 
 /* 动画结果阶段的class: */
-/* line 1445, style.scss */
+/* line 1450, style.scss */
 .da-slideTop {
   top: 0;
 }
 
-/* line 1448, style.scss */
+/* line 1453, style.scss */
 .da-slideLeft {
   left: 0;
 }
 
 /* sudan 2016.3.30 */
 /* 加入我们 */
-/* line 1454, style.scss */
+/* line 1459, style.scss */
 .section-6 {
   padding: 35px 0;
   /* 报名表单 */
   /* 二维码 */
 }
-/* line 1456, style.scss */
+/* line 1461, style.scss */
 .section-6 .content {
   padding: 3% 0;
   box-shadow: -3px -3px 8px #eee;
   background: #f8f8f8;
 }
-/* line 1461, style.scss */
+/* line 1466, style.scss */
 .section-6 .information, .section-6 .two-dimesion-code {
   overflow: hidden;
   float: left;
@@ -1874,7 +1878,7 @@ a {
   width: 40%;
   background: #fff;
 }
-/* line 1466, style.scss */
+/* line 1471, style.scss */
 .section-6 .information h2, .section-6 .two-dimesion-code h2 {
   padding: 10px 5%;
   margin-bottom: 10px;
@@ -1882,19 +1886,20 @@ a {
   font-weight: bold;
   border-left: 3px solid #3b95d3;
 }
-/* line 1480, style.scss */
+/* line 1485, style.scss */
 .section-6 .information form {
   padding-left: 5%;
 }
-/* line 1482, style.scss */
+/* line 1487, style.scss */
 .section-6 .information form div {
+  overflow: hidden;
   margin-bottom: 30px;
 }
-/* line 1484, style.scss */
+/* line 1490, style.scss */
 .section-6 .information form div label {
   font-size: 14px;
 }
-/* line 1490, style.scss */
+/* line 1496, style.scss */
 .section-6 .information form input[type="text"] {
   margin-left: 5%;
   width: 65%;
@@ -1902,15 +1907,15 @@ a {
   border: 0;
   border-bottom: 1px solid #eee;
 }
-/* line 1497, style.scss */
+/* line 1503, style.scss */
 .section-6 .information form .tel-msg, .section-6 .information form .mail-msg {
   display: none;
 }
-/* line 1500, style.scss */
+/* line 1506, style.scss */
 .section-6 .information form .save {
   text-align: center;
 }
-/* line 1502, style.scss */
+/* line 1508, style.scss */
 .section-6 .information form .save input {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1924,11 +1929,11 @@ a {
   color: #fff;
   background: #3b95d3;
 }
-/* line 1513, style.scss */
+/* line 1519, style.scss */
 .section-6 .information form .save input:hover {
   background: #1a74b2;
 }
-/* line 1519, style.scss */
+/* line 1525, style.scss */
 .section-6 .information form .stu-group select {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1940,7 +1945,37 @@ a {
   height: 30px;
   border: 1px solid #eee;
 }
-/* line 1532, style.scss */
+/* line 1533, style.scss */
+.section-6 .information form .stu-group label {
+  float: left;
+}
+/* line 1536, style.scss */
+.section-6 .information form .stu-group .stu-grade {
+  float: left;
+}
+/* line 1539, style.scss */
+.section-6 .information form .stu-group .group-wraper {
+  float: left;
+  width: 60%;
+  margin-left: 10%;
+}
+/* line 1543, style.scss */
+.section-6 .information form .stu-group .group-wraper li {
+  cursor: pointer;
+}
+/* line 1546, style.scss */
+.section-6 .information form .stu-group .group-wraper .selected-option {
+  border-bottom: 1px solid #eee;
+}
+/* line 1551, style.scss */
+.section-6 .information form .stu-group .group-option li {
+  padding: 5px 20%;
+}
+/* line 1553, style.scss */
+.section-6 .information form .stu-group .group-option li:hover {
+  background: #F8F8F8;
+}
+/* line 1563, style.scss */
 .section-6 .code-wraper {
   float: left;
   width: 45%;
@@ -1948,12 +1983,12 @@ a {
   margin-top: 15%;
   text-align: center;
 }
-/* line 1538, style.scss */
+/* line 1569, style.scss */
 .section-6 .code-wraper img {
   width: 70%;
   height: 50%;
 }
-/* line 1543, style.scss */
+/* line 1574, style.scss */
 .section-6 .join-logo {
   margin-left: 50%;
   margin-top: 15%;
@@ -1962,67 +1997,67 @@ a {
 }
 
 @media screen and (max-width: 615px) {
-  /* line 1552, style.scss */
+  /* line 1583, style.scss */
   .section-6 .information, .section-6 .two-dimesion-code {
     margin: 5%;
     width: 90%;
   }
 
-  /* line 1557, style.scss */
+  /* line 1588, style.scss */
   .section-6 .join-logo {
     margin-left: 45%;
     width: 15%;
     height: 10%;
   }
-  /* line 1562, style.scss */
+  /* line 1593, style.scss */
   .section-6 .two-dimesion-code {
     height: auto;
   }
 }
 /* 毕业去向 */
-/* line 1570, style.scss */
+/* line 1601, style.scss */
 .section-5 {
   margin-top: 35px;
   padding: 35px 0;
   background: #F8F8F8;
 }
-/* line 1574, style.scss */
+/* line 1605, style.scss */
 .section-5 .content {
   overflow: hidden;
   background: #fff;
 }
-/* line 1578, style.scss */
+/* line 1609, style.scss */
 .section-5 .card-left {
   float: left;
   overflow: hidden;
   margin-left: 5%;
   width: 100%;
 }
-/* line 1585, style.scss */
+/* line 1616, style.scss */
 .section-5 .people-card {
   float: left;
   width: 45%;
   padding: 40px 20px;
 }
-/* line 1589, style.scss */
+/* line 1620, style.scss */
 .section-5 .people-card h2 {
   font-size: 1.6rem;
 }
-/* line 1591, style.scss */
+/* line 1622, style.scss */
 .section-5 .people-card h2 span {
   color: #3b95d3;
 }
-/* line 1595, style.scss */
+/* line 1626, style.scss */
 .section-5 .people-card .company {
   overflow: hidden;
   margin-top: 30px;
   width: 60%;
 }
-/* line 1599, style.scss */
+/* line 1630, style.scss */
 .section-5 .people-card .company p {
   font-size: 1rem;
 }
-/* line 1602, style.scss */
+/* line 1633, style.scss */
 .section-5 .people-card .company .direction {
   float: right;
   font-size: 0.7rem;
@@ -2030,41 +2065,42 @@ a {
 }
 
 @media screen and (max-width: 750px) {
-  /* line 1612, style.scss */
+  /* line 1643, style.scss */
   .section-5 .people-card {
     width: 40%;
   }
-  /* line 1614, style.scss */
+  /* line 1645, style.scss */
   .section-5 .people-card .company {
     width: 80%;
   }
-  /* line 1616, style.scss */
+  /* line 1647, style.scss */
   .section-5 .people-card .company p {
     text-indent: 1em;
   }
 }
 @media screen and (max-width: 615px) {
-  /* line 1625, style.scss */
+  /* line 1656, style.scss */
   .section-5 .people-card {
     width: 40%;
     padding: 40px 10px;
   }
-  /* line 1628, style.scss */
+  /* line 1659, style.scss */
   .section-5 .people-card h2 {
     font-size: 0.8rem;
   }
-  /* line 1631, style.scss */
+  /* line 1662, style.scss */
   .section-5 .people-card .company {
     width: 80%;
   }
-  /* line 1633, style.scss */
+  /* line 1664, style.scss */
   .section-5 .people-card .company p {
     font-size: 0.7rem;
     text-indent: 0em;
   }
 
-  /* line 1641, style.scss */
+  /* line 1672, style.scss */
   .section h1 {
     font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 }
