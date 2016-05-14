@@ -347,26 +347,26 @@ var menu_change = (function(){
 })(jQuery);
 
 /* 首屏视频 */
-(function() {
+// (function() {
    
-    $.ajax({
-        type: "GET",
-        url: link.vedio,
-        success: function(result) {
-            console.log(result);
+//     $.ajax({
+//         type: "GET",
+//         url: link.vedio,
+//         success: function(result) {
+//             console.log(result);
 
-            $("#player").attr("src", result.data[0].vi_url);
+//             $("#player").attr("src", result.data[0].vi_url);
 
-            $("#look-blues").bind("click", function(e) {
-                e.preventDefault();
-                $(".blues-video").fadeIn();
-            });
-            $(".close-video").bind("click", function() {
-                $(".blues-video").fadeOut();
-            });  
-        }
-    });
- })();
+//             $("#look-blues").bind("click", function(e) {
+//                 e.preventDefault();
+//                 $(".blues-video").fadeIn();
+//             });
+//             $(".close-video").bind("click", function() {
+//                 $(".blues-video").fadeOut();
+//             });  
+//         }
+//     });
+//  })();
 
 /* 发展历史 */
 (function() {
@@ -486,6 +486,8 @@ var checkForm = function() {
         }
     });
 
+
+
     $("#stu-info").on("submit", function(e) {
 
         var inputBoxs = $(".information form input");
@@ -503,13 +505,7 @@ var checkForm = function() {
 
             /* 取得组别id */
             var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
-                groupId = $(".group-id li").eq(groupIdIndex).html();
-
-            // $(".group-select").change(function() {
-            //     var groupIdIndex = $('.group-select option').index($('.group-select option:selected'));
-            //     groupId = $(".group-id li").eq(groupIdIndex).html();
-            //     console.log(link.apply + groupId);
-            // });
+                groupId = $(".group-id li").eq(groupIdIndex).html()
 
             $.ajax({
                 type: "POST",
@@ -540,7 +536,24 @@ var checkForm = function() {
             console.log(result);
             var groupTpl = Handlebars.compile($("#group-tpl").html());
             $(".group-select").append(groupTpl(result.data)); 
+
+
+            /* 组别展示 */
+            $(".selected-option").bind("click", function() {
+
+               
+                    $(".group-option").slideDown();
+                
+            });
             
+            $(".group-option li").bind("click", function() {
+
+                var index = $(".group-option li").index(this);
+                $(".selected-option").html($(".g-name").eq(index).html());
+                $("#g-id").val($(".g-id").eq(index).html());
+
+                $(".group-option").slideUp();
+            });
         }
     });
 })();

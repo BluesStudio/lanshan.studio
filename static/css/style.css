@@ -1861,58 +1861,63 @@ a {
   /* line 1468, style.scss */
   .gg-box li {
     width: 29%;
+    height: 80px;
+  }
+  /* line 1472, style.scss */
+  .gg-box li .item-detail p {
+    font-size: 0.2rem;
   }
 }
-/* line 1472, style.scss */
+/* line 1478, style.scss */
 .da-slideFromTop {
   left: 0;
   top: -100%;
 }
 
-/* line 1476, style.scss */
+/* line 1482, style.scss */
 .da-slideFromBottom {
   left: 0;
   top: 100%;
 }
 
-/* line 1480, style.scss */
+/* line 1486, style.scss */
 .da-slideFromLeft {
   top: 0;
   left: -100%;
 }
 
-/* line 1484, style.scss */
+/* line 1490, style.scss */
 .da-slideFromRight {
   top: 0;
   left: 100%;
 }
 
 /* 动画结果阶段的class: */
-/* line 1489, style.scss */
+/* line 1495, style.scss */
 .da-slideTop {
   top: 0;
 }
 
-/* line 1492, style.scss */
+/* line 1498, style.scss */
 .da-slideLeft {
   left: 0;
 }
 
 /* sudan 2016.3.30 */
 /* 加入我们 */
-/* line 1498, style.scss */
+/* line 1504, style.scss */
 .section-6 {
   padding: 35px 0;
   /* 报名表单 */
   /* 二维码 */
 }
-/* line 1500, style.scss */
+/* line 1506, style.scss */
 .section-6 .content {
   padding: 3% 0;
   box-shadow: -3px -3px 8px #eee;
   background: #f8f8f8;
 }
-/* line 1505, style.scss */
+/* line 1511, style.scss */
 .section-6 .information, .section-6 .two-dimesion-code {
   overflow: hidden;
   float: left;
@@ -1920,7 +1925,7 @@ a {
   width: 40%;
   background: #fff;
 }
-/* line 1510, style.scss */
+/* line 1516, style.scss */
 .section-6 .information h2, .section-6 .two-dimesion-code h2 {
   padding: 10px 5%;
   margin-bottom: 10px;
@@ -1928,19 +1933,20 @@ a {
   font-weight: bold;
   border-left: 3px solid #3b95d3;
 }
-/* line 1524, style.scss */
+/* line 1530, style.scss */
 .section-6 .information form {
   padding-left: 5%;
 }
-/* line 1526, style.scss */
+/* line 1532, style.scss */
 .section-6 .information form div {
+  overflow: hidden;
   margin-bottom: 30px;
 }
-/* line 1528, style.scss */
+/* line 1535, style.scss */
 .section-6 .information form div label {
   font-size: 14px;
 }
-/* line 1534, style.scss */
+/* line 1541, style.scss */
 .section-6 .information form input[type="text"] {
   margin-left: 5%;
   width: 65%;
@@ -1948,15 +1954,15 @@ a {
   border: 0;
   border-bottom: 1px solid #eee;
 }
-/* line 1541, style.scss */
+/* line 1548, style.scss */
 .section-6 .information form .tel-msg, .section-6 .information form .mail-msg {
   display: none;
 }
-/* line 1544, style.scss */
+/* line 1551, style.scss */
 .section-6 .information form .save {
   text-align: center;
 }
-/* line 1546, style.scss */
+/* line 1553, style.scss */
 .section-6 .information form .save input {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1970,11 +1976,11 @@ a {
   color: #fff;
   background: #3b95d3;
 }
-/* line 1557, style.scss */
+/* line 1564, style.scss */
 .section-6 .information form .save input:hover {
   background: #1a74b2;
 }
-/* line 1563, style.scss */
+/* line 1570, style.scss */
 .section-6 .information form .stu-group select {
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -1986,7 +1992,37 @@ a {
   height: 30px;
   border: 1px solid #eee;
 }
-/* line 1576, style.scss */
+/* line 1578, style.scss */
+.section-6 .information form .stu-group label {
+  float: left;
+}
+/* line 1581, style.scss */
+.section-6 .information form .stu-group .stu-grade {
+  float: left;
+}
+/* line 1584, style.scss */
+.section-6 .information form .stu-group .group-wraper {
+  float: left;
+  width: 60%;
+  margin-left: 10%;
+}
+/* line 1588, style.scss */
+.section-6 .information form .stu-group .group-wraper li {
+  cursor: pointer;
+}
+/* line 1591, style.scss */
+.section-6 .information form .stu-group .group-wraper .selected-option {
+  border-bottom: 1px solid #eee;
+}
+/* line 1596, style.scss */
+.section-6 .information form .stu-group .group-option li {
+  padding: 5px 20%;
+}
+/* line 1598, style.scss */
+.section-6 .information form .stu-group .group-option li:hover {
+  background: #F8F8F8;
+}
+/* line 1608, style.scss */
 .section-6 .code-wraper {
   float: left;
   width: 45%;
@@ -1994,12 +2030,12 @@ a {
   margin-top: 15%;
   text-align: center;
 }
-/* line 1582, style.scss */
+/* line 1614, style.scss */
 .section-6 .code-wraper img {
   width: 70%;
   height: 50%;
 }
-/* line 1587, style.scss */
+/* line 1619, style.scss */
 .section-6 .join-logo {
   margin-left: 50%;
   margin-top: 15%;
@@ -2008,67 +2044,67 @@ a {
 }
 
 @media screen and (max-width: 615px) {
-  /* line 1596, style.scss */
+  /* line 1628, style.scss */
   .section-6 .information, .section-6 .two-dimesion-code {
     margin: 5%;
     width: 90%;
   }
 
-  /* line 1601, style.scss */
+  /* line 1633, style.scss */
   .section-6 .join-logo {
     margin-left: 45%;
     width: 15%;
     height: 10%;
   }
-  /* line 1606, style.scss */
+  /* line 1638, style.scss */
   .section-6 .two-dimesion-code {
     height: auto;
   }
 }
 /* 毕业去向 */
-/* line 1614, style.scss */
+/* line 1646, style.scss */
 .section-5 {
   margin-top: 35px;
   padding: 35px 0;
   background: #F8F8F8;
 }
-/* line 1618, style.scss */
+/* line 1650, style.scss */
 .section-5 .content {
   overflow: hidden;
   background: #fff;
 }
-/* line 1622, style.scss */
+/* line 1654, style.scss */
 .section-5 .card-left {
   float: left;
   overflow: hidden;
   margin-left: 5%;
   width: 100%;
 }
-/* line 1629, style.scss */
+/* line 1661, style.scss */
 .section-5 .people-card {
   float: left;
   width: 45%;
   padding: 40px 20px;
 }
-/* line 1633, style.scss */
+/* line 1665, style.scss */
 .section-5 .people-card h2 {
   font-size: 1.6rem;
 }
-/* line 1635, style.scss */
+/* line 1667, style.scss */
 .section-5 .people-card h2 span {
   color: #3b95d3;
 }
-/* line 1639, style.scss */
+/* line 1671, style.scss */
 .section-5 .people-card .company {
   overflow: hidden;
   margin-top: 30px;
   width: 60%;
 }
-/* line 1643, style.scss */
+/* line 1675, style.scss */
 .section-5 .people-card .company p {
   font-size: 1rem;
 }
-/* line 1646, style.scss */
+/* line 1678, style.scss */
 .section-5 .people-card .company .direction {
   float: right;
   font-size: 0.7rem;
@@ -2076,41 +2112,42 @@ a {
 }
 
 @media screen and (max-width: 750px) {
-  /* line 1656, style.scss */
+  /* line 1688, style.scss */
   .section-5 .people-card {
     width: 40%;
   }
-  /* line 1658, style.scss */
+  /* line 1690, style.scss */
   .section-5 .people-card .company {
     width: 80%;
   }
-  /* line 1660, style.scss */
+  /* line 1692, style.scss */
   .section-5 .people-card .company p {
     text-indent: 1em;
   }
 }
 @media screen and (max-width: 615px) {
-  /* line 1669, style.scss */
+  /* line 1701, style.scss */
   .section-5 .people-card {
     width: 40%;
     padding: 40px 10px;
   }
-  /* line 1672, style.scss */
+  /* line 1704, style.scss */
   .section-5 .people-card h2 {
     font-size: 0.8rem;
   }
-  /* line 1675, style.scss */
+  /* line 1707, style.scss */
   .section-5 .people-card .company {
     width: 80%;
   }
-  /* line 1677, style.scss */
+  /* line 1709, style.scss */
   .section-5 .people-card .company p {
     font-size: 0.7rem;
     text-indent: 0em;
   }
 
-  /* line 1685, style.scss */
+  /* line 1717, style.scss */
   .section h1 {
     font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 }

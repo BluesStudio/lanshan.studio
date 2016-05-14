@@ -370,18 +370,32 @@
                     </div>
                     <div class="stu-group group-select">
                         <label for="stu-grade">方向</label>
-                        
+                        <input type="text" name="group_id" id="g-id" style="display:none;">
                     </div>
-                    <script type="text/x-handlebars-template" id="group-tpl">
+                   <!--  <script type="text/x-handlebars-template" id="group-tpl">
                         <select>
                             {{#each this}}
-                            <option value="">{{g_name}}</option>
+                            <option>{{g_name}}</option>
                             {{/each}}
                         </select>
                         <ul class="group-id" style="display:none;">
                             {{#each this}}
                             <li>{{group_id}}</li>
                             {{/each}}
+                        </ul>
+                    </script> -->
+                    <script type="text/x-handlebars-template" id="group-tpl">
+                        <ul class="group-wraper">
+                            <li><p class="selected-option">请选择方向</p>
+                                <ul class="group-option" style="display: none;">
+                                    {{#each this}}
+                                    <li value="">
+                                        <span class="g-name">{{g_name}}</span>
+                                        <span class="g-id" style="display: none;">{{group_id}}</span>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </li>
                         </ul>
                     </script>
                     <div class="stu-tel">

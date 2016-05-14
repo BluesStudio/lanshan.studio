@@ -1468,6 +1468,11 @@ a{
     .gg-box li {
         width: 29%;
         height: 80px;
+        .item-detail {
+            p {
+                font-size: 0.2rem;
+            }
+        }
     }
 }
 .da-slideFromTop {
@@ -1525,6 +1530,7 @@ a{
         form {
             padding-left: 5%;
             div {
+                overflow: hidden;
                 margin-bottom: 30px;
                 label {
                     font: {
@@ -1564,10 +1570,35 @@ a{
                 select {
                     @include transition(all 0.5s ease-in-out);
                     padding: 5px 25px;
-                     margin-left: 5%;
+                    margin-left: 5%;
                     width: 60%;
                     height: 30px;
                     border: 1px solid #eee;
+                }
+                label {
+                    float: left;
+                }
+                .stu-grade {
+                    float: left;
+                }
+                .group-wraper {
+                    float: left;
+                    width: 60%;
+                    margin-left: 10%;
+                    li {
+                        cursor: pointer;
+                    }
+                    .selected-option {
+                        border-bottom: 1px solid #eee;
+                    }
+                }
+                .group-option {
+                    li {
+                        padding: 5px 20%;
+                        &:hover {
+                            background: #F8F8F8;
+                        }
+                    }
                 }
             }
         }
@@ -1685,6 +1716,7 @@ a{
     .section {
         h1 {
             font-size: 1.5rem;
+            margin-bottom: 10px;
         }
     }
 }
