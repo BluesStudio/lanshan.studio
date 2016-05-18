@@ -211,14 +211,14 @@ html{
 body{
     position: relative;
     font:{
-        family: 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
+        family: "Helvetica Neue", Helvetica, Aria, "Microsoft YaHei", sans-serif;
         size: 14px;
         weight: 300;
     }
     color: $color_text;
     line-height: 1.5;
     overflow-x: hidden;
-    padding-top: 100%;
+    background: #222;
     &.slide{
         .header,
         .container{
@@ -232,10 +232,10 @@ body{
                 }
             }
             .menu{
-                right: 0;
+                @include transform(translate3d(-300px, 0, 0));
             }
         }
-        .nav#fixed{
+        .nav.fixed{
             .menu-btn{
                 right: -55px;
             }
@@ -278,7 +278,7 @@ a{
     @include transition(all 0.4s ease-out);
 }
 
-.nav#fixed{
+.nav.fixed{
     height: 60px;
     .top{
         height: 60px;
@@ -286,6 +286,7 @@ a{
         .logo{
             top: 10px;
             left: 4%;
+            width: 40px;
             height: 40px;
             @include opacity(0.85);
             img{
@@ -293,23 +294,44 @@ a{
                 height: 40px;
             }
         }
-        .menu-guide {
-            left: 30%;
-            li {
-                @include transition(all 0.4s ease-out);
-                font: {
-                    size: 1.15em;
-                }
-                &:hover {
-                   animation: shake-slow 5s;
-                }
-                a {
-                    color: #fff;
-                }
+        .menu-btn{
+            display: none;
+            top: 15px;
+            @media screen and (max-width: 960px) {
+                display: block;
             }
         }
-        .menu-btn{
-            top: 15px;
+    }
+    .menu{
+        @media screen and (min-width: 960px) {
+            z-index: 1003;
+            left: 0;
+            right: 0;
+            width: auto;
+            height: 60px;
+            text-align: left;
+            background-color: transparent;
+            color: #fff;
+            ul{
+                top: 0;
+                left: 4%;
+                padding-left: 80px;
+                overflow: hidden;
+                li{
+                    float: left;
+                    display: inline-block;
+                    padding: 0 20px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 60px;
+                    &:hover {
+                        color: #fff;;
+                    }
+                }
+            }
+            .menu-footer{
+                display: none;
+            }
         }
     }
 }
@@ -327,38 +349,18 @@ a{
         top: 30px;
         left: 5%;
         cursor: pointer;
-        //width: 350px;
-        width: 30%;
+        width: 60px;
         height: 60px;
-        overflow: hidden;
         @include opacity(0.8);
-        @include transition(all 0.4s ease-out);
+        @include transition(all 0.3s ease-in-out);
         &:hover{
             @include opacity(1);
         }
         img{
-            float: left;
             width: 60px;
             height: 60px;
-            @include transition(all 0.4s ease-out);
+            @include transition(all 0.3s ease-in-out);
         }
-    }
-    .menu-guide {
-        float: left;
-        position: fixed;
-        top: 10px;
-        left: -1000px;
-        width: 70%;
-        ul {            
-            li {
-                display: inline-block;
-                padding: 10px 2%;
-                cursor: pointer;
-                color: #fff;
-                -moz-osx-font-smoothing: grayscale;
-            }
-        }
-        @include transition(all 0.4s ease-out);
     }
     .menu-btn{
         float: right;
@@ -385,7 +387,7 @@ a{
     background-color: #fff;
     text-align: center;
     @include transform(translate3d(0, 0, 0));
-    @include transition(right 0.3s ease-in-out);
+    @include transition(transform 0.3s ease-in-out);
     ul{
         position: relative;
         top: 25%;
@@ -395,11 +397,6 @@ a{
             cursor: pointer;
             &:hover {
                 color: $color_blues;;
-            }
-            a{
-                &:hover, &.active{
-                    color: $color_blues;
-                }
             }
         }
     }
@@ -411,36 +408,21 @@ a{
         color: #888;
     }
 }
-@media screen and (max-width: 850px) {
-    .nav#fixed .top {
-        .menu-guide {
-            width: 90%;
-            left: 10%;
-            font-size: 0.8rem;
-        }
-    }
-}
-@media screen and (max-width: 615px) {
-    .nav#fixed .top {
-        .menu-guide {
-            display: none;
-        }
-    }
-}
 /* header */
 .header,
 .container{
     @include transform(translate3d(0, 0, 0));
-    @include transition(all 0.3s ease-in-out);
+    @include transition(transform 0.3s ease-in-out);
 }
 .header{
-    position: fixed;
+    position: relative;
     z-index: 0;
     height: 100%;
     width: 100%;
     top: 0;
     right: 0;
     text-align: center;
+    background: #fff;
     .main-btns{
         cursor: pointer;
         position: absolute;
@@ -454,7 +436,6 @@ a{
     }
     .prev-btn, .next-btn{
         top: 50%;
-        //margin-top: -35px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
         &:hover{
@@ -505,16 +486,6 @@ a{
             }
         }
     }
-}
-.header-black-shadow{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    background: black;
-    @include opacity(0);
 }
 .main-box{
     position: relative;
@@ -596,7 +567,7 @@ a{
     background-color: $color_blues;
     .box-center{
         h1{
-            font-family: "webfont", 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;
+            font-family: "webfont", "Helvetica Neue", Helvetica, Aria, "Microsoft YaHei", sans-serif;
             -moz-osx-font-smoothing: grayscale;
         }
     }
@@ -612,7 +583,7 @@ a{
 /* container */
 .container{
     width: 100%;
-    height: 1000px;
+    background-color: #fff;
 }
 .bs-header{
     position: relative;
@@ -718,43 +689,50 @@ a{
     }
     .time-wraper {
         position: relative;
-        margin-top: 10px;
-        height: 150px;
-        width: 100%;
-        div {
+        margin: 10px auto;
+        width: 90%;
+        height: 60px;
+        border-top: 2px solid #888;
+        .time-node {
             position: absolute;
-            border-radius: 50%;
+            top: 16px;
+            width: 40px;
+            height: 40px;
+            margin-left: -20px;
+            border-radius: 5% 50% 50% 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 400;
+            text-indent: 0;
+            cursor: pointer;
+            @include transform(rotate(45deg));
             @include transition(all 0.3s ease-in-out);
-            p {
-                text-align: center;
-                line-height: 40px;
-                text-indent: 0;
+            &:before{
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                height: 8px;
+                width: 8px;
+                border-radius: 50%;
+                background: #888;
             }
-        }
-        .bg-wraper {
-            position: absolute;
-            top: 15%;
-            height: 65%;
-            width: 100%;
-            background: url("../img/time-line.png") no-repeat;
-            background-size: 100% 100%;
         }
         .first {
             left: 7.5%;
-            top: 10px;
         }
         .second {
-            left: 44%;
-            bottom: 0;
+            left: 50%;
         }
         .third {
-            right: 10.2%;
+            right: 7.5%;
         }
         .now {
-            width: 40px;
-            height: 40px;
             color: #fff;
-            background: #3B95D3;
+            background: $color_blues;
+            &:before{
+                background: $color_blues;
+            }
         }
     }
 }
@@ -1500,7 +1478,7 @@ a{
                 size: 16px;
                 weight: bold;
             }
-            border-left: 3px solid #3b95d3;
+            border-left: 3px solid $color_blues;
         }
         background: #fff;
     }
@@ -1534,13 +1512,13 @@ a{
                     @include transition(all 0.5s ease-in-out);
                     padding: 5px 25px;
                     border-radius: 4px;
-                    box-shadow: 1px 1px 5px #3b95d3;
+                    box-shadow: 1px 1px 5px $color_blues;
                     border: 0;
                     font: {
                         size: 16px;
                     }   
                     color: #fff;            
-                    background: #3b95d3;
+                    background: $color_blues;
                     &:hover {
                         background: #1a74b2;
                     }
@@ -1645,7 +1623,7 @@ a{
         h2 {
             font-size: 1.6rem;
             span {
-                color: #3b95d3;
+                color: $color_blues;
             }            
         }
         .company {

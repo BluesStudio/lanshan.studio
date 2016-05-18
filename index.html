@@ -17,17 +17,6 @@
     <!-- 顶部 -->
     <div class="top">
         <div class="logo"><a href="index.html"><img src="static/img/logo.png"></a></div>
-        <div class="menu-guide">
-            <ul data-scroll>
-                <li data-scroll-to="0" class="home">主页</li>
-                <li data-scroll-to="1" class="history-nav">发展历史</li>
-                <li data-scroll-to="2" class="department-nav">部门介绍</li>
-                <li data-scroll-to="3" class="production-nav">作品展示</li>
-                <li data-scroll-to="4" class="main-menber-nav">骨干团</li>
-                <li data-scroll-to="5" class="education-nav">毕业去向</li>
-                <li data-scroll-to="6" class="join-us">加入我们</li>
-            </ul>
-        </div>
         <div class="menu-btn"></div>
     </div>
     <!-- //顶部 -->
@@ -51,7 +40,6 @@
 </div>
 
 <div class="header">
-    <div class="header-black-shadow"></div>
     <!-- 组件 -->
     <ul class="header-list">
         <li class="active" data-id="1"></li>
@@ -134,47 +122,39 @@
     <section class="section section-1">
         <div class="content">
             <h1>发展历史</h1>
-            <script type="text/x-handlebars-template" id="history">
-                {{#each this}}
-                    <div class="swiper-slide">
-                        <div class="bs-box">
-                            <div class="bs-img">
-                                <img src="static/img/bbs.png">
-                            </div>
-                            <div class="bs-text">
-                                <div class="bs-text-inner">
-                                    <h3>{{h_name}}</h3>
-                                    <p>
-                                        <i class="fa fa-calendar-check-o"></i> 
-                                        {{h_description}}
-                                        <strong>{{h_name}}</strong>；
-                                    </p>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <script type="text/x-handlebars-template" id="history">
+                        {{#each this}}
+                        <div class="swiper-slide">
+                            <div class="bs-box">
+                                <div class="bs-img">
+                                    <img src="static/img/bbs.png">
+                                </div>
+                                <div class="bs-text">
+                                    <div class="bs-text-inner">
+                                        <h3>{{h_name}}</h3>
+                                        <p>
+                                            <i class="fa fa-calendar-check-o"></i>
+                                            {{h_description}}
+                                            <strong>{{h_name}}</strong>；
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                {{/each}}
-            </script>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                   
+                        {{/each}}
+                    </script>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-prev swiper-button-white"></div>
                 <div class="swiper-button-next swiper-button-white"></div>
             </div>
-            <div class="time-wraper">
-                <div class="bg-wraper"></div>
-                <div class="first time-node now">
-                    <p>1998</p>
-                </div>
-                <div class="second time-node">
-                    <p>2008</p>
-                </div>
-                <div class="third time-node">
-                    <p>2015</p>
-                </div>
-            </div>
+            <ul class="time-wraper">
+                <li class="first time-node now">1998</li>
+                <li class="second time-node">2008</li>
+                <li class="third time-node">2015</li>
+            </ul>
         </div>
     </section>
 
@@ -182,31 +162,30 @@
     <section class="section section-2">
         <div class="content">
             <h1>部门介绍</h1>
-            <script type="text/x-handlebars-template" id="department">
-                {{#each this}}
-                    <li class="bm-item">
-                        <div class="item-inner">
-                            <div class="item-main">
-                                <h2>{{d_name}}</h2>
-                                <div class="depart-logo"></div>
-                            </div>
-                            <div class="item-detail">
-                                {{#with groups}}
-                                    {{#each this}}
-                                       <div class="detail-top">
-                                            <h3>{{g_name}}</h3>
-                                            <p>{{g_description}}</p>
-                                       </div>
-                                   {{/each}}
-                                {{/with}}
-                            </div>
-                        </div>
-                    </li>
-                {{/each}}
-            </script>
             <div class="bm-box">
                 <ul>
-                    
+                    <script type="text/x-handlebars-template" id="department">
+                        {{#each this}}
+                        <li class="bm-item">
+                            <div class="item-inner">
+                                <div class="item-main">
+                                    <h2>{{d_name}}</h2>
+                                    <div class="depart-logo"></div>
+                                </div>
+                                <div class="item-detail">
+                                    {{#with groups}}
+                                    {{#each this}}
+                                    <div class="detail-top">
+                                        <h3>{{g_name}}</h3>
+                                        <p>{{g_description}}</p>
+                                    </div>
+                                    {{/each}}
+                                    {{/with}}
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </script>
                 </ul>
             </div>
         </div>
@@ -216,7 +195,6 @@
     <section class="section section-3">
         <div class="content">
             <h1>作品展示</h1>
-
             <!-- 作品展示圆盘 -->
             <div class="circle-wraper">
                 <div class="tip-zone">  
@@ -228,8 +206,7 @@
                     </div> 
                     <div class="hk part">  
                         <div class="bing"></div> 
-                    </div> 
-
+                    </div>
                     <div class="advanced part">  
                         <div class="bing"></div>  
                     </div>
@@ -240,7 +217,6 @@
                         <div class="bing"></div> 
                     </div>  
              </div>
-            
             <!-- 作品展示按钮 -->
             <div class="pro-button">
                 <script type="text/x-handlebars-template" id="pro-btn">
@@ -248,8 +224,8 @@
                         <div class="college-wraper">
                         {{#each this}}
                             <div class="icy-btn"><p>{{p_name}}</p></div>
-                       {{/each}}
-                       </div>
+                        {{/each}}
+                        </div>
                     </div>
                 </script>
             </div>
@@ -263,9 +239,10 @@
                     <span class="prev">
                         <img src="static/img/prev.png" alt="关闭">
                     </span>
-                    <script type="text/x-handlebars-template" id="production">
-                        {{#each this}}
-                            <li>                        
+                    <ul>
+                        <script type="text/x-handlebars-template" id="production">
+                            {{#each this}}
+                            <li>
                                 <div class="intro-wraper">
                                     <div class="index-img">
                                         <img src="{{p_url}}" alt="微信平台">
@@ -281,10 +258,8 @@
                                     </div>
                                 </div>
                             </li>
-                        {{/each}}
-                    </script>
-                    <ul>
-                       
+                            {{/each}}
+                        </script>
                     </ul>
                     <span class="next"><img src="static/img/next.png" alt=""></span>
                 </div>
@@ -297,27 +272,24 @@
     <section class="section section-4">
         <div class="content">
             <h1 class="main-number">骨干团</h1>
-            <script type="text/x-handlebars-template" id="main-member">
-                {{#each this}}
-                    {{#if this.m_out}}
-
-                        {{else}}
-                        <li>
-                            <div class="item-inner">
-                                <img class="item-img" src="{{m_url}}">
-                                <div class="item-detail">
-                                    <p><span>{{m_name}}&nbsp;&nbsp;</span></p>
-                                    <p>{{m_group}}</p>
-                                    <p>{{m_motto}}</p>
-                                </div>
-                            </div>
-                        </li>
-                       
-                    {{/if}}
-                {{/each}}
-            </script>
             <ul class="gg-box da-thumbs" id="da-thumbs">
-              
+                <script type="text/x-handlebars-template" id="main-member">
+                    {{#each this}}
+                    {{#if this.m_out}}
+                    {{else}}
+                    <li>
+                        <div class="item-inner">
+                            <img class="item-img" src="{{m_url}}">
+                            <div class="item-detail">
+                                <p><span>{{m_name}}&nbsp;&nbsp;</span></p>
+                                <p>{{m_group}}</p>
+                                <p>{{m_motto}}</p>
+                            </div>
+                        </div>
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </script>
             </ul>
         </div>
     </section>
@@ -327,26 +299,24 @@
     <section class="section section-5">
         <h1>毕业去向</h1>
         <div class="content">
-            
-            <script type="text/x-handlebars-template" id="graduated-member">
-                {{#each this}}
+            <!-- 左边 -->
+            <div class="card-left">
+                <script type="text/x-handlebars-template" id="graduated-member">
+                    {{#each this}}
                     <div class="people-card">
                         <h2>——<span>{{gradeNew}}级</span>——</h2>
                         {{#each gradeData}}
-                            <div class="company">
-                                <p>
-                                    <span>{{m_name}}</span>
-                                    <span>就职于{{m_company}}</span>
-                                </p>
-                                <span class="direction">2015年加入蓝山/{{m_group}}</span>
-                            </div>
+                        <div class="company">
+                            <p>
+                                <span>{{m_name}}</span>
+                                <span>就职于{{m_company}}</span>
+                            </p>
+                            <span class="direction">2015年加入蓝山/{{m_group}}</span>
+                        </div>
                         {{/each}}
                     </div>
-                {{/each}}
-            </script>
-            <!-- 左边 -->
-            <div class="card-left">
-                
+                    {{/each}}
+                </script>
            </div>
         </div>
     </section>
