@@ -1,5 +1,5 @@
 
-var urlStr = "http://localhost:8080/blues-0.0.1-SNAPSHOT/";
+var urlStr = "http://www.cyliu.cn/blues/";
 var link = {
 
 	//部门

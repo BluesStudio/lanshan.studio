@@ -122,38 +122,39 @@
     <section class="section section-1">
         <div class="content">
             <h1>发展历史</h1>
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <script type="text/x-handlebars-template" id="history">
-                        {{#each this}}
-                        <div class="swiper-slide">
-                            <div class="bs-box">
-                                <div class="bs-img">
-                                    <img src="static/img/bbs.png">
-                                </div>
-                                <div class="bs-text">
-                                    <div class="bs-text-inner">
-                                        <h3>{{h_name}}</h3>
-                                        <p>
-                                            <i class="fa fa-calendar-check-o"></i>
-                                            {{h_description}}
-                                            <strong>{{h_name}}</strong>；
-                                        </p>
+            <div class="swiper-box">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <script type="text/x-handlebars-template" id="history">
+                            {{#each this}}
+                            <div class="swiper-slide">
+                                <div class="bs-box">
+                                    <div class="bs-img">
+                                        <img src="static/img/bbs.png">
+                                    </div>
+                                    <div class="bs-text">
+                                        <div class="bs-text-inner">
+                                            <h3>{{h_name}}</h3>
+                                            <p>
+                                                <i class="fa fa-calendar-check-o"></i>
+                                                {{h_description}}
+                                                <strong>{{h_name}}</strong>；
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{/each}}
-                    </script>
+                            {{/each}}
+                        </script>
+                    </div>
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-prev swiper-button-white"></div>
-                <div class="swiper-button-next swiper-button-white"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
             <ul class="time-wraper">
-                <li class="first time-node now">1998</li>
-                <li class="second time-node">2008</li>
-                <li class="third time-node">2015</li>
+                <li class="first time-node now" data-index="0">1998</li>
+                <li class="second time-node" data-index="1">2008</li>
+                <li class="third time-node" data-index="2">2015</li>
             </ul>
         </div>
     </section>
@@ -170,7 +171,7 @@
                             <div class="item-inner">
                                 <div class="item-main">
                                     <h2>{{d_name}}</h2>
-                                    <div class="depart-logo"></div>
+                                    <div class="item-main-logo"></div>
                                 </div>
                                 <div class="item-detail">
                                     {{#with groups}}
@@ -197,74 +198,60 @@
             <h1>作品展示</h1>
             <!-- 作品展示圆盘 -->
             <div class="circle-wraper">
-                <div class="tip-zone">  
-                    <div class="law part">  
-                        <div class="bing"></div>  
-                    </div>
-                    <div class="icy part">  
-                        <div class="bing"></div> 
-                    </div> 
-                    <div class="hk part">  
-                        <div class="bing"></div> 
-                    </div>
-                    <div class="advanced part">  
-                        <div class="bing"></div>  
-                    </div>
-                    <div class="international part">  
-                        <div class="bing"></div> 
-                    </div> 
-                    <div class="wechart part">  
-                        <div class="bing"></div> 
-                    </div>  
-             </div>
-            <!-- 作品展示按钮 -->
-            <div class="pro-button">
-                <script type="text/x-handlebars-template" id="pro-btn">
-                    <div class="circle">
-                        <div class="college-wraper">
+                <ul class="tip-zone">
+                    <li class="part"><div class="bing"></div></li>
+                    <li class="part"><div class="bing"></div></li>
+                    <li class="part"><div class="bing"></div></li>
+                    <li class="part"><div class="bing"></div></li>
+                    <li class="part"><div class="bing"></div></li>
+                    <li class="part"><div class="bing"></div></li>
+                </ul>
+                <!-- 作品展示按钮 -->
+                <ul class="pro-btn-group">
+                    <script type="text/x-handlebars-template" id="pro-btn">
                         {{#each this}}
-                            <div class="icy-btn"><p>{{p_name}}</p></div>
+                        <li class="pro-btn">{{p_name}}</li>
                         {{/each}}
-                        </div>
-                    </div>
-                </script>
-            </div>
-            
-            <!-- 作品展示 -->
-            <div class="pro-detail">
-                <div class="circle">
-                    <a href="#" class="circle-close">
-                        <img src="static/img/pro_close.png" alt="">
-                    </a> 
-                    <span class="prev">
-                        <img src="static/img/prev.png" alt="关闭">
-                    </span>
-                    <ul>
+                    </script>
+                    <li class="pro-btn">更多</li>
+                </ul>
+                <!-- 作品展示 -->
+                <div class="pro-detail">
+                    <span class="pro-close"><img src="static/img/close.png"></span>
+                    <span class="pro-prev"><img src="static/img/prev-blue.png"></span>
+                    <span class="pro-next"><img src="static/img/next-blue.png"></span>
+                    <ul class="pro-list">
                         <script type="text/x-handlebars-template" id="production">
                             {{#each this}}
                             <li>
-                                <div class="intro-wraper">
-                                    <div class="index-img">
-                                        <img src="{{p_url}}" alt="微信平台">
-                                    </div>
-                                    <div class="index-intro">
-                                        <h3>—{{p_name}}—</h3>
-                                        <p>{{p_description}}</p>
-                                        {{#if p_address}}
-                                        <a href="{{p_address}}">{{p_address}}</a>
-                                        {{else}}
-                                        <img src="static/img/code-blues.png" alt="">
-                                        {{/if}}
-                                    </div>
+                                <div class="index-img">
+                                    <img src="{{p_url}}">
+                                </div>
+                                <div class="index-intro">
+                                    <h3>{{p_name}}</h3>
+                                    <p>{{p_description}}</p>
+                                    {{#if p_address}}
+                                    <a href="{{p_address}}" target="_blank">{{p_address}}</a>
+                                    {{else}}
+                                    <img src="static/img/code-blues.png">
+                                    {{/if}}
                                 </div>
                             </li>
                             {{/each}}
                         </script>
+                        <li class="pro-more">
+                            <h3>更多</h3>
+                            <ul>
+                                <script type="text/x-handlebars-template" id="productionMore">
+                                    {{#each this}}
+                                    <li><a href="{{p_address}}" target="_blank">{{p_name}}</a></li>
+                                    {{/each}}
+                                </script>
+                            </ul>
+                        </li>
                     </ul>
-                    <span class="next"><img src="static/img/next.png" alt=""></span>
                 </div>
             </div>
-           
         </div>
     </section>
 
@@ -386,14 +373,14 @@
             <div class="two-dimesion-code">
                 <h2>扫一扫</h2>
                 <div class="code-wraper">
-                    <img src="static/img/code-blues.png" alt="蓝山主页">
+                    <img src="static/img/code-blues.png">
                     <h3>蓝山主页</h3>
                 </div>
                 <div class="code-wraper">
-                    <img src="static/img/code-blues.png" alt="微信公众号">
+                    <img src="static/img/code-blues.png">
                     <h3>微信公众号</h3>
                 </div>
-                <img src="static/img/join_bottom_logo.png" alt="蓝山工作室" class="join-logo">
+                <img src="static/img/join_bottom_logo.png" class="join-logo">
             </div>
         </div>
     </section>
