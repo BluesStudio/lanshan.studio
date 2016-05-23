@@ -2,7 +2,6 @@
 *Cong Min 于 2015.12.21 
 *Sudan 于 2016.3.29
 */
-
 $(function() {
     /* component组件 - begin */
     var component = {};
@@ -310,515 +309,416 @@ $(function() {
         // particlesJS("particles-js", particles_config);
     })();
 
-});
+    /* url */
+    var _url = "http://www.cyliu.cn/blues/",
+        _link = {
+            department: _url + "index/getdepartmentall",
+            history: _url + "index/gethistoryall",
+            member: _url + "index/getmemberall",
+            production: _url + "index/getproductionall",
+            apply: _url + "index/addmenteesingroup/",
+            group: _url + "index/getgroupall",
+            vedio: _url + "index/getvideoall"
+        };
 
-/* hoverDir */
-(function($, undefined) {
-    $.HoverDir = function(options, element) {
-        this.$el = $(element);
-        this._init(options);
-    };
-    $.HoverDir.defaults = {
-        hoverDelay: 0,
-        reverse: false
-    };
-    $.HoverDir.prototype = {
-        _init: function(options) {
-            this.options = $.extend(true, {}, $.HoverDir.defaults, options);
-            this._loadEvents();
-        },
-        _loadEvents: function() {
-            var _self = this;
-            this.$el.on('mouseenter.hoverdir, mouseleave.hoverdir', function(event) {
-                var $el = $(this), evType = event.type, $hoverElem = $el.find('.item-detail'), direction = _self._getDir($el, {
-                    x: event.pageX,
-                    y: event.pageY
-                }), hoverClasses = _self._getClasses(direction);
-                $hoverElem.removeClass().addClass('item-detail');
-                if (evType === 'mouseenter') {
-                    $hoverElem.hide().addClass(hoverClasses.from);
-                    clearTimeout(_self.tmhover);
-                    _self.tmhover = setTimeout(function() {
-                        $hoverElem.show(0, function() {
-                            $(this).addClass('da-animate').addClass(hoverClasses.to);
-                        });
-                    }, _self.options.hoverDelay);
-                } else {
-                    $hoverElem.addClass('da-animate');
-                    clearTimeout(_self.tmhover);
-                    $hoverElem.addClass(hoverClasses.from);
-                }
-            });
-        },
-        _getDir: function($el, coordinates) {
-            var w = $el.width(), h = $el.height(), x = (coordinates.x - $el.offset().left - (w / 2)) * (w > h ? (h / w) : 1), y = (coordinates.y - $el.offset().top - (h / 2)) * (h > w ? (w / h) : 1), direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90 ) + 3 ) % 4;
-            return direction;
-        },
-        _getClasses: function(direction) {
-            var fromClass, toClass;
-            switch (direction) {
-                case 0:
-                    (!this.options.reverse) ? fromClass = 'da-slideFromTop' : fromClass = 'da-slideFromBottom';
-                    toClass = 'da-slideTop';
-                    break;
-                case 1:
-                    (!this.options.reverse) ? fromClass = 'da-slideFromRight' : fromClass = 'da-slideFromLeft';
-                    toClass = 'da-slideLeft';
-                    break;
-                case 2:
-                    (!this.options.reverse) ? fromClass = 'da-slideFromBottom' : fromClass = 'da-slideFromTop';
-                    toClass = 'da-slideTop';
-                    break;
-                case 3:
-                    (!this.options.reverse) ? fromClass = 'da-slideFromLeft' : fromClass = 'da-slideFromRight';
-                    toClass = 'da-slideLeft';
-                    break;
-            }
-            return {
-                from: fromClass,
-                to: toClass
-            };
-        }
-    };
-    var logError = function(message) {
-        if (this.console) {
-            console.error(message);
-        }
-    };
-    $.fn.hoverdir = function(options) {
-        if (typeof options === 'string') {
-            var args = Array.prototype.slice.call(arguments, 1);
-            this.each(function() {
-                var instance = $.data(this, 'hoverdir');
-                if (!instance) {
-                    logError("cannot call methods on hoverdir prior to initialization; " + "attempted to call method '" + options + "'");
-                    return;
-                }
-                if (!$.isFunction(instance[options]) || options.charAt(0) === "_") {
-                    logError("no such method '" + options + "' for hoverdir instance");
-                    return;
-                }
-                instance[options].apply(instance, args);
-            });
-        } else {
-            this.each(function() {
-                var instance = $.data(this, 'hoverdir');
-                if (!instance) {
-                    $.data(this, 'hoverdir', new $.HoverDir(options, this));
-                }
-            });
-        }
-        return this;
-    };
-})(jQuery);
-
-/* 首屏视频 */
-// (function() {
-   
-//     $.ajax({
-//         type: "GET",
-//         url: link.vedio,
-//         success: function(result) {
-//             console.log(result);
-
-//             $("#player").attr("src", result.data[0].vi_url);
-
-//             $("#look-blues").bind("click", function(e) {
-//                 e.preventDefault();
-//                 $(".blues-video").fadeIn();
-//             });
-//             $(".close-video").bind("click", function() {
-//                 $(".blues-video").fadeOut();
-//             });  
-//         }
-//     });
-//  })();
-
-/* 发展历史 */
-(function() {
-    $.ajax({
-        type: "GET",
-        url: link.history,
-        success: function(result) {
-            //console.log(result);
-
-            var historyTpl = Handlebars.compile($("#history").html());
-            $(".swiper-wrapper").html(historyTpl(result.data));
-
-            /*走进我们, 轮播*/
-            var mySwiper = new Swiper ('.swiper-container', {
-                //effect: 'flip',
-                pagination: '.swiper-pagination',
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev'
-            });
-            var nowIndex = 0;
-
-            $(".swiper-button-next").click(function() {
-            
-                if (nowIndex < 2) {
-                   
-                    $(".time-node").eq(nowIndex).next().addClass("now").siblings().removeClass("now");
-                    nowIndex ++;
-                }           
-            });
-            $(".swiper-button-prev").click(function() {
-                if (nowIndex > 0) {
-                    
-                    $(".time-node").eq(nowIndex).prev().addClass("now").siblings().removeClass("now");
-                    nowIndex --;
-                }          
-            });
-
-            var startX = 0,
-                endX = 0;
-            $(".swiper-container").on("mousedown", function(e) {
-                startX = e.pageX;
-            });
-
-            $(".swiper-container").on("mouseup", function(e) {
-                endX = e.pageX;
-
-                if (endX - startX > 0) {
-                   
-                    if (nowIndex > 0) {
-                    
-                        $(".time-node").eq(nowIndex).prev().addClass("now").siblings().removeClass("now");
-                        nowIndex --;
-                    }     
-                    
-                } else if (endX - startX < 0) {
-                   
-                    if (nowIndex < 2) {
-                   
-                        $(".time-node").eq(nowIndex).next().addClass("now").siblings().removeClass("now");
-                        nowIndex ++;
-                    }  
-                }
-            });
-        }
-    });
-})();
-
-/* 表单验证 */
-var checkForm = function() {
- 
-    var telPattern = /^1[3|4|5|7|8]\d{9}$/,
-        emailPattern = /^([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[-_.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,6}$/;
-        stuNumPattern = /^2015\w+/;
-        saveFlag = false;
-
-    $(".stu-tel input").focus(function() {
-        var telephone = $(".stu-tel input").val();
-        if (!telPattern.test(telephone)) {
-           $(this).val("");
-        }
-       
-    }).blur(function() {
-
-        var telephone = $(".stu-tel input").val();       
-        if (!telPattern.test(telephone)) {
-           $(this).val("请输入正确的电话号码!");
-        } else {
-            saveFlag = true;
-        }
-    });
-    $(".stu-mail input").focus(function() {
-
-        var email = $(".stu-mail input").val();
-        if (!emailPattern.test(email)) {
-           $(this).val("");
-        }
-    }).blur(function() {
-        
-        var email = $(".stu-mail input").val();       
-        if (!emailPattern.test(email)) {
-           $(this).val("请输入正确的邮箱!");
-        } else {
-            saveFlag = true;
-        }
-    });
-    $(".stu-number input").blur(function() {
-        var stuNumber = $(this).val();
-        if (!stuNumPattern.test(stuNumber)) {
-            $(this).val("不好意思，本次招生面向2015级");
-            saveFlag = false;
-        }
-    });
-    $(".stu-number input").focus(function() {
-        var stuNumber = $(".stu-number input").val();
-        if (!stuNumPattern.test(stuNumber)) {
-           $(this).val("");
-        }
-    });
-
-
-
-    $("#stu-info").on("submit", function(e) {
-
-        var inputBoxs = $(".information form input");
-        e.preventDefault();
-        inputBoxs.each(function() {
-            if ($(this).val() == "") {
-                saveFlag = false;
+    /* 首屏视频 */
+    /*(function() {
+        $.ajax({
+            type: "GET",
+            url: link.vedio,
+            success: function(result) {
+                $("#player").attr("src", result.data[0].vi_url);
+                $("#look-blues").bind("click", function(e) {
+                    e.preventDefault();
+                    $(".blues-video").fadeIn();
+                });
+                $(".close-video").bind("click", function() {
+                    $(".blues-video").fadeOut();
+                });
             }
         });
-        if (!saveFlag) {
-            alert("请填写正确的信息！");
-            return false;
-        } else {
-            var applyForm = new FormData($("#stu-info")[0]);
+     })();*/
 
-            /* 取得组别id */
-            var groupIdIndex = $('.group-select option').index($('.group-select option:selected')),
-                groupId = $(".group-id li").eq(groupIdIndex).html()
-
-            $.ajax({
-                type: "POST",
-                url: link.apply + groupId,
-                data: applyForm,
-                processData: false,
-                contentType: false,
-                success: function() {
-                    $(".submitBtn").attr("disabled", "true");
-                    $(".submitBtn").css("background", "#eee");
-                    alert("提交成功！");
-
-                },
-                error: function() {
-                    alert("提交失败！");
-                }
-            });
-        }         
-    });
-};
-
-/* 加入我们 */
-(function() {
-    $.ajax({
-        type: "GET",
-        url: link.group,
-        success: function(result) {
-            console.log(result);
-            var groupTpl = Handlebars.compile($("#group-tpl").html());
-            $(".group-select").append(groupTpl(result.data)); 
-
-
-            /* 组别展示 */
-            $(".selected-option").bind("click", function() {
-
-               
-                    $(".group-option").slideDown();
-                
-            });
-            
-            $(".group-option li").bind("click", function() {
-
-                var index = $(".group-option li").index(this);
-                $(".selected-option").html($(".g-name").eq(index).html());
-                $("#g-id").val($(".g-id").eq(index).html());
-
-                $(".group-option").slideUp();
-            });
-        }
-    });
-})();
-
-/* 作品展示 */
-var showPro = function() {
-    var productsBtn = $(".college-wraper div"),
-        detailBoxLen = $(".pro-detail li").length,
-        liIndex = 0;
-
-    /* 显示作品 */
-    productsBtn.click(function() {
-        liIndex = productsBtn.index(this);
-        $(".pro-detail").addClass("pro-detail-show");
-  
-        $(".pro-detail li").eq(liIndex).addClass("show-current-li")
-            .siblings().removeClass("show-current-li");
-    });
-
-    /* 关闭展示 */
-    $(".circle .circle-close").click(function() {
-        
-        $(".pro-detail").removeClass("pro-detail-show");
-        $(".pro-detail").removeClass("next-pro-detail");
-        $(".pro-detail").removeClass("prev-pro-detail");
-        return false;
-    });
-
-    /* 下一张 */
-    $(".next").click(function() {
-        if (liIndex == detailBoxLen - 1) {
-            liIndex = 0;
-        } else {
-             liIndex = liIndex + 1;
-        }
-        $(".pro-detail").removeClass("prev-pro-detail");
-        $(".pro-detail").removeClass("next-pro-detail");
-      
-        setTimeout(function() {
-            $(".pro-detail li").eq(liIndex).addClass("show-current-li")
-                .siblings().removeClass("show-current-li");
-            $(".pro-detail").addClass("next-pro-detail");
-            
-        }, 300);
-        
-    });
-
-    /* 上一张 */
-    $(".prev").click(function() {
-        if (liIndex == 0) {
-            liIndex = detailBoxLen - 1;
-        } else {
-            liIndex = liIndex - 1;
-        }        
-        $(".pro-detail").removeClass("next-pro-detail");
-        $(".pro-detail").removeClass("prev-pro-detail");
-       
-        setTimeout(function() {
-            $(".pro-detail li").eq(liIndex).addClass("show-current-li")
-                .siblings().removeClass("show-current-li");
-            $(".pro-detail").addClass("prev-pro-detail");
-            
-        }, 300);
-    });
-};
-(function() {
-
-    $.ajax({
-
-        type: "GET",
-        url: link.production,
-        success: function(result) {
-            console.log(result);
-            var productionTpl = Handlebars.compile($("#production").html());
-            $(".pro-detail ul").html(productionTpl(result.data));
-
-            var proBtnTpl = Handlebars.compile($("#pro-btn").html());
-            $(".pro-button").html(proBtnTpl(result.data));
-
-            showPro();
-        }
-    });
-})();
-
-/* 部门介绍 */
-(function() {
-   
-    $.ajax({
-        type: "GET",
-        url: link.department,
-        success: function(result) {
-
-            console.log(result);
-
-            var departmentTpl = Handlebars.compile($("#department").html());
-            $(".bm-box ul").html(departmentTpl(result.data));
-            
-            $(".bm-box ul li").eq(0).addClass("on");
-
-            /*展开 部门介绍*/
-            $(".bm-item").hover(function() {
-                $(".bm-item").not($(this)).stop().animate({
-                    //width: 158
-                   width: "16.5%"
-                }).removeClass("on");
-                $(this).stop().animate({
-                    //width: 318
-                   width: "32.9%"
-                }).addClass("on");
-            });
-
-        }
-    });
-
-})();
-
-/* 骨干团--毕业去向 */
-(function() {
-
-    $.ajax({
-        type: "GET",
-        url: link.member,
-        success: function(result) {
-            console.log(result);
-
-            var mainMemberTpl = Handlebars.compile($("#main-member").html());
-            $("#da-thumbs").html(mainMemberTpl(result.data));
-
-            var dataLen = result.data.length;
-            var startYear = 2008,
-                maxGrade = 2008;
-
-            /* 最大的一年 */
-            for (var i = 0; i < dataLen; i ++) {
-               
-                if (parseInt(result.data[i].m_grade) > maxGrade ) {
-                    maxGrade = result.data[i].m_grade;
-                }
-            }
-            console.log(maxGrade);
-                   
-            var group_2008 = [],
-                group_2009 = [],
-                group_2010 = [],
-                group_2011 = [],
-                group_2012 = [];
-            for (var i = 0; i < dataLen; i ++) {
-                if (result.data[i].m_out) {
-
-                    var gradeArr = result.data[i],
-                        gradeNum = result.data[i].m_grade;
-
-                    if (gradeNum == 2008) {
-                        
-                        group_2008.push(gradeArr);
-                    } else if (gradeNum == 2009) {
-                        
-                        group_2009.push(gradeArr);
-                    } else if (gradeNum == 2010) {
-                        
-                        group_2010.push(gradeArr);
-                    } else if (gradeNum == 2011) {
-                        
-                        group_2011.push(gradeArr);
-                    } else if (gradeNum == 2012) {
-                        
-                        group_2012.push(gradeArr);
+    /* 发展历史 */
+    (function() {
+        /* ajax获取数据 */
+        $.ajax({
+            type: "GET",
+            url: _link.history,
+            success: function(result) {
+                var historyTpl = Handlebars.compile($("#history").html());
+                $(".swiper-wrapper").html(historyTpl(result.data.slice(0, 3)));
+                var mySwiper = new Swiper ('.swiper-container', {
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+                    spaceBetween: 15,
+                    onSlideNextStart: function(swiper){
+                        $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
+                    },
+                    onSlidePrevStart: function(swiper){
+                        $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
                     }
+                });
+                $(".time-node").on('click', function(){
+                    var index = $(this).data('index');
+                    mySwiper.slideTo(index);
+                });
+            }
+        });
+    })();
+
+    /* 部门介绍 */
+    (function() {
+        /* ajax获取数据 */
+        $.ajax({
+            type: "GET",
+            url: _link.department,
+            success: function(result) {
+                var departmentTpl = Handlebars.compile($("#department").html());
+                $(".bm-box ul").html(departmentTpl(result.data.slice(0, 5)));
+                /* 展开效果 */
+                $(".bm-box ul>li").eq(0).addClass("on");
+                var $window = $(window);
+                $(".bm-item").hover(function(){
+                    if($window.width() > 1000){
+                        $(".bm-item").not($(this)).stop().animate({
+                            width: 158
+                        }).removeClass("on");
+                        $(this).stop().animate({
+                            width: 318
+                        }).addClass("on");
+                    }else{
+                        $(".bm-item").removeClass("on");
+                        $(this).addClass("on");
+                    }
+                });
+            }
+        });
+    })();
+
+
+    /* 作品展示 */
+    (function() {
+        var showPro = function() {
+            var $productsBtn = $(".pro-btn-group>.pro-btn"),
+                $detail = $(".pro-detail"),
+                $item = $(".pro-list>li"),
+                $close = $(".pro-close"),
+                length = $item.length,
+                index = 0;
+            /* 打开展示 */
+            $productsBtn.on('click', function() {
+                index = $productsBtn.index(this);
+                $detail.addClass("pro-detail-show");
+                $item.removeClass("show-current-li");
+                $item.eq(index).addClass("show-current-li");
+            });
+            /* 关闭展示 */
+            $close.on('click', function() {
+                $detail.removeClass("pro-detail-show");
+            });
+            /* 下一张 */
+            $(".pro-next").on('click', function() {
+                console.log(index);
+                if(index == length - 1){
+                    index = 0;
+                }else{
+                    index++;
                 }
-            }   
-            var during = maxGrade - startYear;
-            var gradeBox = [];
-            var newDataArr = [];
-            gradeBox.push(group_2008, group_2009, group_2010, group_2011, group_2012);             
-            console.log(gradeBox);
-            for (var i = 0; i < 5; i ++) {
-                if (gradeBox[i].length) {
-                    newDataArr.push({
-                        "gradeNew": gradeBox[i][0].m_grade,
-                        "gradeData": gradeBox[i]
+                $close.click();
+                setTimeout(function(){
+                    $productsBtn.eq(index).click();
+                }, 300);
+            });
+            /* 上一张 */
+            $(".pro-prev").on('click', function() {
+                if (index == 0) {
+                    index = length - 1;
+                } else {
+                    index--;
+                }
+                $close.click();
+                setTimeout(function(){
+                    $productsBtn.eq(index).click();
+                }, 300);
+            });
+        };
+        /* ajax获取数据 */
+        $.ajax({
+            type: "GET",
+            url: _link.production,
+            success: function(result) {
+                var showList = result.data.slice(0, 5),
+                    moreList = result.data.slice(5);
+                var proBtnTpl = Handlebars.compile($("#pro-btn").html());
+                $(".pro-btn-group").prepend(proBtnTpl(showList));
+                var productionTpl = Handlebars.compile($("#production").html());
+                $(".pro-list").prepend(productionTpl(showList));
+                var productionMoreTpl = Handlebars.compile($("#productionMore").html());
+                $(".pro-more ul").prepend(productionMoreTpl(moreList));
+                showPro();
+            }
+        });
+    })();
+
+    /* 骨干团 ~ 毕业去向 */
+    (function() {
+        /* 鼠标移动动画 */
+        (function($, undefined) {
+            $.HoverDir = function(options, element) {
+                this.$el = $(element);
+                this._init(options);
+            };
+            $.HoverDir.defaults = {
+                hoverDelay: 0,
+                reverse: false
+            };
+            $.HoverDir.prototype = {
+                _init: function(options) {
+                    this.options = $.extend(true, {}, $.HoverDir.defaults, options);
+                    this._loadEvents();
+                },
+                _loadEvents: function() {
+                    var _self = this;
+                    this.$el.on('mouseenter.hoverdir, mouseleave.hoverdir', function(event) {
+                        var $el = $(this), evType = event.type, $hoverElem = $el.find('.item-detail'), direction = _self._getDir($el, {
+                            x: event.pageX,
+                            y: event.pageY
+                        }), hoverClasses = _self._getClasses(direction);
+                        $hoverElem.removeClass().addClass('item-detail');
+                        if (evType === 'mouseenter') {
+                            $hoverElem.hide().addClass(hoverClasses.from);
+                            clearTimeout(_self.tmhover);
+                            _self.tmhover = setTimeout(function() {
+                                $hoverElem.show(0, function() {
+                                    $(this).addClass('da-animate').addClass(hoverClasses.to);
+                                });
+                            }, _self.options.hoverDelay);
+                        } else {
+                            $hoverElem.addClass('da-animate');
+                            clearTimeout(_self.tmhover);
+                            $hoverElem.addClass(hoverClasses.from);
+                        }
+                    });
+                },
+                _getDir: function($el, coordinates) {
+                    var w = $el.width(), h = $el.height(), x = (coordinates.x - $el.offset().left - (w / 2)) * (w > h ? (h / w) : 1), y = (coordinates.y - $el.offset().top - (h / 2)) * (h > w ? (w / h) : 1), direction = Math.round((((Math.atan2(y, x) * (180 / Math.PI)) + 180) / 90 ) + 3 ) % 4;
+                    return direction;
+                },
+                _getClasses: function(direction) {
+                    var fromClass, toClass;
+                    switch (direction) {
+                        case 0:
+                            (!this.options.reverse) ? fromClass = 'da-slideFromTop' : fromClass = 'da-slideFromBottom';
+                            toClass = 'da-slideTop';
+                            break;
+                        case 1:
+                            (!this.options.reverse) ? fromClass = 'da-slideFromRight' : fromClass = 'da-slideFromLeft';
+                            toClass = 'da-slideLeft';
+                            break;
+                        case 2:
+                            (!this.options.reverse) ? fromClass = 'da-slideFromBottom' : fromClass = 'da-slideFromTop';
+                            toClass = 'da-slideTop';
+                            break;
+                        case 3:
+                            (!this.options.reverse) ? fromClass = 'da-slideFromLeft' : fromClass = 'da-slideFromRight';
+                            toClass = 'da-slideLeft';
+                            break;
+                    }
+                    return {
+                        from: fromClass,
+                        to: toClass
+                    };
+                }
+            };
+            var logError = function(message) {
+                if (this.console) {
+                    console.error(message);
+                }
+            };
+            $.fn.hoverdir = function(options) {
+                if (typeof options === 'string') {
+                    var args = Array.prototype.slice.call(arguments, 1);
+                    this.each(function() {
+                        var instance = $.data(this, 'hoverdir');
+                        if (!instance) {
+                            logError("cannot call methods on hoverdir prior to initialization; " + "attempted to call method '" + options + "'");
+                            return;
+                        }
+                        if (!$.isFunction(instance[options]) || options.charAt(0) === "_") {
+                            logError("no such method '" + options + "' for hoverdir instance");
+                            return;
+                        }
+                        instance[options].apply(instance, args);
+                    });
+                } else {
+                    this.each(function() {
+                        var instance = $.data(this, 'hoverdir');
+                        if (!instance) {
+                            $.data(this, 'hoverdir', new $.HoverDir(options, this));
+                        }
                     });
                 }
+                return this;
+            };
+        })(jQuery);
+        /* ajax获取数据 */
+        $.ajax({
+            type: "GET",
+            url: _link.member,
+            success: function(result) {
+                /* 随机排序 */
+                var randomsort = function() {
+                    return Math.random() > .5 ? -1 : 1;
+                };
+                /* 骨干团 */
+                var mainMemberTpl = Handlebars.compile($("#main-member").html());
+                $("#da-thumbs").html(mainMemberTpl(result.data.sort(randomsort)));
+                /* 毕业去向 */
+                var graduated = {},
+                    graduatedArr = [];
+                for(var i = 0, len = result.data.length; i < len; i++){
+                    var e = result.data[i];
+                    if(e.m_out && e.m_grade){
+                        if(!graduated[e.m_grade]){
+                            graduated[e.m_grade] = [];
+                        }
+                        graduated[e.m_grade].push(e);
+                    }
+                }
+                /* 对象转换为数组,再按倒序排序 */
+                for(var j in graduated){
+                    if(graduated.hasOwnProperty(j)){
+                        graduatedArr.push({
+                            grade: j,
+                            list: graduated[j].sort(randomsort)
+                        });
+                    }
+                }
+                graduatedArr.reverse(function(){
+                    return function (a, b) {
+                        var value1 = a[grade],
+                            value2 = b[grade];
+                        if(value2 < value1){
+                            return -1;
+                        }else if(value2 > value1) {
+                            return 1;
+                        }else{
+                            return 0;
+                        }
+                    }
+                });
+                var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
+                $(".card").append(graduatedMemberTpl(graduatedArr));
+                /* 骨干团 */
+                $(".da-thumbs > li").hoverdir();
             }
-            console.log(newDataArr);
-            var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
-            $(".card-left").html(graduatedMemberTpl(newDataArr));  
+        });
+    })();
 
-            /* 骨干团 */
-            $(".da-thumbs > li").hoverdir();
+    /* 加入我们 */
+    (function() {
+        /* ajax获取分组 */
+        $.ajax({
+            type: "GET",
+            url: _link.group,
+            success: function(result) {
+                var groupTpl = Handlebars.compile($("#group-tpl").html());
+                $("#group_id").append(groupTpl(result.data));
+            }
+        });
+        /* 表单效果 */
+        var $input = $(".input-group input").add(".select select"),
+            check = function(){
+                $input.each(function(i, e){
+                    if(!!e.value){
+                        $(e).parent().addClass('complete');
+                    }else{
+                        $(e).parent().removeClass('complete');
+                    }
+                });
+            };
+        check();
+        $input.on({
+            focus: function(){
+                $(this).parent().addClass('active');
+            },
+            blur: function(){
+                $(this).parent().removeClass('active');
+                check();
+            }
+        });
+        /* 表单提交 */
+        $("#join-us").on("submit", function(e) {
+            e.preventDefault();
+            var status = true;
+            var formData = (function(form){
+                var o = {},
+                    arr = $(form).serializeArray();
+                $.each(arr, function(i, e){
+                    if(!e.value){
+                        status = false;
+                    }
+                    if(o[e.name] !== undefined){
+                        if(!o[e.name].push){
+                            o[e.name] = [o[e.name]];
+                        }
+                        o[e.name].push(e.value || '');
+                    }else{
+                        o[e.name] = e.value || '';
+                    }
+                });
+                return o;
+            })(this);
+            if(!status){
+                alert("请填写完整！");
+            }else{
+                $.ajax({
+                    type: "POST",
+                    url: _link.apply + formData.group_id,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data){
+                        if(!!data.meta){
+                            if(!data.meta.success){
+                                alert("提交失败！");
+                            }else{
+                                alert("提交成功！");
+                            }
+                        }
+                    },
+                    error: function(){
+                        alert("提交失败！");
+                    }
+                });
+            }
+        });
+        /* 通过学号获取信息 */
+        $("#me_sno").on("input propertychange", function(){
+            var id = this.value;
+            if(id.length >= 10){
+                $.get("https://blues.congm.in/pubBjStu.php?searchKey=" + id, function(data){
+                    var $html = $('<div>' + data + '</div>'),
+                        $tr = $html.find("table tr:eq(1)"),
+                        $a = $tr.find("td"),
+                        message = [];
+                    for(var i = 0, length = $a.length; i<length; i++){
+                        message[i] = $a.eq(i).text().replace(/\s/g, "");
+                    }
+                    $("#me_name").val(message[1]);
+                    $("#me_college").val(message[5]);
+                    $("#me_major").val(message[4]);
+                    check();
+                });
+            }else{
+                $("#me_name").val('');
+                $("#me_college").val('');
+                $("#me_major").val('');
+                check();
+            }
+        });
+    })();
 
-        }
-    });
-})();
-
-/* 加入我们 */
-(function() {
-    $(".two-dimesion-code").height($(".information").outerHeight(true));
-    checkForm();
-})();
-
-
+});
 
