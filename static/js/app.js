@@ -131,10 +131,14 @@ $(function() {
                 $slides.on({
                     'swipeleft': function(event) {
                         config.$bookBlock.bookblock('next');
+                        config.$bookBlock.bookblock("stop");
+                        config.$bookBlock.bookblock("start");
                         return false;
                     },
                     'swiperight': function(event) {
                         config.$bookBlock.bookblock('prev');
+                        config.$bookBlock.bookblock("stop");
+                        config.$bookBlock.bookblock("start");
                         return false;
                     }
                 });
@@ -268,8 +272,11 @@ $(function() {
                     functions.to(parseInt($(this).data("scroll-to")));
                 });
                 var container = $(".container")[0];
-                $(".down-btn").on('click', function(){
+                $(".goto-down").on('click', function(){
                     smoothScroll(container, 1200);
+                });
+                $(".goto-join").on('click', function(){
+                    smoothScroll($('.section-6')[0], 1500);
                 });
                 functions.scroll();
             },
