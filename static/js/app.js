@@ -263,7 +263,7 @@ $(function() {
                 if(element.nodeName === 'HTML'){
                     return -window.pageYOffset;
                 }
-                /* 偏移量(导航栏)为60 */
+                /* 偏移量(导航栏)为60 zhushi  */
                 return element.getBoundingClientRect().top - 60 + window.pageYOffset;
             },
             to: function(id){
