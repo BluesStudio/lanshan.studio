@@ -551,7 +551,6 @@ a{
         position: relative;
         width: 100%;
         @include border-radius(5px);
-        @include box-shadow(0 0 10px #e2e2e2);
         .swiper-button-prev,
         .swiper-button-next {
             @include opacity(0.2);
@@ -575,7 +574,6 @@ a{
     }
     .bs-box{
         background-color: #f8f8f8;
-        box-shadow: 0 0 5px #e1e1e1;
         height: 200px;
         overflow: hidden;
         @include border-radius(5px);

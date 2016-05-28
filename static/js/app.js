@@ -259,12 +259,21 @@ $(function() {
             scrollTop: 0
         };
         var functions = {
+            getTop: function(element) {
+                if(element.nodeName === 'HTML'){
+                    return -window.pageYOffset;
+                }
+                /* 偏移量(导航栏)为60 */
+                return element.getBoundingClientRect().top - 60 + window.pageYOffset;
+            },
             to: function(id){
-                $(".menu-btn").click();
+                if($("body").hasClass("slide")){
+                    $(".menu-btn").click();
+                }
                 if(id === 0){
                     smoothScroll(0, config.speed);
                 }else{
-                    smoothScroll($(config.prefix + id)[0], config.speed);
+                    smoothScroll(functions.getTop($(config.prefix + id)[0]), config.speed);
                 }
             },
             bind:  function () {
@@ -276,7 +285,7 @@ $(function() {
                     smoothScroll(container, 1200);
                 });
                 $(".goto-join").on('click', function(){
-                    smoothScroll($('.section-6')[0], 1500);
+                    functions.to(6);
                 });
                 functions.scroll();
             },
@@ -317,7 +326,7 @@ $(function() {
     })();
 
     /* url */
-    var _url = "http://www.cyliu.cn/blues/",
+    var _url = "/blues/",
         _link = {
             department: _url + "index/getdepartmentall",
             history: _url + "index/gethistoryall",
@@ -602,17 +611,15 @@ $(function() {
                         });
                     }
                 }
-                graduatedArr.reverse(function(){
-                    return function (a, b) {
-                        var value1 = a[grade],
-                            value2 = b[grade];
-                        if(value2 < value1){
-                            return -1;
-                        }else if(value2 > value1) {
-                            return 1;
-                        }else{
-                            return 0;
-                        }
+                graduatedArr.reverse(function (a, b) {
+                    var value1 = a[grade],
+                        value2 = b[grade];
+                    if(value2 < value1){
+                        return -1;
+                    }else if(value2 > value1) {
+                        return 1;
+                    }else{
+                        return 0;
                     }
                 });
                 var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
@@ -684,8 +691,6 @@ $(function() {
                     type: "POST",
                     url: _link.apply + formData.group_id,
                     data: formData,
-                    processData: false,
-                    contentType: false,
                     success: function(data){
                         if(!!data.meta){
                             if(!data.meta.success){
