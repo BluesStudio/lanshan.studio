@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>蓝山工作室 - 教育信息化创新创业协会 - 重庆邮电大学</title>
-    <link rel="stylesheet" href="static/css/style.css" />
     <link rel="stylesheet" href="static/css/bookblock.css">
     <link rel="stylesheet" href="static/css/swiper.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <script src="static/js/modernizr.custom.min.js"></script>
 </head>
 <body>
+<!--[if IE]><p class="kill-ie">微软都放弃了IE，为啥你却还不放弃？</p><![endif]-->
 <div class="black-shadow"></div>
 <div class="nav">
     <!-- 顶部 -->
@@ -57,7 +58,7 @@
                     <h1 class="willUp">教育信息化创新创业协会</h1>
                     <h1 class="willUp">蓝山工作室</h1>
                     <div class="willUp box-btns">
-                        <a href="javascript:void(0);" class="box-btn goto-down">走进我们</a>
+                        <a href="javascript:void(0);" class="box-btn goto-down">了解我们</a>
                         <a href="javascript:void(0);" class="box-btn goto-join">加入我们</a>
                     </div>
                 </div>
@@ -70,10 +71,27 @@
         <div class="bb-item">
             <div class="box-item box-2">
                 <div class="box-center">
+                    <h1 class="willUp">蓝山工作室</h1>
+                    <h2 class="willUp">2016年夏招开启</h2>
+                    <h3 class="willUp">面向2015级同学</h3>
+                    <h3 class="willUp">6月1日-6月8日</h3>
+                    <div class="willUp box-btns">
+                        <a href="javascript:void(0);" class="box-btn goto-join">立即报名</a>
+                    </div>
+                </div>
+                <div class="header-flip">
+                    <div class="main-btns prev-btn"><img src="static/img/prev.png"></div>
+                    <div class="main-btns next-btn"><img src="static/img/next.png"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bb-item">
+            <div class="box-item box-3">
+                <div class="box-center">
                     <h1 class="willUp">介绍视频</h1>
-                    <h2 class="willUp">教育信息化创新创业协会</h2>
-                    <div class="box-btns">
-                        <a href="#" class="willUp box-btn" id="look-blues">观看视频</a>
+                    <h2 class="willUp">制作中...</h2>
+                    <div class="willUp box-btns">
+                        <a href="#" class="box-btn" id="look-blues">观看视频</a>
                     </div>
                 </div>
                 <div class="header-flip">
@@ -84,21 +102,6 @@
             <div class="blues-video">
                 <span class="close-video">X</span>
                 <video id="player"></video>
-            </div>
-        </div>
-        <div class="bb-item">
-            <div class="box-item box-3">
-                <div class="box-center">
-                    <h1 class="willUp">介绍视频</h1>
-                    <h2 class="willUp">教育信息化创新创业协会</h2>
-                    <div class="box-btns">
-                        <a href="#" class="willUp box-btn">观看视频</a>
-                    </div>
-                </div>
-                <div class="header-flip">
-                    <div class="main-btns prev-btn"><img src="static/img/prev.png"></div>
-                    <div class="main-btns next-btn"><img src="static/img/next.png"></div>
-                </div>
             </div>
         </div>
     </div>
@@ -128,9 +131,7 @@
                             {{#each this}}
                             <div class="swiper-slide">
                                 <div class="bs-box">
-                                    <div class="bs-img">
-                                        <img src="static/img/bbs.png">
-                                    </div>
+                                    <img class="bs-img" src="{{h_img}}">
                                     <div class="bs-text">
                                         <div class="bs-text-inner">
                                             <h3>{{h_name}}</h3>
@@ -211,7 +212,7 @@
                         <li class="pro-btn">{{p_name}}</li>
                         {{/each}}
                     </script>
-                    <li class="pro-btn">更多</li>
+                    <li class="pro-btn">列表<i class="iconfont icon-more"></i></li>
                 </ul>
                 <!-- 作品展示 -->
                 <div class="pro-detail">
@@ -223,26 +224,38 @@
                             {{#each this}}
                             <li>
                                 <div class="index-img">
-                                    <img src="{{p_url}}">
+                                    {{#if p_address}}
+                                    <a href="{{p_address}}" target="_blank"><img src="{{p_url}}"></a>
+                                    {{else}}
+                                    <a href="javascript:void(0);"><img src="{{p_url}}"></a>
+                                    {{/if}}
                                 </div>
                                 <div class="index-intro">
-                                    <h3>{{p_name}}</h3>
-                                    <p>{{p_description}}</p>
-                                    {{#if p_address}}
-                                    <a href="{{p_address}}" target="_blank">{{p_address}}</a>
-                                    {{else}}
-                                    <img src="static/img/code-blues.png">
-                                    {{/if}}
+                                    <div class="index-intro-inner">
+                                        <h3>{{p_name}}</h3>
+                                        <p>{{p_description}}</p>
+                                        {{#if p_address}}
+                                        <a href="{{p_address}}" target="_blank"><i class="iconfont icon-link"></i> {{p_address}}</a>
+                                        {{else}}
+                                        <img src="static/img/wx.jpg">
+                                        {{/if}}
+                                    </div>
                                 </div>
                             </li>
                             {{/each}}
                         </script>
                         <li class="pro-more">
-                            <h3>更多</h3>
+                            <h3>作品列表</h3>
                             <ul>
                                 <script type="text/x-handlebars-template" id="productionMore">
                                     {{#each this}}
-                                    <li><a href="{{p_address}}" target="_blank">{{p_name}}</a></li>
+                                    <li>
+                                        {{#if p_address}}
+                                        <a href="{{p_address}}" target="_blank">{{p_name}}</a>
+                                        {{else}}
+                                        <a href="javascript:void(0);">{{p_name}}</a>
+                                        {{/if}}
+                                    </li>
                                     {{/each}}
                                 </script>
                             </ul>
@@ -285,20 +298,21 @@
             <h1>毕业去向</h1>
             <div class="card">
                 <div class="card-border"></div>
-                <script type="text/x-handlebars-template" id="graduated-member">
-                    {{#each this}}
-                    <div class="people-card">
-                        <h3><span>{{grade}}级</span></h3>
-                        {{#each list}}
-                        <p>
-                            <span class="people-name">{{m_name}}</span>
-                            <span class="company">{{m_company}}</span>
-                            <span class="direction">{{m_group}}</span>
-                        </p>
+                <div id="card">
+                    <script type="text/x-handlebars-template" id="graduated-member">
+                        {{#each this}}
+                        <div class="people-card">
+                            <h3><span>{{grade}}级</span></h3>
+                            {{#each list}}
+                            <p>
+                                <span class="people-name">{{m_name}}</span>
+                                <span class="company">{{m_company}}</span>
+                            </p>
+                            {{/each}}
+                        </div>
                         {{/each}}
-                    </div>
-                    {{/each}}
-                </script>
+                    </script>
+                </div>
            </div>
         </div>
     </section>

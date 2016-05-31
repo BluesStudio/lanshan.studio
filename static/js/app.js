@@ -322,7 +322,7 @@ $(function() {
         component.Page.init();
         /* 首屏背景 */
         var particles_config = {"particles":{"number":{"value":20,"density":{"enable":true,"value_area":800}},"color":{"value":"#e1e1e1"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/cloud.png","width":100,"height":100}},"opacity":{"value":0.22,"random":true,"anim":{"enable":false,"speed":0.1,"opacity_min":0.2,"sync":true}},"size":{"value":15,"random":true,"anim":{"enable":true,"speed":3,"size_min":10,"sync":false}},"line_linked":{"enable":true,"distance":400,"color":"#cfcfcf","opacity":0.18,"width":1},"move":{"enable":true,"speed":1,"direction":"none","random":true,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":0.2}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":1},"remove":{"particles_nb":2}}},"retina_detect":true};
-        // particlesJS("particles-js", particles_config);
+        particlesJS("particles-js", particles_config);
     })();
 
     /* url */
@@ -362,6 +362,10 @@ $(function() {
             type: "GET",
             url: _link.history,
             success: function(result) {
+                var ls = result.data.slice(0, 3);
+                for(var i = 0, length = ls.length; i < length; i++){
+                    ls[i].h_img = "static/img/ls" + (i+1) + ".png";
+                }
                 var historyTpl = Handlebars.compile($("#history").html());
                 $(".swiper-wrapper").html(historyTpl(result.data.slice(0, 3)));
                 var mySwiper = new Swiper ('.swiper-container', {
@@ -464,14 +468,13 @@ $(function() {
             type: "GET",
             url: _link.production,
             success: function(result) {
-                var showList = result.data.slice(0, 5),
-                    moreList = result.data.slice(5);
+                var showList = result.data.slice(0, 5);
                 var proBtnTpl = Handlebars.compile($("#pro-btn").html());
                 $(".pro-btn-group").prepend(proBtnTpl(showList));
                 var productionTpl = Handlebars.compile($("#production").html());
                 $(".pro-list").prepend(productionTpl(showList));
                 var productionMoreTpl = Handlebars.compile($("#productionMore").html());
-                $(".pro-more ul").prepend(productionMoreTpl(moreList));
+                $(".pro-more ul").prepend(productionMoreTpl(result.data));
                 showPro();
             }
         });
@@ -479,7 +482,7 @@ $(function() {
 
     /* 骨干团 ~ 毕业去向 */
     (function() {
-        /* 鼠标移动动画 */
+        /* 骨干团-鼠标移动动画 */
         (function($, undefined) {
             $.HoverDir = function(options, element) {
                 this.$el = $(element);
@@ -578,6 +581,76 @@ $(function() {
                 return this;
             };
         })(jQuery);
+        /* 毕业去向-瀑布流 */
+        function waterfall(container){
+            if(typeof(container) === 'string')
+                container = document.querySelector(container);
+            function style(el){ return window.getComputedStyle(el); }
+            function margin(name, el){ return parseFloat(style(el)['margin' + name]) || 0; }
+            function px(n){ return n + 'px'; }
+            function y(el){ return parseFloat(el.style.top) ; }
+            function x(el){ return parseFloat(el.style.left); }
+            function width(el){ return parseFloat(style(el).width); }
+            function height(el){ return parseFloat(style(el).height); }
+            function bottom(el){ return y(el) + height(el) + margin('Bottom', el); }
+            function right(el){ return x(el) + width(el) + margin('Right', el); }
+            function padding(el){ return parseFloat(style(el).height); }
+            function sort(l){
+                l = l.sort(function(a, b){
+                    var bottom_diff = bottom(b) - bottom(a);
+                    return bottom_diff || x(b) - x(a);
+                });
+            }
+            var boundary = {
+                col: 2,
+                els: [],
+                add: function (el){
+                    this.els.push(el);
+                    sort(this.els);
+                    this.els = this.els.slice(0, boundary.col);
+                },
+                min: function(){
+                    return this.els[this.els.length - 1];
+                },
+                max: function(){
+                    return this.els[0];
+                }
+            };
+            function placeEl(el, top, left){
+                el.style.position = 'absolute';
+                el.style.top = top;
+                el.style.left = left;
+                boundary.add(el);
+            }
+            function placeFirstElement(el){
+                placeEl(el, '0px', px(margin('Left', el)));
+            }
+            function placeAtTheFirstLine(prev, el){
+                placeEl(el, prev.style.top, px(right(prev) + margin('Left', el)));
+            }
+            function placeAtTheSmallestColumn(minEl, el){
+                placeEl(el, px(bottom(minEl) + margin('Top', el)), px(x(minEl)));
+            }
+            function adjustContainer(container, maxEl){
+                container.style.position = 'relative';
+                container.style.height = px(bottom(maxEl) + margin('Bottom', maxEl));
+            }
+            function thereIsSpace(els, i){
+                return right(els[i - 1]) + width(els[i]) <= width(container) + parseFloat(style(container.parentNode).paddingLeft) + parseFloat(style(container.parentNode).paddingRight);
+            }
+            var els = container.children;
+            if(els.length){
+                placeFirstElement(els[0]);
+            }
+            for(var i = 1; i < els.length && thereIsSpace(els, i); i++){
+                placeAtTheFirstLine(els[i - 1], els[i]);
+            }
+            boundary.col = i;
+            for(; i < els.length; i++){
+                placeAtTheSmallestColumn(boundary.min(), els[i]);
+            }
+            adjustContainer(container, boundary.max());
+        }
         /* ajax获取数据 */
         $.ajax({
             type: "GET",
@@ -623,7 +696,8 @@ $(function() {
                     }
                 });
                 var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
-                $(".card").append(graduatedMemberTpl(graduatedArr));
+                $("#card").html(graduatedMemberTpl(graduatedArr));
+                waterfall("#card");
                 /* 骨干团 */
                 $(".da-thumbs > li").hoverdir();
             }
@@ -637,8 +711,9 @@ $(function() {
             type: "GET",
             url: _link.group,
             success: function(result) {
+                var showList = result.data.slice(0, 5);
                 var groupTpl = Handlebars.compile($("#group-tpl").html());
-                $("#group_id").append(groupTpl(result.data));
+                $("#group_id").append(groupTpl(showList));
             }
         });
         /* 表单效果 */
