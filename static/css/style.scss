@@ -237,6 +237,10 @@ a{
         height: 60px;
         @include opacity(0.8);
         @include transition(all 0.3s ease-in-out);
+        @media screen and (max-width: 750px) {
+            width: 45px;
+            height: 45px;
+        }
         &:hover{
             @include opacity(1);
         }
@@ -244,6 +248,10 @@ a{
             width: 60px;
             height: 60px;
             @include transition(all 0.3s ease-in-out);
+            @media screen and (max-width: 750px) {
+                width: 45px;
+                height: 45px;
+            }
         }
     }
     .menu-btn{
@@ -314,6 +322,9 @@ a{
         width: 30px;
         height: 30px;
         padding: 20px;
+        @media screen and (max-width: 750px) {
+            padding: 15px;
+        }
         img{
             width: 100%;
         }
@@ -328,9 +339,15 @@ a{
     }
     .prev-btn{
         left: 15px;
+        @media screen and (max-width: 750px) {
+            left: 0;
+        }
     }
     .next-btn{
         right: 15px;
+        @media screen and (max-width: 750px) {
+            right: 0;
+        }
     }
     .down-btn{
         left: 50%;
@@ -338,6 +355,9 @@ a{
         margin-left: -35px;
         @include opacity(0.6);
         @include transition(all 0.3s ease-in-out);
+        @media screen and (max-width: 750px) {
+            bottom: 30px;
+        }
         &:hover{
             @include opacity(1);
         }
@@ -487,7 +507,7 @@ a{
     height: 300px;
     overflow: hidden;
     text-align: center;
-    background-image: url("../img/bs-bg.jpg");
+    background-image: url("../img/bs-bg-1.jpg");
     @include background-size(cover);
     .content{
         position: absolute;
@@ -539,6 +559,9 @@ a{
     width: 100%;
     overflow: hidden;
     padding: 45px 0 75px;
+    @media screen and (max-width: 750px) {
+        padding: 25px 0 50px;
+    }
     .content{
         width: 960px;
         margin: 0 auto;
@@ -558,7 +581,7 @@ a{
         }
         @media screen and (max-width: 750px) {
             font-size: 1.5rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
     }
     p{
@@ -599,6 +622,9 @@ a{
         height: 200px;
         overflow: hidden;
         @include border-radius(5px);
+        @media screen and (max-width: 750px) {
+            height: auto;
+        }
     }
     .bs-img{
         float: left;
@@ -873,8 +899,8 @@ a{
             height: 350px;
         }
         @media screen and (max-width: 400px) {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
         }
     }
     /* 饼状图 */
@@ -892,8 +918,8 @@ a{
             height: 350px;
         }
         @media screen and (max-width: 400px) {
-            width: 250px;
-            height: 250px;
+            width: 300px;
+            height: 300px;
         }
     }
     .part {
@@ -907,7 +933,7 @@ a{
             clip: rect(0px, 350px, 350px, 175px);
         }
         @media screen and (max-width: 400px) {
-            clip: rect(0px, 250px, 250px, 125px);
+            clip: rect(0px, 300px, 300px, 150px);
         }
         .bing {
             position: absolute;
@@ -921,7 +947,7 @@ a{
                 clip: rect(0px, 175px, 350px, 0px);
             }
             @media screen and (max-width: 400px) {
-                clip: rect(0px, 125px, 250px, 0px);
+                clip: rect(0px, 150px, 300px, 0px);
             }
         }
         &:nth-of-type(1) {
@@ -980,12 +1006,15 @@ a{
             margin-top: -75px;
             @include border-radius(50%);
             line-height: 150px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #fff;
             text-align: center;
             cursor: pointer;
             @media screen and (max-width: 550px) {
                 font-size: 1.1rem;
+            }
+            @media screen and (max-width: 400px) {
+                font-size: 0.9em;
             }
             .iconfont{
                 font-size: 0.8em;
@@ -1325,12 +1354,9 @@ a{
     .card {
         position: relative;
         background: #fefefe;
-        padding: 40px 20px;
+        padding: 40px 0;
         @include box-shadow(0 0 15px #e2e2e2);
         overflow: hidden;
-        * {
-            box-sizing: border-box;
-        }
         .card-border{
             position: absolute;
             top: 70px;
@@ -1344,11 +1370,10 @@ a{
         }
     }
     .people-card {
-        width: 50%;
-        padding: 15px 30px;
+        width: 39.5%;
+        margin: 3.5%;
         @media screen and (max-width: 750px) {
-            width: 100%;
-            padding: 10px;
+            width: 86%;
         }
         h3 {
             font-size: 1.1rem;
@@ -1371,10 +1396,19 @@ a{
                 float: left;
                 display: inline-block;
                 width: 6em;
+                @media screen and (max-width: 400px) {
+                    font-weight: 400;
+                    width: 100%;
+                    text-align: center;
+                }
             }
             .company{
                 float: right;
                 font-size: 0.9rem;
+                @media screen and (max-width: 400px) {
+                    width: 100%;
+                    text-align: center;
+                }
             }
         }
     }
@@ -1406,6 +1440,9 @@ a{
         .box-bd{
             padding: 20px 50px;
             height: 260px;
+            @media screen and (max-width: 750px) {
+                padding: 20px 25px;
+            }
         }
     }
     .join-us {

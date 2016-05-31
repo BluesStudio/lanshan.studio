@@ -698,6 +698,9 @@ $(function() {
                 var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
                 $("#card").html(graduatedMemberTpl(graduatedArr));
                 waterfall("#card");
+                $(window).on('resize', function(){
+                    waterfall("#card");
+                });
                 /* 骨干团 */
                 $(".da-thumbs > li").hoverdir();
             }
