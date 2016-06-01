@@ -1,6 +1,5 @@
 /* 
-*Cong Min 于 2015.12.21 
-*Sudan 于 2016.3.29
+* Cong Min & Sudan
 */
 $(function() {
     /* component组件 - begin */
@@ -358,61 +357,53 @@ $(function() {
     /* 发展历史 */
     (function() {
         /* ajax获取数据 */
-        $.ajax({
-            type: "GET",
-            url: _link.history,
-            success: function(result) {
-                var ls = result.data.slice(0, 3);
-                for(var i = 0, length = ls.length; i < length; i++){
-                    ls[i].h_img = "static/img/ls" + (i+1) + ".png";
-                }
-                var historyTpl = Handlebars.compile($("#history").html());
-                $(".swiper-wrapper").html(historyTpl(result.data.slice(0, 3)));
-                var mySwiper = new Swiper ('.swiper-container', {
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
-                    spaceBetween: 15,
-                    onSlideNextStart: function(swiper){
-                        $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
-                    },
-                    onSlidePrevStart: function(swiper){
-                        $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
-                    }
-                });
-                $(".time-node").on('click', function(){
-                    var index = $(this).data('index');
-                    mySwiper.slideTo(index);
-                });
+        $.get(_link.history, function(result){
+            var ls = result.data.slice(0, 3);
+            for(var i = 0, length = ls.length; i < length; i++){
+                ls[i].h_img = "static/img/ls" + (i+1) + ".png";
             }
+            var historyTpl = Handlebars.compile($("#history").html());
+            $(".swiper-wrapper").html(historyTpl(result.data.slice(0, 3)));
+            var mySwiper = new Swiper ('.swiper-container', {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 15,
+                onSlideNextStart: function(swiper){
+                    $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
+                },
+                onSlidePrevStart: function(swiper){
+                    $(".time-node").removeClass("now").filter("[data-index='" + swiper.activeIndex + "']").addClass("now");
+                }
+            });
+            $(".time-node").on('click', function(){
+                var index = $(this).data('index');
+                mySwiper.slideTo(index);
+            });
         });
     })();
 
     /* 部门介绍 */
     (function() {
         /* ajax获取数据 */
-        $.ajax({
-            type: "GET",
-            url: _link.department,
-            success: function(result) {
-                var departmentTpl = Handlebars.compile($("#department").html());
-                $(".bm-box ul").html(departmentTpl(result.data.slice(0, 5)));
-                /* 展开效果 */
-                $(".bm-box ul>li").eq(0).addClass("on");
-                var $window = $(window);
-                $(".bm-item").hover(function(){
-                    if($window.width() > 1000){
-                        $(".bm-item").not($(this)).stop().animate({
-                            width: 158
-                        }).removeClass("on");
-                        $(this).stop().animate({
-                            width: 318
-                        }).addClass("on");
-                    }else{
-                        $(".bm-item").removeClass("on");
-                        $(this).addClass("on");
-                    }
-                });
-            }
+        $.get(_link.department, function(result) {
+            var departmentTpl = Handlebars.compile($("#department").html());
+            $(".bm-box ul").html(departmentTpl(result.data.slice(0, 5)));
+            /* 展开效果 */
+            $(".bm-box ul>li").eq(0).addClass("on");
+            var $window = $(window);
+            $(".bm-item").hover(function(){
+                if($window.width() > 1000){
+                    $(".bm-item").not($(this)).stop().animate({
+                        width: 158
+                    }).removeClass("on");
+                    $(this).stop().animate({
+                        width: 318
+                    }).addClass("on");
+                }else{
+                    $(".bm-item").removeClass("on");
+                    $(this).addClass("on");
+                }
+            });
         });
     })();
 
@@ -464,19 +455,15 @@ $(function() {
             });
         };
         /* ajax获取数据 */
-        $.ajax({
-            type: "GET",
-            url: _link.production,
-            success: function(result) {
-                var showList = result.data.slice(0, 5);
-                var proBtnTpl = Handlebars.compile($("#pro-btn").html());
-                $(".pro-btn-group").prepend(proBtnTpl(showList));
-                var productionTpl = Handlebars.compile($("#production").html());
-                $(".pro-list").prepend(productionTpl(showList));
-                var productionMoreTpl = Handlebars.compile($("#productionMore").html());
-                $(".pro-more ul").prepend(productionMoreTpl(result.data));
-                showPro();
-            }
+        $.get(_link.production, function(result) {
+            var showList = result.data.slice(0, 5);
+            var proBtnTpl = Handlebars.compile($("#pro-btn").html());
+            $(".pro-btn-group").prepend(proBtnTpl(showList));
+            var productionTpl = Handlebars.compile($("#production").html());
+            $(".pro-list").prepend(productionTpl(showList));
+            var productionMoreTpl = Handlebars.compile($("#productionMore").html());
+            $(".pro-more ul").prepend(productionMoreTpl(result.data));
+            showPro();
         });
     })();
 
@@ -651,73 +638,65 @@ $(function() {
             }
             adjustContainer(container, boundary.max());
         }
+        /* 随机排序 */
+        var randomsort = function() {
+            return Math.random() > .5 ? -1 : 1;
+        };
         /* ajax获取数据 */
-        $.ajax({
-            type: "GET",
-            url: _link.member,
-            success: function(result) {
-                /* 随机排序 */
-                var randomsort = function() {
-                    return Math.random() > .5 ? -1 : 1;
-                };
-                /* 骨干团 */
-                var mainMemberTpl = Handlebars.compile($("#main-member").html());
-                $("#da-thumbs").html(mainMemberTpl(result.data.sort(randomsort)));
-                /* 毕业去向 */
-                var graduated = {},
-                    graduatedArr = [];
-                for(var i = 0, len = result.data.length; i < len; i++){
-                    var e = result.data[i];
-                    if(e.m_out && e.m_grade){
-                        if(!graduated[e.m_grade]){
-                            graduated[e.m_grade] = [];
-                        }
-                        graduated[e.m_grade].push(e);
+        $.get(_link.member, function(result) {
+            /* 骨干团 */
+            var mainMemberTpl = Handlebars.compile($("#main-member").html());
+            $("#da-thumbs").html(mainMemberTpl(result.data.sort(randomsort)));
+            /* 毕业去向 */
+            var graduated = {},
+                graduatedArr = [];
+            for(var i = 0, len = result.data.length; i < len; i++){
+                var e = result.data[i];
+                if(e.m_out && e.m_grade){
+                    if(!graduated[e.m_grade]){
+                        graduated[e.m_grade] = [];
                     }
+                    graduated[e.m_grade].push(e);
                 }
-                /* 对象转换为数组,再按倒序排序 */
-                for(var j in graduated){
-                    if(graduated.hasOwnProperty(j)){
-                        graduatedArr.push({
-                            grade: j,
-                            list: graduated[j].sort(randomsort)
-                        });
-                    }
-                }
-                graduatedArr.reverse(function (a, b) {
-                    var value1 = a[grade],
-                        value2 = b[grade];
-                    if(value2 < value1){
-                        return -1;
-                    }else if(value2 > value1) {
-                        return 1;
-                    }else{
-                        return 0;
-                    }
-                });
-                var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
-                $("#card").html(graduatedMemberTpl(graduatedArr));
-                waterfall("#card");
-                $(window).on('resize', function(){
-                    waterfall("#card");
-                });
-                /* 骨干团 */
-                $(".da-thumbs > li").hoverdir();
             }
+            /* 对象转换为数组,再按倒序排序 */
+            for(var j in graduated){
+                if(graduated.hasOwnProperty(j)){
+                    graduatedArr.push({
+                        grade: j,
+                        list: graduated[j].sort(randomsort)
+                    });
+                }
+            }
+            graduatedArr.reverse(function (a, b) {
+                var value1 = a[grade],
+                    value2 = b[grade];
+                if(value2 < value1){
+                    return -1;
+                }else if(value2 > value1) {
+                    return 1;
+                }else{
+                    return 0;
+                }
+            });
+            var graduatedMemberTpl = Handlebars.compile($("#graduated-member").html());
+            $("#card").html(graduatedMemberTpl(graduatedArr));
+            waterfall("#card");
+            $(window).on('resize', function(){
+                waterfall("#card");
+            });
+            /* 骨干团 */
+            $(".da-thumbs > li").hoverdir();
         });
     })();
 
     /* 加入我们 */
     (function() {
         /* ajax获取分组 */
-        $.ajax({
-            type: "GET",
-            url: _link.group,
-            success: function(result) {
-                var showList = result.data.slice(0, 5);
-                var groupTpl = Handlebars.compile($("#group-tpl").html());
-                $("#group_id").append(groupTpl(showList));
-            }
+        $.ajax(_link.group, function(result) {
+            var showList = result.data.slice(0, 5);
+            var groupTpl = Handlebars.compile($("#group-tpl").html());
+            $("#group_id").append(groupTpl(showList));
         });
         /* 表单效果 */
         var $input = $(".input-group input").add(".select select"),
@@ -737,6 +716,30 @@ $(function() {
             },
             blur: function(){
                 $(this).parent().removeClass('active');
+                check();
+            }
+        });
+        /* 通过学号获取信息 */
+        $("#me_sno").on("input propertychange", function(){
+            var id = this.value;
+            if(id.length >= 10){
+                $.get("https://blues.congm.in/pubBjStu.php?searchKey=" + id, function(data){
+                    var $html = $('<div>' + data + '</div>'),
+                        $tr = $html.find("table tr:eq(1)"),
+                        $a = $tr.find("td"),
+                        message = [];
+                    for(var i = 0, length = $a.length; i<length; i++){
+                        message[i] = $a.eq(i).text().replace(/\s/g, "");
+                    }
+                    $("#me_name").val(message[1]);
+                    $("#me_college").val(message[5]);
+                    $("#me_major").val(message[4]);
+                    check();
+                });
+            }else{
+                $("#me_name").val('');
+                $("#me_college").val('');
+                $("#me_major").val('');
                 check();
             }
         });
@@ -772,7 +775,7 @@ $(function() {
                     success: function(data){
                         if(!!data.meta){
                             if(!data.meta.success){
-                                alert("提交失败！");
+                                alert(data.meta.message);
                             }else{
                                 alert("提交成功！");
                             }
@@ -782,30 +785,6 @@ $(function() {
                         alert("提交失败！");
                     }
                 });
-            }
-        });
-        /* 通过学号获取信息 */
-        $("#me_sno").on("input propertychange", function(){
-            var id = this.value;
-            if(id.length >= 10){
-                $.get("https://blues.congm.in/pubBjStu.php?searchKey=" + id, function(data){
-                    var $html = $('<div>' + data + '</div>'),
-                        $tr = $html.find("table tr:eq(1)"),
-                        $a = $tr.find("td"),
-                        message = [];
-                    for(var i = 0, length = $a.length; i<length; i++){
-                        message[i] = $a.eq(i).text().replace(/\s/g, "");
-                    }
-                    $("#me_name").val(message[1]);
-                    $("#me_college").val(message[5]);
-                    $("#me_major").val(message[4]);
-                    check();
-                });
-            }else{
-                $("#me_name").val('');
-                $("#me_college").val('');
-                $("#me_major").val('');
-                check();
             }
         });
     })();
