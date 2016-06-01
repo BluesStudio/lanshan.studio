@@ -338,20 +338,22 @@ $(function() {
 
     /* 首屏视频 */
     (function() {
-        $("#video_play").on("click", function(e) {
-            e.preventDefault();
-            $(this).parents(".box-center").fadeOut();
-            $(".video_box").fadeIn();
-            $(".video_box video")[0].play();
-        });
         $.get(_link.vedio, function(result){
             var video = result.data[0];
-            var $video = $("<video>", {
-                src: video.vi_url,
-                controls: "controls"
-            });
-            $(".video_box").append($video);
-            $("#video_description").text(video.vi_description);
+            if(video){
+                var $video = $("<video>", {
+                    src: video.vi_url,
+                    controls: "controls"
+                });
+                $(".video_box").append($video);
+                $("#video_description").text(video.vi_description);
+                $("#video_play").on("click", function(e) {
+                    e.preventDefault();
+                    $(this).parents(".box-center").fadeOut();
+                    $(".video_box").fadeIn();
+                    $(".video_box video")[0].play();
+                });
+            }
         });
      })();
 
