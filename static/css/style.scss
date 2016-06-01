@@ -76,6 +76,7 @@ html, body{
 html{
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 body{
     position: relative;
@@ -117,11 +118,17 @@ a{
     @include transition(all 0.3s ease-in-out);
 }
 .kill-ie {
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     margin: 0;
     padding: .5em 0;
     color: #000;
     text-align: center;
-    background: #fff8e2
+    background: #fff8e2;
 }
 .clearfix:after {
     visibility: hidden;
@@ -354,6 +361,9 @@ a{
         bottom: 50px;
         margin-left: -35px;
         @include opacity(0.6);
+        @media screen and (max-width: 750px) {
+            margin-left: -30px;
+        }
         @include transition(all 0.3s ease-in-out);
         @media screen and (max-width: 750px) {
             bottom: 30px;
@@ -385,6 +395,7 @@ a{
                 top: 2px;
                 width: 14px;
                 height: 14px;
+                margin: 6px 3px;
                 background: url("../img/logo.png");
                 @include background-size(cover);
             }
@@ -445,6 +456,13 @@ a{
                 weight: 200;
             }
         }
+        h2{
+            font-size: 1.2em;
+            line-height: 2em;
+            &:first-of-type{
+                margin-top: 2em;
+            }
+        }
         .box-btns{
             position: relative;
             z-index: 3;
@@ -454,7 +472,7 @@ a{
         .box-btn{
             display: inline-block;
             font-size: 1.2em;
-            padding: 0.4em 1em;
+            padding: 0.35em 1em;
             margin: 0 20px;
             @include border-radius(3px);
             border: 1px solid #fff;
@@ -468,28 +486,12 @@ a{
 }
 .box-1{
     background-color: $color_blues;
-    .box-center{
-        h1{
-            font-family: "webfont", "Helvetica Neue", Helvetica, Aria, "Microsoft YaHei", sans-serif;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    h1{
+        font-family: "webfont", "Helvetica Neue", Helvetica, Aria, "Microsoft YaHei", sans-serif;
     }
 }
 .box-2{
     background-color: $color_blues;
-    h2{
-        font:{
-            size: 3em;
-            weight: 200;
-        }
-    }
-    h3{
-        font-size: 1.2em;
-        line-height: 2em;
-        &:first-of-type{
-            margin-top: 2em;
-        }
-    }
 }
 .box-3{
     background-image: url("../img/box-2-bg.png");
@@ -509,6 +511,10 @@ a{
     text-align: center;
     background-image: url("../img/bs-bg.jpg");
     @include background-size(cover);
+    background-position: center;
+    @media screen and (max-width: 750px) {
+        height: 250px;
+    }
     .content{
         position: absolute;
         top: 35%;
@@ -837,6 +843,9 @@ a{
                     text-align: justify;
                     word-break: break-all;
                     font-size: 0.9em;
+                    @media screen and (max-width: 350px) {
+                        font-size: 0.82em;
+                    }
                 }
                 &:nth-of-type(2) {
                     border-top: 1px solid #eee;
@@ -848,6 +857,9 @@ a{
                 padding: 15px 10px;
                 p{
                     font-size: 1em;
+                    @media screen and (max-width: 350px) {
+                        font-size: 0.85em;
+                    }
                 }
             }
         }
@@ -1259,7 +1271,6 @@ a{
                 position: relative;
                 overflow: hidden;
                 width: 100%;
-                height: 100%;
             }
             .item-img{
                 display: block;

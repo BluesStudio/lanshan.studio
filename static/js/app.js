@@ -276,7 +276,7 @@ $(function() {
                 }
             },
             bind:  function () {
-                $("ul[data-scroll]").on('click', '>li', function(){
+                $("[data-scroll-to]").on('click', function(){
                     functions.to(parseInt($(this).data("scroll-to")));
                 });
                 var container = $(".container")[0];
@@ -693,7 +693,7 @@ $(function() {
     /* 加入我们 */
     (function() {
         /* ajax获取分组 */
-        $.ajax(_link.group, function(result) {
+        $.get(_link.group, function(result) {
             var showList = result.data.slice(0, 5);
             var groupTpl = Handlebars.compile($("#group-tpl").html());
             $("#group_id").append(groupTpl(showList));
