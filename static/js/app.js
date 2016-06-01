@@ -275,7 +275,7 @@ $(function() {
                     smoothScroll(functions.getTop($(config.prefix + id)[0]), config.speed);
                 }
             },
-            bind:  function () {
+            bind:  function() {
                 $("[data-scroll-to]").on('click', function(){
                     functions.to(parseInt($(this).data("scroll-to")));
                 });
@@ -337,22 +337,23 @@ $(function() {
         };
 
     /* 首屏视频 */
-    /*(function() {
-        $.ajax({
-            type: "GET",
-            url: link.vedio,
-            success: function(result) {
-                $("#player").attr("src", result.data[0].vi_url);
-                $("#look-blues").bind("click", function(e) {
-                    e.preventDefault();
-                    $(".blues-video").fadeIn();
-                });
-                $(".close-video").bind("click", function() {
-                    $(".blues-video").fadeOut();
-                });
-            }
+    (function() {
+        $("#video_play").on("click", function(e) {
+            e.preventDefault();
+            $(this).parents(".box-center").fadeOut();
+            $(".video_box").fadeIn();
+            $(".video_box video")[0].play();
         });
-     })();*/
+        $.get(_link.vedio, function(result){
+            var video = result.data[0];
+            var $video = $("<video>", {
+                src: video.vi_url,
+                controls: "controls"
+            });
+            $(".video_box").append($video);
+            $("#video_description").text(video.vi_description);
+        });
+     })();
 
     /* 发展历史 */
     (function() {
