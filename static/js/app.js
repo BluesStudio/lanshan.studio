@@ -459,6 +459,11 @@ $(function() {
         };
         /* ajax获取数据 */
         $.get(_link.production, function(result) {
+            $.each(result.data, function(i, e) {
+                if(e.p_address == "二维码"){
+                    e.p_code = true;
+                }
+            });
             var showList = result.data.slice(0, 5);
             var proBtnTpl = Handlebars.compile($("#pro-btn").html());
             $(".pro-btn-group").prepend(proBtnTpl(showList));
@@ -695,13 +700,13 @@ $(function() {
 
     /* 加入我们 */
     (function() {
-        /* ajax获取分组 */
+        /* ajax获取分组
         $.get(_link.group, function(result) {
             var showList = result.data.slice(0, 5);
             var groupTpl = Handlebars.compile($("#group-tpl").html());
             $("#group_id").append(groupTpl(showList));
-        });
-        /* 表单效果 */
+        }); */
+        /* 表单效果
         var $input = $(".input-group input").add(".select select"),
             check = function(){
                 $input.each(function(i, e){
@@ -721,12 +726,12 @@ $(function() {
                 $(this).parent().removeClass('active');
                 check();
             }
-        });
-        /* 通过学号获取信息 */
+        }); */
+        /* 通过学号获取信息
         $("#me_sno").on("input propertychange", function(){
             var id = this.value;
             if(id.length >= 10){
-                $.get("https://blues.congm.in/pubBjStu.php?searchKey=" + id, function(data){
+                $.get("https://host.congm.in/blues/pubBjStu.php?searchKey=" + id, function(data){
                     var $html = $('<div>' + data + '</div>'),
                         $tr = $html.find("table tr:eq(1)"),
                         $a = $tr.find("td"),
@@ -734,19 +739,19 @@ $(function() {
                     for(var i = 0, length = $a.length; i<length; i++){
                         message[i] = $a.eq(i).text().replace(/\s/g, "");
                     }
-                    $("#me_name").val(message[1]);
-                    $("#me_college").val(message[5]);
-                    $("#me_major").val(message[4]);
+                    $("#me_name").val(message[1]).attr('readonly', 'readonly');
+                    $("#me_college").val(message[5]).attr('readonly', 'readonly');
+                    $("#me_major").val(message[4]).attr('readonly', 'readonly');
                     check();
                 });
             }else{
-                $("#me_name").val('');
-                $("#me_college").val('');
-                $("#me_major").val('');
+                $("#me_name").val('').removeAttr('readonly');
+                $("#me_college").val('').removeAttr('readonly');
+                $("#me_major").val('').removeAttr('readonly');
                 check();
             }
-        });
-        /* 表单提交 */
+        }); */
+        /* 表单提交
         $("#join-us").on("submit", function(e) {
             e.preventDefault();
             var status = true;
@@ -789,7 +794,7 @@ $(function() {
                     }
                 });
             }
-        });
+        }); */
     })();
 
 });
