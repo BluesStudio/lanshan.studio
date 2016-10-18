@@ -1,0 +1,35 @@
+{
+  "name": "lanshan.studio",
+  "version": "1.0.0",
+  "description": "蓝山工作室主页",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack -p",
+    "watch": "webpack -p -w",
+    "clean": "rm index.html && rm -rf dist",
+    "rebuild": "npm run clean && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lanshan-studio/lanshan.studio.git"
+  },
+  "author": "Cong Min",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcc108/lanshan-studio/issues"
+  },
+  "homepage": "https://lanshan.studio",
+  "devDependencies": {
+    "compass-mixins": "^0.12.10",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "image-webpack-loader": "^3.0.0",
+    "node-sass": "^3.10.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2"
+  }
+}
