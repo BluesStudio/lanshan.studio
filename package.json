@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -p",
     "watch": "webpack -p -w",
-    "clean": "rm index.html && rm -rf dist",
+    "clean": "rm index.html && rm -rf static",
     "rebuild": "npm run clean && npm run build"
   },
   "repository": {

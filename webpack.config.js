@@ -8,7 +8,7 @@ var webpack = require('webpack'),
 module.exports = {
     entry: {
         app: ['./src/js/app.js'],
-        lib: ['./src/js/jquery.min.js', './src/js/jquery.bookblock.js','./src/js/modernizr.custom.min.js','./src/js/particles.min.js','./src/js/smoothscroll.min.js','./src/js/swiper.jquery.min.js','./src/js/handlebars.min.js']
+        lib: ['./src/js/lib.js']
     },
     output: {
         path: './static',
@@ -43,9 +43,9 @@ module.exports = {
         loaders: [{
             test: /\.html$/, loader: 'html'
         },  {
-            test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass']), exclude: /node_modules/
+            test: /\.scss$/, loader: ExtractTextPlugin.extract(['css', 'sass'], { publicPath:'./' }), exclude: /node_modules/
         },  {
-            test: /\.css$/, loader: ExtractTextPlugin.extract(['css'])
+            test: /\.css$/, loader: ExtractTextPlugin.extract(['css'], { publicPath:'./' })
         },  {
             test: /\.(png|gif)$/, loaders: [ 'file?limit=8192&name=img/[name].[ext]?[hash:8]', 'image-webpack' ]
         },  {
