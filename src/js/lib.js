@@ -7,4 +7,4 @@ var smoothScroll = require('./smoothscroll.min.js');
 window.smoothScroll = smoothScroll;
 require('./swiper.jquery.min.js');
 var Handlebars = require('./handlebars.min.js');
-window.smoothScroll = Handlebars;
+window.Handlebars = Handlebars;
