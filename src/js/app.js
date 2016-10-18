@@ -366,7 +366,7 @@ $(function() {
         $.get(_link.history, function(result){
             var ls = result.data.slice(0, 3);
             for(var i = 0, length = ls.length; i < length; i++){
-                ls[i].h_img = "static/img/ls" + (i+1) + ".png";
+                ls[i].h_img = "src/img/ls" + (i+1) + ".png";
             }
             var historyTpl = Handlebars.compile($("#history").html());
             $(".swiper-wrapper").html(historyTpl(result.data.slice(0, 3)));
